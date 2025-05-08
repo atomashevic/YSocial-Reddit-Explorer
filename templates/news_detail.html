@@ -1,0 +1,96 @@
+{% extends "base.html" %}
+
+{% block title %}{{ news.title }}{% endblock %}
+
+{% block content %}
+<div class="row">
+    <div class="col-md-8">
+        <div class="card mb-4">
+            <div class="card-header">
+                <h4>{{ news.title }}</h4>
+                <div class="text-muted">
+                    <small>{{ news.website_id }} | {{ news.fetched_on }}</small>
+                </div>
+            </div>
+            <div class="card-body">
+                <p>{{ news.summary }}</p>
+                {% if news.link %}
+                <a href="{{ news.link }}" target="_blank" class="btn btn-sm btn-outline-primary">Read Original Article</a>
+                {% endif %}
+            </div>
+        </div>
+
+        <h4>Posts Sharing This Article</h4>
+        {% for _, post in posts.iterrows() %}
+        <div class="card mb-3">
+            <div class="card-header d-flex justify-content-between align-items-center">
+                <div>
+                    <a href="{{ url_for('user_profile', username=post.user_id) }}" class="text-decoration-none">
+                        <span class="fw-bold">{{ post.user_id }}</span>
+                    </a>
+                    <span class="text-muted ms-2">{{ post.timestamp|format_timestamp }}</span>
+                </div>
+                {% if users.get(post.user_id) %}
+                <div class="badge bg-{% if users.get(post.user_id).leaning == 'Democrat' %}primary{% elif users.get(post.user_id).leaning == 'Republican' %}danger{% else %}secondary{% endif %}">
+                    {{ users.get(post.user_id).leaning }}
+                </div>
+                {% endif %}
+            </div>
+            <div class="card-body">
+                <a href="{{ url_for('post_detail', post_id=post.id) }}" class="text-decoration-none text-dark">
+                    <p class="card-text">{{ post.tweet }}</p>
+                </a>
+            </div>
+            <div class="card-footer">
+                <a href="{{ url_for('post_detail', post_id=post.id) }}" class="btn btn-sm btn-outline-primary">View Post</a>
+            </div>
+        </div>
+        {% endfor %}
+    </div>
+
+    <div class="col-md-4">
+        <div class="card">
+            <div class="card-header">
+                <h5>Article Statistics</h5>
+            </div>
+            <div class="card-body">
+                <p><strong>Shared by:</strong> {{ posts.shape[0] }} users</p>
+
+                <h6 class="mt-4">Political Distribution</h6>
+                {% set democrat_count = namespace(value=0) %}
+                {% set republican_count = namespace(value=0) %}
+                {% set independent_count = namespace(value=0) %}
+
+                {% for _, post in posts.iterrows() %}
+                    {% if users.get(post.user_id) %}
+                        {% if users.get(post.user_id).leaning == 'Democrat' %}
+                            {% set democrat_count.value = democrat_count.value + 1 %}
+                        {% elif users.get(post.user_id).leaning == 'Republican' %}
+                            {% set republican_count.value = republican_count.value + 1 %}
+                        {% else %}
+                            {% set independent_count.value = independent_count.value + 1 %}
+                        {% endif %}
+                    {% endif %}
+                {% endfor %}
+
+                <div class="progress mb-3">
+                    <div class="progress-bar bg-primary" style="width: {{ (democrat_count.value / posts.shape[0] * 100)|round|int }}%">
+                        {{ democrat_count.value }}
+                    </div>
+                    <div class="progress-bar bg-danger" style="width: {{ (republican_count.value / posts.shape[0] * 100)|round|int }}%">
+                        {{ republican_count.value }}
+                    </div>
+                    <div class="progress-bar bg-secondary" style="width: {{ (independent_count.value / posts.shape[0] * 100)|round|int }}%">
+                        {{ independent_count.value }}
+                    </div>
+                </div>
+                <div class="d-flex justify-content-between small">
+                    <span class="text-primary">Democrats</span>
+                    <span class="text-danger">Republicans</span>
+                    <span class="text-secondary">Independents</span>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+{% endblock %}

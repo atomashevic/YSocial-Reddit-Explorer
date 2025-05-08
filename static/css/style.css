@@ -1,0 +1,36 @@
+body {
+    background-color: #f8f9fa;
+}
+
+.card {
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+}
+
+.news-reference {
+    background-color: #f8f9fa;
+    border-left: 4px solid #007bff;
+}
+
+.badge {
+    font-weight: normal;
+}
+
+/* User profile styles */
+.tab-content {
+    background-color: white;
+    border: 1px solid #dee2e6;
+    border-top: none;
+    border-radius: 0 0 .25rem .25rem;
+    padding: 1rem;
+}
+
+/* Pagination styles */
+.pagination {
+    justify-content: center;
+    margin-top: 2rem;
+}
+
+/* Post content styles */
+.card-text {
+    white-space: pre-line;
+}

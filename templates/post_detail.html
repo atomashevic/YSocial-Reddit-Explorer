@@ -1,0 +1,103 @@
+{% extends "base.html" %}
+
+{% block title %}Post Details{% endblock %}
+
+{% block content %}
+<div class="row">
+    <div class="col-md-8">
+        <!-- Original Post -->
+        <div class="card mb-4">
+            <div class="card-header d-flex justify-content-between align-items-center">
+                <div>
+                    <a href="{{ url_for('user_profile', username=post.user_id) }}" class="text-decoration-none">
+                        <span class="fw-bold">{{ post.user_id }}</span>
+                    </a>
+                    <span class="text-muted ms-2">{{ post.timestamp|format_timestamp }}</span>
+                </div>
+                {% if author %}
+                <div class="badge bg-{% if author.leaning == 'Democrat' %}primary{% elif author.leaning == 'Republican' %}danger{% else %}secondary{% endif %}">
+                    {{ author.leaning }}
+                </div>
+                {% endif %}
+            </div>
+            <div class="card-body">
+                <p class="card-text">{{ post.tweet }}</p>
+
+                {% if news_article %}
+                <div class="news-reference mt-3 p-2 border rounded bg-light">
+                    <a href="{{ url_for('news_detail', news_id=post.news_id|int) }}" class="text-decoration-none">
+                        <small class="text-muted">Shared News Article:</small>
+                        <p class="mb-0"><strong>{{ news_article.title }}</strong></p>
+                        <small class="text-muted">{{ news_article.website_id }}</small>
+                        <p class="mt-2">{{ news_article.summary }}</p>
+                    </a>
+                </div>
+                {% endif %}
+
+                {% if post.post_img|string != 'nan' and post.post_img %}
+                <div class="mt-3">
+                    <img src="{{ post.post_img }}" class="img-fluid rounded" alt="Post image">
+                </div>
+                {% endif %}
+            </div>
+        </div>
+
+        <!-- Comments Section -->
+        <h4>Comments ({{ comments|length }})</h4>
+        {% for _, comment in comments.iterrows() %}
+        <div class="card mb-3">
+            <div class="card-header d-flex justify-content-between align-items-center">
+                <div>
+                    <a href="{{ url_for('user_profile', username=comment.user_id) }}" class="text-decoration-none">
+                        <span class="fw-bold">{{ comment.user_id }}</span>
+                    </a>
+                    <span class="text-muted ms-2">{{ comment.timestamp|format_timestamp }}</span>
+                </div>
+                {% if users.get(comment.user_id) %}
+                <div class="badge bg-{% if users.get(comment.user_id).leaning == 'Democrat' %}primary{% elif users.get(comment.user_id).leaning == 'Republican' %}danger{% else %}secondary{% endif %}">
+                    {{ users.get(comment.user_id).leaning }}
+                </div>
+                {% endif %}
+            </div>
+            <div class="card-body">
+                <p class="card-text">{{ comment.tweet }}</p>
+            </div>
+        </div>
+        {% endfor %}
+    </div>
+
+    <div class="col-md-4">
+        <!-- User Info Card -->
+        {% if author %}
+        <div class="card mb-4">
+            <div class="card-header">
+                <h5>About {{ author.name }}</h5>
+            </div>
+            <div class="card-body">
+                <p><strong>Age:</strong> {{ author.age }}</p>
+                <p><strong>Gender:</strong> {{ author.gender }}</p>
+                <p><strong>Political Leaning:</strong> {{ author.leaning }}</p>
+                <p><strong>Education:</strong> {{ author.education_level }}</p>
+                <p><strong>Personality:</strong></p>
+                <ul>
+                    <li>Openness: {{ author.oe }}</li>
+                    <li>Conscientiousness: {{ author.co }}</li>
+                    <li>Extraversion: {{ author.ex }}</li>
+                    <li>Agreeableness: {{ author.ag }}</li>
+                    <li>Neuroticism: {{ author.ne }}</li>
+                </ul>
+                <p><strong>Interests:</strong></p>
+                <ul>
+                    {% for interest in author.interests[0] %}
+                    <li>{{ interest }}</li>
+                    {% endfor %}
+                </ul>
+            </div>
+            <div class="card-footer">
+                <a href="{{ url_for('user_profile', username=author.name) }}" class="btn btn-primary btn-sm">View Profile</a>
+            </div>
+        </div>
+        {% endif %}
+    </div>
+</div>
+{% endblock %}

@@ -1,0 +1,26 @@
+
+------------------------------------------------------------
+Analyzing Simulation: Reddit Technology V2
+------------------------------------------------------------
+
+[1/5] Connecting to database...
+[2/5] Loading post data...
+[3/5] Loading news data...
+[4/5] Calculating basic statistics...
+[5/5] Exporting data to CSV...
+[5/5] Creating visualizations...
+
+Analysis Complete!
+Basic Statistics:
+- Num Posts: 448.00
+- Num Comments: 430.00
+- Num Root Posts: 18.00
+- Num Users: 92.00
+- Avg Thread Length: 24.89
+- Num News Ids: 14.00
+- Posts Per User Total: 4.87
+
+Visualizations saved to: results/reddit-technology-v2/
+Posts data exported to: results/reddit-technology-v2/posts.csv
+News data exported to: results/reddit-technology-v2/news.csv
+Total news articles: 14

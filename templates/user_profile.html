@@ -1,0 +1,113 @@
+{% extends "base.html" %}
+
+{% block title %}{{ user.name }} - Profile{% endblock %}
+
+{% block content %}
+<div class="row">
+    <div class="col-md-4">
+        <div class="card mb-4">
+            <div class="card-header">
+                <h4>{{ user.name }}</h4>
+            </div>
+            <div class="card-body">
+                <div class="mb-3">
+                    <h5>Personal Information</h5>
+                    <p><strong>Age:</strong> {{ user.age }}</p>
+                    <p><strong>Gender:</strong> {{ user.gender }}</p>
+                    <p><strong>Nationality:</strong> {{ user.nationality }}</p>
+                    <p><strong>Political Leaning:</strong>
+                        <span class="badge bg-{% if user.leaning == 'Democrat' %}primary{% elif user.leaning == 'Republican' %}danger{% else %}secondary{% endif %}">
+                            {{ user.leaning }}
+                        </span>
+                    </p>
+                    <p><strong>Education:</strong> {{ user.education_level }}</p>
+                    <p><strong>Joined:</strong> Round {{ user.joined_on }}</p>
+                </div>
+
+                <div class="mb-3">
+                    <h5>Personality Traits</h5>
+                    <ul>
+                        <li>Openness: {{ user.oe }}</li>
+                        <li>Conscientiousness: {{ user.co }}</li>
+                        <li>Extraversion: {{ user.ex }}</li>
+                        <li>Agreeableness: {{ user.ag }}</li>
+                        <li>Neuroticism: {{ user.ne }}</li>
+                    </ul>
+                </div>
+
+                <div>
+                    <h5>Interests</h5>
+                    <ul>
+                        {% for interest in user.interests[0] %}
+                        <li>{{ interest }}</li>
+                        {% endfor %}
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="col-md-8">
+        <h3>Activity</h3>
+        <ul class="nav nav-tabs mb-3" id="userContentTabs" role="tablist">
+            <li class="nav-item" role="presentation">
+                <button class="nav-link active" id="posts-tab" data-bs-toggle="tab" data-bs-target="#posts" type="button" role="tab">
+                    Posts ({{ posts.shape[0] }})
+                </button>
+            </li>
+            <li class="nav-item" role="presentation">
+                <button class="nav-link" id="comments-tab" data-bs-toggle="tab" data-bs-target="#comments" type="button" role="tab">
+                    Comments ({{ comments.shape[0] }})
+                </button>
+            </li>
+        </ul>
+
+        <div class="tab-content" id="userContentTabsContent">
+            <!-- Posts Tab -->
+            <div class="tab-pane fade show active" id="posts" role="tabpanel">
+                {% for _, post in posts.iterrows() %}
+                <div class="card mb-3">
+                    <div class="card-header">
+                        <span class="text-muted">{{ post.timestamp|format_timestamp }}</span>
+                    </div>
+                    <div class="card-body">
+                        <a href="{{ url_for('post_detail', post_id=post.id) }}" class="text-decoration-none text-dark">
+                            <p class="card-text">{{ post.tweet[:200] }}{% if post.tweet|length > 200 %}...{% endif %}</p>
+                        </a>
+
+                        {% if post.news_id != -1 and post.news_id|string != 'nan' and news.get(post.news_id|int) %}
+                        <div class="news-reference mt-3 p-2 border rounded bg-light">
+                            <a href="{{ url_for('news_detail', news_id=post.news_id|int) }}" class="text-decoration-none">
+                                <small class="text-muted">Shared News Article:</small>
+                                <p class="mb-0"><strong>{{ news.get(post.news_id|int).title }}</strong></p>
+                            </a>
+                        </div>
+                        {% endif %}
+                    </div>
+                    <div class="card-footer">
+                        <a href="{{ url_for('post_detail', post_id=post.id) }}" class="btn btn-sm btn-outline-primary">View Post</a>
+                    </div>
+                </div>
+                {% endfor %}
+            </div>
+
+            <!-- Comments Tab -->
+            <div class="tab-pane fade" id="comments" role="tabpanel">
+                {% for _, comment in comments.iterrows() %}
+                <div class="card mb-3">
+                    <div class="card-header">
+                        <span class="text-muted">{{ comment.timestamp|format_timestamp }}</span>
+                    </div>
+                    <div class="card-body">
+                        <p class="card-text">{{ comment.tweet }}</p>
+                    </div>
+                    <div class="card-footer">
+                        <a href="{{ url_for('post_detail', post_id=comment.thread_id) }}" class="btn btn-sm btn-outline-primary">View Thread</a>
+                    </div>
+                </div>
+                {% endfor %}
+            </div>
+        </div>
+    </div>
+</div>
+{% endblock %}

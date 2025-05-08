@@ -1,0 +1,96 @@
+{% extends "base.html" %}
+
+{% block title %}Home - Social Media Simulation{% endblock %}
+
+{% block content %}
+<div class="row">
+    <div class="col-md-8">
+        <h1>Social Media Feed</h1>
+
+        {% for post in posts %}
+        <div class="card mb-3">
+            <div class="card-header d-flex justify-content-between align-items-center">
+                <div>
+                    <a href="{{ url_for('user_profile', username=post.user_id) }}" class="text-decoration-none">
+                        <span class="fw-bold">{{ post.user_id }}</span>
+                    </a>
+                    <span class="text-muted ms-2">{{ post.timestamp|format_timestamp }}</span>
+                </div>
+                {% if users.get(post.user_id) %}
+                <div class="badge bg-{% if users.get(post.user_id).leaning == 'Democrat' %}primary{% elif users.get(post.user_id).leaning == 'Republican' %}danger{% else %}secondary{% endif %}">
+                    {{ users.get(post.user_id).leaning }}
+                </div>
+                {% endif %}
+            </div>
+            <div class="card-body">
+                <a href="{{ url_for('post_detail', post_id=post.id) }}" class="text-decoration-none text-dark">
+                    <h5 class="card-title">{{ post.tweet[:100] }}{% if post.tweet|length > 100 %}...{% endif %}</h5>
+                </a>
+
+                {% if post.news_id != -1 and post.news_id|string != 'nan' and news.get(post.news_id|int) %}
+                <div class="news-reference mt-3 p-2 border rounded bg-light">
+                    <a href="{{ url_for('news_detail', news_id=post.news_id|int) }}" class="text-decoration-none">
+                        <small class="text-muted">Shared News Article:</small>
+                        <p class="mb-0"><strong>{{ news.get(post.news_id|int).title }}</strong></p>
+                        <small class="text-muted">{{ news.get(post.news_id|int).website_id }}</small>
+                    </a>
+                </div>
+                {% endif %}
+
+                {% if post.post_img|string != 'nan' and post.post_img %}
+                <div class="mt-3">
+                    <img src="{{ post.post_img }}" class="img-fluid rounded" alt="Post image">
+                </div>
+                {% endif %}
+            </div>
+            <div class="card-footer text-muted">
+                <a href="{{ url_for('post_detail', post_id=post.id) }}" class="text-decoration-none">
+                    {{ comment_counts.get(post.id, 0) }} comments
+                </a>
+            </div>
+        </div>
+        {% endfor %}
+
+        <!-- Pagination -->
+        <nav>
+            <ul class="pagination">
+                {% if page > 1 %}
+                <li class="page-item">
+                    <a class="page-link" href="{{ url_for('home', page=page-1) }}">Previous</a>
+                </li>
+                {% endif %}
+
+                {% for p in range(max(1, page-2), min(total_pages+1, page+3)) %}
+                <li class="page-item {% if p == page %}active{% endif %}">
+                    <a class="page-link" href="{{ url_for('home', page=p) }}">{{ p }}</a>
+                </li>
+                {% endfor %}
+
+                {% if page < total_pages %}
+                <li class="page-item">
+                    <a class="page-link" href="{{ url_for('home', page=page+1) }}">Next</a>
+                </li>
+                {% endif %}
+            </ul>
+        </nav>
+    </div>
+
+    <div class="col-md-4">
+        <div class="card">
+            <div class="card-header">
+                <h5>About This Simulation</h5>
+            </div>
+            <div class="card-body">
+                <p>This is a simulation of a social media platform with AI-generated interactions between users with various demographic backgrounds and political leanings.</p>
+                <p>The simulation contains:</p>
+                <ul>
+                    <li>{{ original_posts_count }} original posts</li>
+                    <li>{{ comments_count }} comments</li>
+                    <li>{{ len(users) }} unique users</li>
+                    <li>{{ len(news) }} news articles referenced</li>
+                </ul>
+            </div>
+        </div>
+    </div>
+</div>
+{% endblock %}
