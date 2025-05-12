@@ -6,6 +6,42 @@ from datetime import datetime, timedelta
 
 app = Flask(__name__)
 
+# Add built-in functions to template context
+app.jinja_env.globals.update(max=max, min=min, len=len)
+
+# Add custom filters
+@app.template_filter('first_sentence')
+def first_sentence(text):
+    """Extract the first sentence from a text and remove TITLE: prefix."""
+    if not text:
+        return ""
+    # Remove "TITLE: " prefix if present
+    if text.startswith("TITLE: "):
+        text = text[7:]
+    sentences = text.split('. ')
+    first = sentences[0]
+    if not first.endswith('.'):
+        first += '.'
+    return first
+
+@app.template_filter('remaining_sentences')
+def remaining_sentences(text, count=2):
+    """Extract the next few sentences after the first one."""
+    if not text:
+        return ""
+    # Remove "TITLE: " prefix if present
+    if text.startswith("TITLE: "):
+        text = text[7:]
+    sentences = text.split('. ')
+    if len(sentences) <= 1:
+        return ""
+    
+    remaining = sentences[1:1+count]
+    result = '. '.join(remaining)
+    if len(sentences) > count + 1 and result:
+        result += '...'
+    return result
+
 # Load data
 def load_data():
     # Load posts and comments
@@ -13,12 +49,15 @@ def load_data():
 
     # Load news articles
     news_df = pd.read_csv('data/news.csv')
+    
+    # Load toxicity data
+    toxicity_df = pd.read_csv('data/toxigen.csv')
 
     # Load user data
     with open('data/simulation_agents.json', 'r') as f:
         users_data = json.load(f)
 
-    return posts_df, news_df, users_data
+    return posts_df, news_df, users_data, toxicity_df
 
 # Convert rounds to timestamps
 def round_to_timestamp(round_num):
@@ -27,14 +66,49 @@ def round_to_timestamp(round_num):
     return start_date + timedelta(hours=(round_num - 1))
 
 # Initialize data
-posts_df, news_df, users_data = load_data()
+posts_df, news_df, users_data, toxicity_df = load_data()
 
 # Convert round to readable timestamp
 posts_df['timestamp'] = posts_df['round'].apply(round_to_timestamp)
 
+# Merge toxicity data
+posts_df = pd.merge(posts_df, toxicity_df[['id', 'toxicity']], on='id', how='left')
+posts_df['toxicity'] = posts_df['toxicity'].fillna(0)
+
 # Create lookup dictionaries for efficiency
 users_dict = {user['name']: user for user in users_data['agents']}
+# Create a dictionary to map numeric IDs to usernames
+user_id_to_name = {i+1: user['name'] for i, user in enumerate(users_data['agents'])}
 news_dict = {row['id']: row for _, row in news_df.iterrows()}
+
+# Convert numeric user_ids to usernames in posts dataframe
+posts_df['username'] = posts_df['user_id'].apply(lambda x: user_id_to_name.get(x, str(x)))
+
+# Calculate user toxicity statistics
+def calculate_user_toxicity_stats():
+    # Group by username and calculate mean toxicity
+    user_toxicity = posts_df.groupby('username')['toxicity'].agg(['mean', 'count']).reset_index()
+    user_toxicity.columns = ['username', 'avg_toxicity', 'post_count']
+    
+    # Calculate overall toxicity distribution percentiles
+    all_toxicity = posts_df['toxicity'].dropna()
+    percentiles = {
+        'p25': all_toxicity.quantile(0.25),
+        'p50': all_toxicity.quantile(0.50),
+        'p75': all_toxicity.quantile(0.75),
+        'p90': all_toxicity.quantile(0.90),
+        'p95': all_toxicity.quantile(0.95)
+    }
+    
+    # Calculate percentile rank for each user
+    user_toxicity['percentile_rank'] = user_toxicity['avg_toxicity'].apply(
+        lambda x: (all_toxicity <= x).mean() * 100
+    )
+    
+    return user_toxicity, percentiles
+
+# Get user toxicity statistics
+user_toxicity_df, toxicity_percentiles = calculate_user_toxicity_stats()
 
 @app.route('/')
 def home():
@@ -59,9 +133,15 @@ def home():
     # Convert DataFrame to a list of dictionaries for the template
     posts_list = paginated_posts.to_dict('records')
     
+    # Ensure user info is retrieved using the username
+    for post in posts_list:
+        post['user'] = users_dict.get(post['username'])
+    
     # Count statistics for sidebar
     original_posts_count = len(posts_df[posts_df['comment_to'] == -1])
     comments_count = len(posts_df[posts_df['comment_to'] != -1])
+    users_count = len(users_dict)
+    news_count = len(news_dict)
     
     return render_template('index.html',
                           posts=posts_list,
@@ -71,18 +151,25 @@ def home():
                           page=page,
                           total_pages=total_pages,
                           original_posts_count=original_posts_count,
-                          comments_count=comments_count)
+                          comments_count=comments_count,
+                          users_count=users_count,
+                          news_count=news_count)
 
 @app.route('/post/<int:post_id>')
 def post_detail(post_id):
     # Get the original post
-    post = posts_df[posts_df['id'] == post_id].iloc[0]
+    post = posts_df[posts_df['id'] == post_id].iloc[0].to_dict()
 
     # Get all comments for this post
     comments = posts_df[posts_df['comment_to'] == post_id].sort_values('round')
+    comments_list = comments.to_dict('records') if not comments.empty else []
+    
+    # Ensure each comment has user information
+    for comment in comments_list:
+        comment['user'] = users_dict.get(comment['username'])
 
     # Get post author
-    author = users_dict.get(post['user_id'])
+    author = users_dict.get(post['username'])
 
     # Get news article if post references one
     news_article = None
@@ -91,7 +178,7 @@ def post_detail(post_id):
 
     return render_template('post_detail.html',
                           post=post,
-                          comments=comments,
+                          comments=comments_list,
                           author=author,
                           users=users_dict,
                           news_article=news_article)
@@ -104,36 +191,101 @@ def user_profile(username):
         return "User not found", 404
 
     # Get all posts and comments by this user
-    user_content = posts_df[posts_df['user_id'] == username].sort_values('round', ascending=False)
+    user_content = posts_df[posts_df['username'] == username].sort_values('round', ascending=False)
 
     # Separate posts and comments
     user_posts = user_content[user_content['comment_to'] == -1]
     user_comments = user_content[user_content['comment_to'] != -1]
+    
+    # Convert to dictionaries
+    user_posts_list = user_posts.to_dict('records') if not user_posts.empty else []
+    user_comments_list = user_comments.to_dict('records') if not user_comments.empty else []
+    
+    # Get user toxicity statistics
+    user_toxicity_stats = user_toxicity_df[user_toxicity_df['username'] == username]
+    toxicity_stats = None
+    if not user_toxicity_stats.empty:
+        toxicity_stats = user_toxicity_stats.iloc[0].to_dict()
+        
+        # Add user's position in distribution
+        if toxicity_stats['avg_toxicity'] <= toxicity_percentiles['p25']:
+            toxicity_stats['position'] = 'bottom 25%'
+        elif toxicity_stats['avg_toxicity'] <= toxicity_percentiles['p50']:
+            toxicity_stats['position'] = 'bottom 25-50%'
+        elif toxicity_stats['avg_toxicity'] <= toxicity_percentiles['p75']:
+            toxicity_stats['position'] = 'top 25-50%'
+        elif toxicity_stats['avg_toxicity'] <= toxicity_percentiles['p90']:
+            toxicity_stats['position'] = 'top 10-25%'
+        elif toxicity_stats['avg_toxicity'] <= toxicity_percentiles['p95']:
+            toxicity_stats['position'] = 'top 5-10%'
+        else:
+            toxicity_stats['position'] = 'top 5%'
 
     return render_template('user_profile.html',
                           user=user,
-                          posts=user_posts,
-                          comments=user_comments,
-                          news=news_dict)
+                          posts=user_posts_list,
+                          comments=user_comments_list,
+                          news=news_dict,
+                          toxicity_stats=toxicity_stats,
+                          toxicity_percentiles=toxicity_percentiles)
 
 @app.route('/news/<int:news_id>')
 def news_detail(news_id):
     # Get the news article
     news_article = news_dict.get(news_id)
-    if not news_article:
+    if news_article is None:
         return "News article not found", 404
 
     # Get all posts referencing this news article
     related_posts = posts_df[posts_df['news_id'] == news_id].sort_values('round', ascending=False)
+    related_posts_list = related_posts.to_dict('records') if not related_posts.empty else []
+    
+    # Ensure each post has user information
+    for post in related_posts_list:
+        post['user'] = users_dict.get(post['username'])
 
     return render_template('news_detail.html',
                           news=news_article,
-                          posts=related_posts,
+                          posts=related_posts_list,
                           users=users_dict)
 
 @app.template_filter('format_timestamp')
 def format_timestamp(timestamp):
     return timestamp.strftime('%b %d, %Y - %I:%M %p')
+
+@app.template_filter('toxicity_class')
+def toxicity_class(toxicity):
+    if toxicity >= 0.75:
+        return 'danger'
+    elif toxicity >= 0.5:
+        return 'warning'
+    elif toxicity >= 0.25:
+        return 'info'
+    else:
+        return 'success'
+        
+@app.template_filter('format_content')
+def format_content(text):
+    """Format post content by removing TITLE: prefix and adding paragraph breaks."""
+    if not text:
+        return ""
+    # Remove "TITLE: " prefix if present
+    if text.startswith("TITLE: "):
+        text = text[7:]
+    return text
+        
+@app.template_filter('percentile_class')
+def percentile_class(percentile_rank):
+    if percentile_rank >= 95:
+        return 'danger'
+    elif percentile_rank >= 90:
+        return 'warning'
+    elif percentile_rank >= 75:
+        return 'info'
+    elif percentile_rank >= 50:
+        return 'primary'
+    else:
+        return 'success'
 
 if __name__ == '__main__':
     app.run(debug=True)

@@ -9,6 +9,17 @@ body {
 .news-reference {
     background-color: #f8f9fa;
     border-left: 4px solid #007bff;
+    font-size: 0.9rem;
+    padding: 0.5rem !important;
+    margin-top: 1rem !important;
+}
+
+.news-reference p {
+    margin-bottom: 0.25rem;
+}
+
+.news-reference small {
+    font-size: 0.8rem;
 }
 
 .badge {
@@ -33,4 +44,85 @@ body {
 /* Post content styles */
 .card-text {
     white-space: pre-line;
+    margin-bottom: 1rem;
+}
+
+.card-text:first-of-type {
+    font-size: 1.05rem;
+    font-weight: normal;
+    color: #333;
+    margin-bottom: 1rem;
+}
+
+.text-truncate-3 {
+    display: -webkit-box;
+    -webkit-line-clamp: 3;
+    -webkit-box-orient: vertical;
+    overflow: hidden;
+    margin-bottom: 0.5rem;
+    color: #666;
+    font-size: 0.95rem;
+    line-height: 1.5;
+    font-weight: normal;
+}
+
+/* Toxicity indicator styles */
+.toxicity-legend {
+    font-size: 0.9rem;
+    margin-bottom: 1rem;
+    background-color: #f8f9fa;
+    border-left: 4px solid #6c757d;
+}
+
+.toxicity-badge {
+    display: inline-block;
+    min-width: 60px;
+}
+
+/* Toxicity level colors - these match Bootstrap's contextual classes */
+.toxicity-extreme {
+    background-color: #dc3545; /* danger */
+}
+
+.toxicity-high {
+    background-color: #ffc107; /* warning */
+}
+
+.toxicity-moderate {
+    background-color: #0dcaf0; /* info */
+}
+
+.toxicity-low {
+    background-color: #198754; /* success */
+}
+
+/* Toxicity distribution chart styling */
+.toxicity-distribution {
+    margin-top: 25px;
+    margin-bottom: 15px;
+    position: relative;
+    overflow: visible;
+}
+
+.toxicity-user-marker {
+    cursor: pointer;
+    transition: all 0.2s ease;
+    z-index: 10;
+}
+
+.toxicity-user-marker:hover {
+    height: 35px !important;
+    margin-top: -2.5px;
+    box-shadow: 0 0 8px rgba(0, 0, 0, 0.5);
+}
+
+.toxicity-percentile-marker {
+    opacity: 0.7;
+    z-index: 5;
+}
+
+.toxicity-percentile-label {
+    font-size: 0.7rem;
+    color: #666;
+    white-space: nowrap;
 }

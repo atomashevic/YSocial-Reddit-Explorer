@@ -1,6 +1,6 @@
 {% extends "base.html" %}
 
-{% block title %}{{ news.title }}{% endblock %}
+{% block title %}{{ news.title }} - YSocial Reddit{% endblock %}
 
 {% block content %}
 <div class="row">
@@ -21,28 +21,33 @@
         </div>
 
         <h4>Posts Sharing This Article</h4>
-        {% for _, post in posts.iterrows() %}
+        {% for post in posts %}
         <div class="card mb-3">
             <div class="card-header d-flex justify-content-between align-items-center">
                 <div>
-                    <a href="{{ url_for('user_profile', username=post.user_id) }}" class="text-decoration-none">
-                        <span class="fw-bold">{{ post.user_id }}</span>
+                    <a href="{{ url_for('user_profile', username=post['username']) }}" class="text-decoration-none">
+                        <span class="fw-bold">{{ post['username'] }}</span>
                     </a>
-                    <span class="text-muted ms-2">{{ post.timestamp|format_timestamp }}</span>
+                    <span class="text-muted ms-2">{{ post['timestamp']|format_timestamp }}</span>
+                    {% if post['toxicity'] > 0 %}
+                    <span class="badge bg-{{ post['toxicity']|toxicity_class }} ms-2">
+                        Toxicity: {{ (post['toxicity'] * 100)|round|int }}%
+                    </span>
+                    {% endif %}
                 </div>
-                {% if users.get(post.user_id) %}
-                <div class="badge bg-{% if users.get(post.user_id).leaning == 'Democrat' %}primary{% elif users.get(post.user_id).leaning == 'Republican' %}danger{% else %}secondary{% endif %}">
-                    {{ users.get(post.user_id).leaning }}
+                {% if post['user'] %}
+                <div class="badge bg-{% if post['user'].leaning == 'Democrat' %}primary{% elif post['user'].leaning == 'Republican' %}danger{% else %}secondary{% endif %}">
+                    {{ post['user'].leaning }}
                 </div>
                 {% endif %}
             </div>
             <div class="card-body">
-                <a href="{{ url_for('post_detail', post_id=post.id) }}" class="text-decoration-none text-dark">
-                    <p class="card-text">{{ post.tweet }}</p>
+                <a href="{{ url_for('post_detail', post_id=post['id']) }}" class="text-decoration-none text-dark">
+                    <p class="card-text">{{ post['tweet'] }}</p>
                 </a>
             </div>
             <div class="card-footer">
-                <a href="{{ url_for('post_detail', post_id=post.id) }}" class="btn btn-sm btn-outline-primary">View Post</a>
+                <a href="{{ url_for('post_detail', post_id=post['id']) }}" class="btn btn-sm btn-outline-primary">View Post</a>
             </div>
         </div>
         {% endfor %}
@@ -54,18 +59,18 @@
                 <h5>Article Statistics</h5>
             </div>
             <div class="card-body">
-                <p><strong>Shared by:</strong> {{ posts.shape[0] }} users</p>
+                <p><strong>Shared by:</strong> {{ posts|length }} users</p>
 
                 <h6 class="mt-4">Political Distribution</h6>
                 {% set democrat_count = namespace(value=0) %}
                 {% set republican_count = namespace(value=0) %}
                 {% set independent_count = namespace(value=0) %}
 
-                {% for _, post in posts.iterrows() %}
-                    {% if users.get(post.user_id) %}
-                        {% if users.get(post.user_id).leaning == 'Democrat' %}
+                {% for post in posts %}
+                    {% if post['user'] %}
+                        {% if post['user'].leaning == 'Democrat' %}
                             {% set democrat_count.value = democrat_count.value + 1 %}
-                        {% elif users.get(post.user_id).leaning == 'Republican' %}
+                        {% elif post['user'].leaning == 'Republican' %}
                             {% set republican_count.value = republican_count.value + 1 %}
                         {% else %}
                             {% set independent_count.value = independent_count.value + 1 %}
@@ -74,13 +79,13 @@
                 {% endfor %}
 
                 <div class="progress mb-3">
-                    <div class="progress-bar bg-primary" style="width: {{ (democrat_count.value / posts.shape[0] * 100)|round|int }}%">
+                    <div class="progress-bar bg-primary" style="width: {{ (democrat_count.value / posts|length * 100)|round|int if posts|length > 0 else 0 }}%">
                         {{ democrat_count.value }}
                     </div>
-                    <div class="progress-bar bg-danger" style="width: {{ (republican_count.value / posts.shape[0] * 100)|round|int }}%">
+                    <div class="progress-bar bg-danger" style="width: {{ (republican_count.value / posts|length * 100)|round|int if posts|length > 0 else 0 }}%">
                         {{ republican_count.value }}
                     </div>
-                    <div class="progress-bar bg-secondary" style="width: {{ (independent_count.value / posts.shape[0] * 100)|round|int }}%">
+                    <div class="progress-bar bg-secondary" style="width: {{ (independent_count.value / posts|length * 100)|round|int if posts|length > 0 else 0 }}%">
                         {{ independent_count.value }}
                     </div>
                 </div>

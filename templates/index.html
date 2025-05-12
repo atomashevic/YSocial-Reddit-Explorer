@@ -1,51 +1,72 @@
 {% extends "base.html" %}
 
-{% block title %}Home - Social Media Simulation{% endblock %}
+{% block title %}Home - YSocial Reddit{% endblock %}
+
+{% block head %}
+{{ super() }}
+<style>
+    .card-body p:first-of-type {
+        font-size: 1.1rem;
+        margin-bottom: 0.5rem;
+    }
+</style>
+{% endblock %}
 
 {% block content %}
 <div class="row">
     <div class="col-md-8">
-        <h1>Social Media Feed</h1>
+        <h1>YSocial Reddit Feed</h1>
 
         {% for post in posts %}
         <div class="card mb-3">
             <div class="card-header d-flex justify-content-between align-items-center">
                 <div>
-                    <a href="{{ url_for('user_profile', username=post.user_id) }}" class="text-decoration-none">
-                        <span class="fw-bold">{{ post.user_id }}</span>
+                    <a href="{{ url_for('user_profile', username=post['username']) }}" class="text-decoration-none">
+                        <span class="fw-bold">{{ post['username'] }}</span>
                     </a>
-                    <span class="text-muted ms-2">{{ post.timestamp|format_timestamp }}</span>
+                    <span class="text-muted ms-2">{{ post['timestamp']|format_timestamp }}</span>
+                    {% if post['toxicity'] > 0 %}
+                    <span class="badge bg-{{ post['toxicity']|toxicity_class }} ms-2">
+                        Toxicity: {{ (post['toxicity'] * 100)|round|int }}%
+                    </span>
+                    {% endif %}
                 </div>
-                {% if users.get(post.user_id) %}
-                <div class="badge bg-{% if users.get(post.user_id).leaning == 'Democrat' %}primary{% elif users.get(post.user_id).leaning == 'Republican' %}danger{% else %}secondary{% endif %}">
-                    {{ users.get(post.user_id).leaning }}
+                {% if post['user'] %}
+                <div class="badge bg-{% if post['user'].leaning == 'Democrat' %}primary{% elif post['user'].leaning == 'Republican' %}danger{% else %}secondary{% endif %}">
+                    {{ post['user'].leaning }}
                 </div>
                 {% endif %}
             </div>
             <div class="card-body">
-                <a href="{{ url_for('post_detail', post_id=post.id) }}" class="text-decoration-none text-dark">
-                    <h5 class="card-title">{{ post.tweet[:100] }}{% if post.tweet|length > 100 %}...{% endif %}</h5>
+                <a href="{{ url_for('post_detail', post_id=post['id']) }}" class="text-decoration-none text-dark">
+                    {% set tweet_text = post['tweet'] %}
+                    {% if tweet_text.startswith("TITLE: ") %}
+                        {% set tweet_text = tweet_text[7:] %}
+                    {% endif %}
+                    <p class="card-text">{{ tweet_text|first_sentence }}</p>
+                    <p class="card-text text-truncate-3">{{ tweet_text|remaining_sentences }}</p>
                 </a>
 
-                {% if post.news_id != -1 and post.news_id|string != 'nan' and news.get(post.news_id|int) %}
-                <div class="news-reference mt-3 p-2 border rounded bg-light">
-                    <a href="{{ url_for('news_detail', news_id=post.news_id|int) }}" class="text-decoration-none">
-                        <small class="text-muted">Shared News Article:</small>
-                        <p class="mb-0"><strong>{{ news.get(post.news_id|int).title }}</strong></p>
-                        <small class="text-muted">{{ news.get(post.news_id|int).website_id }}</small>
+                {% set news_item = news.get(post['news_id']|int) if post['news_id']|string != 'nan' and post['news_id'] != -1 else None %}
+                {% if news_item is not none %}
+                <div class="news-reference mt-2 p-1 border rounded bg-light">
+                    <a href="{{ url_for('news_detail', news_id=post['news_id']|int) }}" class="text-decoration-none">
+                        <small class="text-muted">Shared news:</small>
+                        <p class="mb-0"><small><strong>{{ news_item.title }}</strong> <span class="text-muted">- {{ news_item.website_id }}</span></small></p>
                     </a>
                 </div>
                 {% endif %}
 
-                {% if post.post_img|string != 'nan' and post.post_img %}
+                {% set post_img = post['post_img'] if post['post_img']|string != 'nan' else None %}
+                {% if post_img is not none %}
                 <div class="mt-3">
-                    <img src="{{ post.post_img }}" class="img-fluid rounded" alt="Post image">
+                    <img src="{{ post_img }}" class="img-fluid rounded" alt="Post image">
                 </div>
                 {% endif %}
             </div>
             <div class="card-footer text-muted">
-                <a href="{{ url_for('post_detail', post_id=post.id) }}" class="text-decoration-none">
-                    {{ comment_counts.get(post.id, 0) }} comments
+                <a href="{{ url_for('post_detail', post_id=post['id']) }}" class="text-decoration-none">
+                    {{ comment_counts.get(post['id'], 0) }} comments
                 </a>
             </div>
         </div>
@@ -86,8 +107,8 @@
                 <ul>
                     <li>{{ original_posts_count }} original posts</li>
                     <li>{{ comments_count }} comments</li>
-                    <li>{{ len(users) }} unique users</li>
-                    <li>{{ len(news) }} news articles referenced</li>
+                    <li>{{ users_count }} unique users</li>
+                    <li>{{ news_count }} news articles referenced</li>
                 </ul>
             </div>
         </div>

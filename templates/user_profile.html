@@ -1,6 +1,6 @@
 {% extends "base.html" %}
 
-{% block title %}{{ user.name }} - Profile{% endblock %}
+{% block title %}{{ user.name }} - YSocial Reddit{% endblock %}
 
 {% block content %}
 <div class="row">
@@ -23,6 +23,58 @@
                     <p><strong>Education:</strong> {{ user.education_level }}</p>
                     <p><strong>Joined:</strong> Round {{ user.joined_on }}</p>
                 </div>
+
+                {% if toxicity_stats %}
+                <div class="mb-3">
+                    <h5>Toxicity Analysis</h5>
+                    <div class="d-flex align-items-center mb-2">
+                        <div class="me-3"><strong>Average Toxicity:</strong></div>
+                        <div class="progress flex-grow-1" style="height: 20px;">
+                            <div class="progress-bar bg-{{ toxicity_stats.avg_toxicity|toxicity_class }}" 
+                                 role="progressbar" 
+                                 style="width: {{ (toxicity_stats.avg_toxicity * 100)|round|int }}%;"
+                                 aria-valuenow="{{ (toxicity_stats.avg_toxicity * 100)|round|int }}" 
+                                 aria-valuemin="0" 
+                                 aria-valuemax="100">
+                                {{ (toxicity_stats.avg_toxicity * 100)|round|int }}%
+                            </div>
+                        </div>
+                    </div>
+                    <p><strong>Distribution Rank:</strong> 
+                        <span class="badge bg-{{ toxicity_stats.percentile_rank|percentile_class }}">
+                            {{ toxicity_stats.position }} ({{ toxicity_stats.percentile_rank|round|int }}th percentile)
+                        </span>
+                    </p>
+                    <p><strong>Posts Analyzed:</strong> {{ toxicity_stats.post_count }}</p>
+                    
+                    <!-- Toxicity Distribution Chart -->
+                    <div class="mt-3">
+                        <h6>Toxicity Distribution</h6>
+                        <div class="toxicity-distribution" style="height: 30px; background-color: #e9ecef; border-radius: 4px;">
+                            <!-- Distribution markers -->
+                            <div class="position-absolute toxicity-percentile-marker" style="left: 25%; top: -15px; width: 2px; height: 45px; background-color: #666;">
+                                <span class="toxicity-percentile-label position-absolute" style="top: -20px; left: -10px;">25%</span>
+                            </div>
+                            <div class="position-absolute toxicity-percentile-marker" style="left: 50%; top: -15px; width: 2px; height: 45px; background-color: #666;">
+                                <span class="toxicity-percentile-label position-absolute" style="top: -20px; left: -10px;">50%</span>
+                            </div>
+                            <div class="position-absolute toxicity-percentile-marker" style="left: 75%; top: -15px; width: 2px; height: 45px; background-color: #666;">
+                                <span class="toxicity-percentile-label position-absolute" style="top: -20px; left: -10px;">75%</span>
+                            </div>
+                            <div class="position-absolute toxicity-percentile-marker" style="left: 90%; top: -15px; width: 2px; height: 45px; background-color: #666;">
+                                <span class="toxicity-percentile-label position-absolute" style="top: -20px; left: -10px;">90%</span>
+                            </div>
+                            
+                            <!-- User marker -->
+                            <div class="position-absolute toxicity-user-marker" style="left: {{ toxicity_stats.percentile_rank }}%; top: 0; width: 10px; height: 30px; background-color: #dc3545; border-radius: 2px; transform: translateX(-50%);" title="User: {{ user.name }} ({{ toxicity_stats.percentile_rank|round|int }}th percentile)"></div>
+                        </div>
+                        <div class="d-flex justify-content-between mt-1">
+                            <small class="text-muted">Least Toxic</small>
+                            <small class="text-muted">Most Toxic</small>
+                        </div>
+                    </div>
+                </div>
+                {% endif %}
 
                 <div class="mb-3">
                     <h5>Personality Traits</h5>
@@ -52,12 +104,12 @@
         <ul class="nav nav-tabs mb-3" id="userContentTabs" role="tablist">
             <li class="nav-item" role="presentation">
                 <button class="nav-link active" id="posts-tab" data-bs-toggle="tab" data-bs-target="#posts" type="button" role="tab">
-                    Posts ({{ posts.shape[0] }})
+                    Posts ({{ posts|length }})
                 </button>
             </li>
             <li class="nav-item" role="presentation">
                 <button class="nav-link" id="comments-tab" data-bs-toggle="tab" data-bs-target="#comments" type="button" role="tab">
-                    Comments ({{ comments.shape[0] }})
+                    Comments ({{ comments|length }})
                 </button>
             </li>
         </ul>
@@ -65,27 +117,33 @@
         <div class="tab-content" id="userContentTabsContent">
             <!-- Posts Tab -->
             <div class="tab-pane fade show active" id="posts" role="tabpanel">
-                {% for _, post in posts.iterrows() %}
+                {% for post in posts %}
                 <div class="card mb-3">
-                    <div class="card-header">
-                        <span class="text-muted">{{ post.timestamp|format_timestamp }}</span>
+                    <div class="card-header d-flex justify-content-between align-items-center">
+                        <span class="text-muted">{{ post['timestamp']|format_timestamp }}</span>
+                        {% if post['toxicity'] > 0 %}
+                        <span class="badge bg-{{ post['toxicity']|toxicity_class }}">
+                            Toxicity: {{ (post['toxicity'] * 100)|round|int }}%
+                        </span>
+                        {% endif %}
                     </div>
                     <div class="card-body">
-                        <a href="{{ url_for('post_detail', post_id=post.id) }}" class="text-decoration-none text-dark">
-                            <p class="card-text">{{ post.tweet[:200] }}{% if post.tweet|length > 200 %}...{% endif %}</p>
+                        <a href="{{ url_for('post_detail', post_id=post['id']) }}" class="text-decoration-none text-dark">
+                            <p class="card-text">{{ post['tweet'][:200] }}{% if post['tweet']|length > 200 %}...{% endif %}</p>
                         </a>
 
-                        {% if post.news_id != -1 and post.news_id|string != 'nan' and news.get(post.news_id|int) %}
-                        <div class="news-reference mt-3 p-2 border rounded bg-light">
-                            <a href="{{ url_for('news_detail', news_id=post.news_id|int) }}" class="text-decoration-none">
-                                <small class="text-muted">Shared News Article:</small>
-                                <p class="mb-0"><strong>{{ news.get(post.news_id|int).title }}</strong></p>
+                        {% set news_item = news.get(post['news_id']|int) if post['news_id']|string != 'nan' and post['news_id'] != -1 else None %}
+                        {% if news_item is not none %}
+                        <div class="news-reference mt-2 p-1 border rounded bg-light">
+                            <a href="{{ url_for('news_detail', news_id=post['news_id']|int) }}" class="text-decoration-none">
+                                <small class="text-muted">Shared news:</small>
+                                <p class="mb-0"><small><strong>{{ news_item.title }}</strong></small></p>
                             </a>
                         </div>
                         {% endif %}
                     </div>
                     <div class="card-footer">
-                        <a href="{{ url_for('post_detail', post_id=post.id) }}" class="btn btn-sm btn-outline-primary">View Post</a>
+                        <a href="{{ url_for('post_detail', post_id=post['id']) }}" class="btn btn-sm btn-outline-primary">View Post</a>
                     </div>
                 </div>
                 {% endfor %}
@@ -93,16 +151,21 @@
 
             <!-- Comments Tab -->
             <div class="tab-pane fade" id="comments" role="tabpanel">
-                {% for _, comment in comments.iterrows() %}
+                {% for comment in comments %}
                 <div class="card mb-3">
-                    <div class="card-header">
-                        <span class="text-muted">{{ comment.timestamp|format_timestamp }}</span>
+                    <div class="card-header d-flex justify-content-between align-items-center">
+                        <span class="text-muted">{{ comment['timestamp']|format_timestamp }}</span>
+                        {% if comment['toxicity'] > 0 %}
+                        <span class="badge bg-{{ comment['toxicity']|toxicity_class }}">
+                            Toxicity: {{ (comment['toxicity'] * 100)|round|int }}%
+                        </span>
+                        {% endif %}
                     </div>
                     <div class="card-body">
-                        <p class="card-text">{{ comment.tweet }}</p>
+                        <p class="card-text">{{ comment['tweet'] }}</p>
                     </div>
                     <div class="card-footer">
-                        <a href="{{ url_for('post_detail', post_id=comment.thread_id) }}" class="btn btn-sm btn-outline-primary">View Thread</a>
+                        <a href="{{ url_for('post_detail', post_id=comment['thread_id']) }}" class="btn btn-sm btn-outline-primary">View Thread</a>
                     </div>
                 </div>
                 {% endfor %}
@@ -110,4 +173,46 @@
         </div>
     </div>
 </div>
+{% endblock %}
+
+{% block scripts %}
+<script>
+  document.addEventListener('DOMContentLoaded', function() {
+    // Initialize tooltips for the toxicity user marker
+    const userMarker = document.querySelector('.toxicity-user-marker');
+    if (userMarker) {
+      // Create a simple tooltip popup
+      userMarker.addEventListener('mouseenter', function(e) {
+        const percentile = this.style.left.replace('%', '');
+        const tooltipEl = document.createElement('div');
+        tooltipEl.className = 'toxicity-tooltip';
+        tooltipEl.style.position = 'absolute';
+        tooltipEl.style.backgroundColor = '#333';
+        tooltipEl.style.color = '#fff';
+        tooltipEl.style.padding = '5px 10px';
+        tooltipEl.style.borderRadius = '4px';
+        tooltipEl.style.fontSize = '12px';
+        tooltipEl.style.zIndex = '1000';
+        tooltipEl.style.top = '-40px';
+        tooltipEl.style.left = '50%';
+        tooltipEl.style.transform = 'translateX(-50%)';
+        tooltipEl.style.whiteSpace = 'nowrap';
+        tooltipEl.innerText = `Percentile: ${Math.round(percentile)}%`;
+        
+        this.style.height = '35px';
+        this.style.marginTop = '-2.5px';
+        this.appendChild(tooltipEl);
+      });
+      
+      userMarker.addEventListener('mouseleave', function(e) {
+        const tooltip = this.querySelector('.toxicity-tooltip');
+        if (tooltip) {
+          tooltip.remove();
+        }
+        this.style.height = '30px';
+        this.style.marginTop = '0';
+      });
+    }
+  });
+</script>
 {% endblock %}
