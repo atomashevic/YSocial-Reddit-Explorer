@@ -1,4 +1,4 @@
-# Reddit App
+# YSocial Reddit Explorer
 
 This is a Flask web application for exploring and visualizing YSocial Reddit- simulation post and news data. The app provides a simple interface to view posts, news articles, user profiles, and various data visualizations.
 
