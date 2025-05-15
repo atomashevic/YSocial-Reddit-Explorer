@@ -22,7 +22,7 @@ The application expects the following data files in the `data/` directory:
 1. Install dependencies:
    ```sh
    pip install -r requirements.txt
-   ```
+   ```p "
 2. Run the app:
    ```sh
    python app.py

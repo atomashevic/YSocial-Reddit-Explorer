@@ -1,0 +1,5624 @@
+{
+    "agents": [
+        {
+            "name": "AnthonyOrtiz",
+            "email": "Anthony.Ortiz@hotmail.com",
+            "password": "yJ4VSgZb1#",
+            "age": 52,
+            "type": "dolphin3",
+            "leaning": "Republican",
+            "interests": [
+                [
+                    "Space Technology",
+                    "Clean Energy & Sustainability"
+                ],
+                [
+                    9,
+                    6
+                ]
+            ],
+            "oe": "consistent/cautious",
+            "co": "extravagant/careless",
+            "ex": "solitary/reserved",
+            "ag": "critical/judgmental",
+            "ne": "resilient/confident",
+            "rec_sys": "ReverseChrono",
+            "frec_sys": "PreferentialAttachment",
+            "language": "english",
+            "owner": "admin",
+            "education_level": "phd",
+            "round_actions": 5,
+            "gender": "male",
+            "nationality": "American",
+            "toxicity": "no",
+            "joined_on": 3,
+            "is_page": 0
+        },
+        {
+            "name": "MarkRice",
+            "email": "Mark.Rice@yahoo.com",
+            "password": "364feYfoh)",
+            "age": 28,
+            "type": "dolphin3",
+            "leaning": "Democrat",
+            "interests": [
+                [
+                    "Clean Energy & Sustainability"
+                ],
+                [
+                    6
+                ]
+            ],
+            "oe": "inventive/curious",
+            "co": "efficient/organized",
+            "ex": "solitary/reserved",
+            "ag": "friendly/compassionate",
+            "ne": "resilient/confident",
+            "rec_sys": "ReverseChrono",
+            "frec_sys": "PreferentialAttachment",
+            "language": "english",
+            "owner": "admin",
+            "education_level": "bachelor",
+            "round_actions": 5,
+            "gender": "male",
+            "nationality": "American",
+            "toxicity": "moderately",
+            "joined_on": 3,
+            "is_page": 0
+        },
+        {
+            "name": "LauraLopez",
+            "email": "Laura.Lopez@hotmail.com",
+            "password": "8J72yWoBy)",
+            "age": 26,
+            "type": "dolphin3",
+            "leaning": "Democrat",
+            "interests": [
+                [
+                    "Clean Energy & Sustainability"
+                ],
+                [
+                    6
+                ]
+            ],
+            "oe": "inventive/curious",
+            "co": "extravagant/careless",
+            "ex": "solitary/reserved",
+            "ag": "friendly/compassionate",
+            "ne": "resilient/confident",
+            "rec_sys": "ReverseChrono",
+            "frec_sys": "PreferentialAttachment",
+            "language": "english",
+            "owner": "admin",
+            "education_level": "master",
+            "round_actions": 5,
+            "gender": "female",
+            "nationality": "American",
+            "toxicity": "no",
+            "joined_on": 3,
+            "is_page": 0
+        },
+        {
+            "name": "RobertBaird",
+            "email": "Robert.Baird@gmail.com",
+            "password": "ATP9C@a0R*",
+            "age": 25,
+            "type": "dolphin3",
+            "leaning": "Democrat",
+            "interests": [
+                [
+                    "Artificial Intelligence",
+                    "Space Technology"
+                ],
+                [
+                    3,
+                    9
+                ]
+            ],
+            "oe": "inventive/curious",
+            "co": "extravagant/careless",
+            "ex": "solitary/reserved",
+            "ag": "critical/judgmental",
+            "ne": "sensitive/nervous",
+            "rec_sys": "ReverseChrono",
+            "frec_sys": "PreferentialAttachment",
+            "language": "english",
+            "owner": "admin",
+            "education_level": "phd",
+            "round_actions": 1,
+            "gender": "male",
+            "nationality": "American",
+            "toxicity": "extremely",
+            "joined_on": 3,
+            "is_page": 0
+        },
+        {
+            "name": "Mr.JamesMcbrideDVM",
+            "email": "Mr..James.Mcbride.DVM@hotmail.com",
+            "password": "51Uv7LFd&W",
+            "age": 57,
+            "type": "dolphin3",
+            "leaning": "Independent",
+            "interests": [
+                [
+                    "Software Development",
+                    "Open Source Projects"
+                ],
+                [
+                    5,
+                    10
+                ]
+            ],
+            "oe": "inventive/curious",
+            "co": "efficient/organized",
+            "ex": "outgoing/energetic",
+            "ag": "friendly/compassionate",
+            "ne": "resilient/confident",
+            "rec_sys": "ReverseChrono",
+            "frec_sys": "PreferentialAttachment",
+            "language": "english",
+            "owner": "admin",
+            "education_level": "master",
+            "round_actions": 3,
+            "gender": "male",
+            "nationality": "American",
+            "toxicity": "no",
+            "joined_on": 3,
+            "is_page": 0
+        },
+        {
+            "name": "BrianSmith",
+            "email": "Brian.Smith@hotmail.com",
+            "password": "GGn95Vx_)O",
+            "age": 52,
+            "type": "dolphin3",
+            "leaning": "Democrat",
+            "interests": [
+                [
+                    "Clean Energy & Sustainability",
+                    "Software Development"
+                ],
+                [
+                    6,
+                    5
+                ]
+            ],
+            "oe": "consistent/cautious",
+            "co": "efficient/organized",
+            "ex": "solitary/reserved",
+            "ag": "friendly/compassionate",
+            "ne": "resilient/confident",
+            "rec_sys": "ReverseChrono",
+            "frec_sys": "PreferentialAttachment",
+            "language": "english",
+            "owner": "admin",
+            "education_level": "bachelor",
+            "round_actions": 4,
+            "gender": "male",
+            "nationality": "American",
+            "toxicity": "no",
+            "joined_on": 3,
+            "is_page": 0
+        },
+        {
+            "name": "SharonLarsen",
+            "email": "Sharon.Larsen@yahoo.com",
+            "password": "9g0GXCu_4$",
+            "age": 52,
+            "type": "dolphin3",
+            "leaning": "Independent",
+            "interests": [
+                [
+                    "Internet Policy & Regulation"
+                ],
+                [
+                    2
+                ]
+            ],
+            "oe": "inventive/curious",
+            "co": "efficient/organized",
+            "ex": "outgoing/energetic",
+            "ag": "friendly/compassionate",
+            "ne": "sensitive/nervous",
+            "rec_sys": "ReverseChrono",
+            "frec_sys": "PreferentialAttachment",
+            "language": "english",
+            "owner": "admin",
+            "education_level": "phd",
+            "round_actions": 2,
+            "gender": "female",
+            "nationality": "American",
+            "toxicity": "extremely",
+            "joined_on": 3,
+            "is_page": 0
+        },
+        {
+            "name": "KevinGarcia",
+            "email": "Kevin.Garcia@hotmail.com",
+            "password": "lo*$1gRz8$",
+            "age": 32,
+            "type": "dolphin3",
+            "leaning": "Democrat",
+            "interests": [
+                [
+                    "Software Development",
+                    "Artificial Intelligence"
+                ],
+                [
+                    5,
+                    3
+                ]
+            ],
+            "oe": "inventive/curious",
+            "co": "extravagant/careless",
+            "ex": "solitary/reserved",
+            "ag": "friendly/compassionate",
+            "ne": "sensitive/nervous",
+            "rec_sys": "ReverseChrono",
+            "frec_sys": "PreferentialAttachment",
+            "language": "english",
+            "owner": "admin",
+            "education_level": "phd",
+            "round_actions": 1,
+            "gender": "male",
+            "nationality": "American",
+            "toxicity": "extremely",
+            "joined_on": 3,
+            "is_page": 0
+        },
+        {
+            "name": "MichaelThomas",
+            "email": "Michael.Thomas@hotmail.com",
+            "password": "wO@*X1Dxb3",
+            "age": 31,
+            "type": "dolphin3",
+            "leaning": "Independent",
+            "interests": [
+                [
+                    "Big Tech"
+                ],
+                [
+                    8
+                ]
+            ],
+            "oe": "consistent/cautious",
+            "co": "extravagant/careless",
+            "ex": "solitary/reserved",
+            "ag": "friendly/compassionate",
+            "ne": "resilient/confident",
+            "rec_sys": "ReverseChrono",
+            "frec_sys": "PreferentialAttachment",
+            "language": "english",
+            "owner": "admin",
+            "education_level": "phd",
+            "round_actions": 5,
+            "gender": "male",
+            "nationality": "American",
+            "toxicity": "moderately",
+            "joined_on": 3,
+            "is_page": 0
+        },
+        {
+            "name": "StaceyPhelps",
+            "email": "Stacey.Phelps@yahoo.com",
+            "password": "^wcoHput9E",
+            "age": 25,
+            "type": "dolphin3",
+            "leaning": "Independent",
+            "interests": [
+                [
+                    "Internet Policy & Regulation",
+                    "Software Development"
+                ],
+                [
+                    2,
+                    5
+                ]
+            ],
+            "oe": "consistent/cautious",
+            "co": "efficient/organized",
+            "ex": "solitary/reserved",
+            "ag": "critical/judgmental",
+            "ne": "resilient/confident",
+            "rec_sys": "ReverseChrono",
+            "frec_sys": "PreferentialAttachment",
+            "language": "english",
+            "owner": "admin",
+            "education_level": "master",
+            "round_actions": 5,
+            "gender": "female",
+            "nationality": "American",
+            "toxicity": "absolutely no",
+            "joined_on": 3,
+            "is_page": 0
+        },
+        {
+            "name": "PattySimmons",
+            "email": "Patty.Simmons@yahoo.com",
+            "password": "q^N9S&vNNt",
+            "age": 21,
+            "type": "dolphin3",
+            "leaning": "Democrat",
+            "interests": [
+                [
+                    "Big Tech"
+                ],
+                [
+                    8
+                ]
+            ],
+            "oe": "inventive/curious",
+            "co": "efficient/organized",
+            "ex": "solitary/reserved",
+            "ag": "critical/judgmental",
+            "ne": "sensitive/nervous",
+            "rec_sys": "ReverseChrono",
+            "frec_sys": "PreferentialAttachment",
+            "language": "english",
+            "owner": "admin",
+            "education_level": "high school",
+            "round_actions": 1,
+            "gender": "female",
+            "nationality": "American",
+            "toxicity": "moderately",
+            "joined_on": 3,
+            "is_page": 0
+        },
+        {
+            "name": "CaseyBaker",
+            "email": "Casey.Baker@yahoo.com",
+            "password": "l3^uIf9T$n",
+            "age": 42,
+            "type": "dolphin3",
+            "leaning": "Democrat",
+            "interests": [
+                [
+                    "Big Tech"
+                ],
+                [
+                    8
+                ]
+            ],
+            "oe": "consistent/cautious",
+            "co": "extravagant/careless",
+            "ex": "solitary/reserved",
+            "ag": "critical/judgmental",
+            "ne": "sensitive/nervous",
+            "rec_sys": "ReverseChrono",
+            "frec_sys": "PreferentialAttachment",
+            "language": "english",
+            "owner": "admin",
+            "education_level": "phd",
+            "round_actions": 1,
+            "gender": "female",
+            "nationality": "American",
+            "toxicity": "absolutely no",
+            "joined_on": 3,
+            "is_page": 0
+        },
+        {
+            "name": "DavidTownsend",
+            "email": "David.Townsend@gmail.com",
+            "password": "Ky7X0hw7G^",
+            "age": 49,
+            "type": "dolphin3",
+            "leaning": "Republican",
+            "interests": [
+                [
+                    "Electric Vehicles & Transportation",
+                    "Software Development"
+                ],
+                [
+                    4,
+                    5
+                ]
+            ],
+            "oe": "consistent/cautious",
+            "co": "extravagant/careless",
+            "ex": "solitary/reserved",
+            "ag": "critical/judgmental",
+            "ne": "sensitive/nervous",
+            "rec_sys": "ReverseChrono",
+            "frec_sys": "PreferentialAttachment",
+            "language": "english",
+            "owner": "admin",
+            "education_level": "bachelor",
+            "round_actions": 5,
+            "gender": "male",
+            "nationality": "American",
+            "toxicity": "no",
+            "joined_on": 3,
+            "is_page": 0
+        },
+        {
+            "name": "BarbaraDouglas",
+            "email": "Barbara.Douglas@gmail.com",
+            "password": ")yQNmobVL6",
+            "age": 45,
+            "type": "dolphin3",
+            "leaning": "Democrat",
+            "interests": [
+                [
+                    "Artificial Intelligence",
+                    "Clean Energy & Sustainability"
+                ],
+                [
+                    3,
+                    6
+                ]
+            ],
+            "oe": "consistent/cautious",
+            "co": "extravagant/careless",
+            "ex": "outgoing/energetic",
+            "ag": "critical/judgmental",
+            "ne": "resilient/confident",
+            "rec_sys": "ReverseChrono",
+            "frec_sys": "PreferentialAttachment",
+            "language": "english",
+            "owner": "admin",
+            "education_level": "bachelor",
+            "round_actions": 3,
+            "gender": "female",
+            "nationality": "American",
+            "toxicity": "no",
+            "joined_on": 3,
+            "is_page": 0
+        },
+        {
+            "name": "JohnMiddleton",
+            "email": "John.Middleton@hotmail.com",
+            "password": "Tdvn7Wsm%Z",
+            "age": 38,
+            "type": "dolphin3",
+            "leaning": "Republican",
+            "interests": [
+                [
+                    "Internet Policy & Regulation",
+                    "Software Development"
+                ],
+                [
+                    2,
+                    5
+                ]
+            ],
+            "oe": "inventive/curious",
+            "co": "efficient/organized",
+            "ex": "solitary/reserved",
+            "ag": "critical/judgmental",
+            "ne": "sensitive/nervous",
+            "rec_sys": "ReverseChrono",
+            "frec_sys": "PreferentialAttachment",
+            "language": "english",
+            "owner": "admin",
+            "education_level": "phd",
+            "round_actions": 4,
+            "gender": "male",
+            "nationality": "American",
+            "toxicity": "absolutely no",
+            "joined_on": 3,
+            "is_page": 0
+        },
+        {
+            "name": "ChristinaLawson",
+            "email": "Christina.Lawson@hotmail.com",
+            "password": "_3Fry^D(6A",
+            "age": 27,
+            "type": "dolphin3",
+            "leaning": "Democrat",
+            "interests": [
+                [
+                    "Software Development",
+                    "Big Tech"
+                ],
+                [
+                    5,
+                    8
+                ]
+            ],
+            "oe": "inventive/curious",
+            "co": "extravagant/careless",
+            "ex": "solitary/reserved",
+            "ag": "critical/judgmental",
+            "ne": "resilient/confident",
+            "rec_sys": "ReverseChrono",
+            "frec_sys": "PreferentialAttachment",
+            "language": "english",
+            "owner": "admin",
+            "education_level": "phd",
+            "round_actions": 2,
+            "gender": "female",
+            "nationality": "American",
+            "toxicity": "absolutely no",
+            "joined_on": 3,
+            "is_page": 0
+        },
+        {
+            "name": "RitaGarcia",
+            "email": "Rita.Garcia@yahoo.com",
+            "password": "!6QzkVz*q(",
+            "age": 37,
+            "type": "dolphin3",
+            "leaning": "Democrat",
+            "interests": [
+                [
+                    "Open Source Projects"
+                ],
+                [
+                    10
+                ]
+            ],
+            "oe": "consistent/cautious",
+            "co": "efficient/organized",
+            "ex": "solitary/reserved",
+            "ag": "friendly/compassionate",
+            "ne": "resilient/confident",
+            "rec_sys": "ReverseChrono",
+            "frec_sys": "PreferentialAttachment",
+            "language": "english",
+            "owner": "admin",
+            "education_level": "phd",
+            "round_actions": 3,
+            "gender": "female",
+            "nationality": "American",
+            "toxicity": "no",
+            "joined_on": 3,
+            "is_page": 0
+        },
+        {
+            "name": "AmandaGreene",
+            "email": "Amanda.Greene@yahoo.com",
+            "password": "!)e2tla5GR",
+            "age": 27,
+            "type": "dolphin3",
+            "leaning": "Democrat",
+            "interests": [
+                [
+                    "Software Development",
+                    "Open Source Projects"
+                ],
+                [
+                    5,
+                    10
+                ]
+            ],
+            "oe": "inventive/curious",
+            "co": "efficient/organized",
+            "ex": "solitary/reserved",
+            "ag": "friendly/compassionate",
+            "ne": "sensitive/nervous",
+            "rec_sys": "ReverseChrono",
+            "frec_sys": "PreferentialAttachment",
+            "language": "english",
+            "owner": "admin",
+            "education_level": "bachelor",
+            "round_actions": 1,
+            "gender": "female",
+            "nationality": "American",
+            "toxicity": "moderately",
+            "joined_on": 3,
+            "is_page": 0
+        },
+        {
+            "name": "EricaFleming",
+            "email": "Erica.Fleming@yahoo.com",
+            "password": "(brZkSh2C8",
+            "age": 56,
+            "type": "dolphin3",
+            "leaning": "Republican",
+            "interests": [
+                [
+                    "Artificial Intelligence",
+                    "Internet Policy & Regulation"
+                ],
+                [
+                    3,
+                    2
+                ]
+            ],
+            "oe": "inventive/curious",
+            "co": "efficient/organized",
+            "ex": "solitary/reserved",
+            "ag": "critical/judgmental",
+            "ne": "sensitive/nervous",
+            "rec_sys": "ReverseChrono",
+            "frec_sys": "PreferentialAttachment",
+            "language": "english",
+            "owner": "admin",
+            "education_level": "bachelor",
+            "round_actions": 1,
+            "gender": "female",
+            "nationality": "American",
+            "toxicity": "moderately",
+            "joined_on": 3,
+            "is_page": 0
+        },
+        {
+            "name": "ThomasWarner",
+            "email": "Thomas.Warner@hotmail.com",
+            "password": "&$9p6rBinW",
+            "age": 48,
+            "type": "dolphin3",
+            "leaning": "Republican",
+            "interests": [
+                [
+                    "Software Development",
+                    "Clean Energy & Sustainability"
+                ],
+                [
+                    5,
+                    6
+                ]
+            ],
+            "oe": "consistent/cautious",
+            "co": "extravagant/careless",
+            "ex": "solitary/reserved",
+            "ag": "friendly/compassionate",
+            "ne": "resilient/confident",
+            "rec_sys": "ReverseChrono",
+            "frec_sys": "PreferentialAttachment",
+            "language": "english",
+            "owner": "admin",
+            "education_level": "phd",
+            "round_actions": 3,
+            "gender": "male",
+            "nationality": "American",
+            "toxicity": "no",
+            "joined_on": 3,
+            "is_page": 0
+        },
+        {
+            "name": "DonnaElliott",
+            "email": "Donna.Elliott@gmail.com",
+            "password": "qCnb6IuY$2",
+            "age": 25,
+            "type": "dolphin3",
+            "leaning": "Democrat",
+            "interests": [
+                [
+                    "Space Technology"
+                ],
+                [
+                    9
+                ]
+            ],
+            "oe": "consistent/cautious",
+            "co": "extravagant/careless",
+            "ex": "outgoing/energetic",
+            "ag": "critical/judgmental",
+            "ne": "sensitive/nervous",
+            "rec_sys": "ReverseChrono",
+            "frec_sys": "PreferentialAttachment",
+            "language": "english",
+            "owner": "admin",
+            "education_level": "bachelor",
+            "round_actions": 3,
+            "gender": "female",
+            "nationality": "American",
+            "toxicity": "extremely",
+            "joined_on": 3,
+            "is_page": 0
+        },
+        {
+            "name": "GaryScott",
+            "email": "Gary.Scott@hotmail.com",
+            "password": "%(1kUUJghw",
+            "age": 51,
+            "type": "dolphin3",
+            "leaning": "Independent",
+            "interests": [
+                [
+                    "Social Media & Online Platforms",
+                    "Cybersecurity & Privacy"
+                ],
+                [
+                    1,
+                    7
+                ]
+            ],
+            "oe": "consistent/cautious",
+            "co": "efficient/organized",
+            "ex": "solitary/reserved",
+            "ag": "friendly/compassionate",
+            "ne": "sensitive/nervous",
+            "rec_sys": "ReverseChrono",
+            "frec_sys": "PreferentialAttachment",
+            "language": "english",
+            "owner": "admin",
+            "education_level": "phd",
+            "round_actions": 2,
+            "gender": "male",
+            "nationality": "American",
+            "toxicity": "absolutely no",
+            "joined_on": 3,
+            "is_page": 0
+        },
+        {
+            "name": "SaraNewman",
+            "email": "Sara.Newman@gmail.com",
+            "password": "MQ^I4VVy5+",
+            "age": 41,
+            "type": "dolphin3",
+            "leaning": "Democrat",
+            "interests": [
+                [
+                    "Artificial Intelligence",
+                    "Internet Policy & Regulation"
+                ],
+                [
+                    3,
+                    2
+                ]
+            ],
+            "oe": "inventive/curious",
+            "co": "efficient/organized",
+            "ex": "outgoing/energetic",
+            "ag": "friendly/compassionate",
+            "ne": "resilient/confident",
+            "rec_sys": "ReverseChrono",
+            "frec_sys": "PreferentialAttachment",
+            "language": "english",
+            "owner": "admin",
+            "education_level": "master",
+            "round_actions": 4,
+            "gender": "female",
+            "nationality": "American",
+            "toxicity": "extremely",
+            "joined_on": 3,
+            "is_page": 0
+        },
+        {
+            "name": "WilliamSparks",
+            "email": "William.Sparks@gmail.com",
+            "password": "M1CS%2aw_@",
+            "age": 22,
+            "type": "dolphin3",
+            "leaning": "Independent",
+            "interests": [
+                [
+                    "Artificial Intelligence",
+                    "Space Technology"
+                ],
+                [
+                    3,
+                    9
+                ]
+            ],
+            "oe": "inventive/curious",
+            "co": "extravagant/careless",
+            "ex": "solitary/reserved",
+            "ag": "critical/judgmental",
+            "ne": "sensitive/nervous",
+            "rec_sys": "ReverseChrono",
+            "frec_sys": "PreferentialAttachment",
+            "language": "english",
+            "owner": "admin",
+            "education_level": "bachelor",
+            "round_actions": 5,
+            "gender": "male",
+            "nationality": "American",
+            "toxicity": "absolutely no",
+            "joined_on": 3,
+            "is_page": 0
+        },
+        {
+            "name": "TabithaWilkinson",
+            "email": "Tabitha.Wilkinson@gmail.com",
+            "password": "$4zugC)lhJ",
+            "age": 25,
+            "type": "dolphin3",
+            "leaning": "Democrat",
+            "interests": [
+                [
+                    "Artificial Intelligence"
+                ],
+                [
+                    3
+                ]
+            ],
+            "oe": "inventive/curious",
+            "co": "efficient/organized",
+            "ex": "solitary/reserved",
+            "ag": "friendly/compassionate",
+            "ne": "resilient/confident",
+            "rec_sys": "ReverseChrono",
+            "frec_sys": "PreferentialAttachment",
+            "language": "english",
+            "owner": "admin",
+            "education_level": "master",
+            "round_actions": 5,
+            "gender": "female",
+            "nationality": "American",
+            "toxicity": "no",
+            "joined_on": 3,
+            "is_page": 0
+        },
+        {
+            "name": "LoriFletcher",
+            "email": "Lori.Fletcher@gmail.com",
+            "password": "Rw9vP*Ph@6",
+            "age": 43,
+            "type": "dolphin3",
+            "leaning": "Democrat",
+            "interests": [
+                [
+                    "Space Technology",
+                    "Electric Vehicles & Transportation"
+                ],
+                [
+                    9,
+                    4
+                ]
+            ],
+            "oe": "consistent/cautious",
+            "co": "extravagant/careless",
+            "ex": "outgoing/energetic",
+            "ag": "friendly/compassionate",
+            "ne": "resilient/confident",
+            "rec_sys": "ReverseChrono",
+            "frec_sys": "PreferentialAttachment",
+            "language": "english",
+            "owner": "admin",
+            "education_level": "master",
+            "round_actions": 3,
+            "gender": "female",
+            "nationality": "American",
+            "toxicity": "absolutely no",
+            "joined_on": 3,
+            "is_page": 0
+        },
+        {
+            "name": "AmyChambers",
+            "email": "Amy.Chambers@hotmail.com",
+            "password": "y+Bt_Zw^^9",
+            "age": 42,
+            "type": "dolphin3",
+            "leaning": "Republican",
+            "interests": [
+                [
+                    "Artificial Intelligence",
+                    "Software Development"
+                ],
+                [
+                    3,
+                    5
+                ]
+            ],
+            "oe": "inventive/curious",
+            "co": "extravagant/careless",
+            "ex": "outgoing/energetic",
+            "ag": "critical/judgmental",
+            "ne": "resilient/confident",
+            "rec_sys": "ReverseChrono",
+            "frec_sys": "PreferentialAttachment",
+            "language": "english",
+            "owner": "admin",
+            "education_level": "master",
+            "round_actions": 4,
+            "gender": "female",
+            "nationality": "American",
+            "toxicity": "absolutely no",
+            "joined_on": 3,
+            "is_page": 0
+        },
+        {
+            "name": "WhitneyClark",
+            "email": "Whitney.Clark@hotmail.com",
+            "password": "9k4OA0at1&",
+            "age": 34,
+            "type": "dolphin3",
+            "leaning": "Independent",
+            "interests": [
+                [
+                    "Cybersecurity & Privacy",
+                    "Clean Energy & Sustainability"
+                ],
+                [
+                    7,
+                    6
+                ]
+            ],
+            "oe": "inventive/curious",
+            "co": "extravagant/careless",
+            "ex": "solitary/reserved",
+            "ag": "friendly/compassionate",
+            "ne": "sensitive/nervous",
+            "rec_sys": "ReverseChrono",
+            "frec_sys": "PreferentialAttachment",
+            "language": "english",
+            "owner": "admin",
+            "education_level": "master",
+            "round_actions": 2,
+            "gender": "female",
+            "nationality": "American",
+            "toxicity": "extremely",
+            "joined_on": 3,
+            "is_page": 0
+        },
+        {
+            "name": "PeterMclaughlin",
+            "email": "Peter.Mclaughlin@gmail.com",
+            "password": "$7UDN+)img",
+            "age": 43,
+            "type": "dolphin3",
+            "leaning": "Independent",
+            "interests": [
+                [
+                    "Social Media & Online Platforms"
+                ],
+                [
+                    1
+                ]
+            ],
+            "oe": "inventive/curious",
+            "co": "extravagant/careless",
+            "ex": "solitary/reserved",
+            "ag": "critical/judgmental",
+            "ne": "sensitive/nervous",
+            "rec_sys": "ReverseChrono",
+            "frec_sys": "PreferentialAttachment",
+            "language": "english",
+            "owner": "admin",
+            "education_level": "phd",
+            "round_actions": 4,
+            "gender": "male",
+            "nationality": "American",
+            "toxicity": "absolutely no",
+            "joined_on": 3,
+            "is_page": 0
+        },
+        {
+            "name": "DavidMorris",
+            "email": "David.Morris@hotmail.com",
+            "password": "$5&ATdM!oR",
+            "age": 46,
+            "type": "dolphin3",
+            "leaning": "Independent",
+            "interests": [
+                [
+                    "Cybersecurity & Privacy",
+                    "Big Tech"
+                ],
+                [
+                    7,
+                    8
+                ]
+            ],
+            "oe": "consistent/cautious",
+            "co": "extravagant/careless",
+            "ex": "outgoing/energetic",
+            "ag": "critical/judgmental",
+            "ne": "resilient/confident",
+            "rec_sys": "ReverseChrono",
+            "frec_sys": "PreferentialAttachment",
+            "language": "english",
+            "owner": "admin",
+            "education_level": "bachelor",
+            "round_actions": 1,
+            "gender": "male",
+            "nationality": "American",
+            "toxicity": "no",
+            "joined_on": 3,
+            "is_page": 0
+        },
+        {
+            "name": "ChelseaThompson",
+            "email": "Chelsea.Thompson@hotmail.com",
+            "password": "ndHTiirx+4",
+            "age": 47,
+            "type": "dolphin3",
+            "leaning": "Independent",
+            "interests": [
+                [
+                    "Clean Energy & Sustainability"
+                ],
+                [
+                    6
+                ]
+            ],
+            "oe": "consistent/cautious",
+            "co": "efficient/organized",
+            "ex": "outgoing/energetic",
+            "ag": "friendly/compassionate",
+            "ne": "sensitive/nervous",
+            "rec_sys": "ReverseChrono",
+            "frec_sys": "PreferentialAttachment",
+            "language": "english",
+            "owner": "admin",
+            "education_level": "bachelor",
+            "round_actions": 3,
+            "gender": "female",
+            "nationality": "American",
+            "toxicity": "extremely",
+            "joined_on": 3,
+            "is_page": 0
+        },
+        {
+            "name": "CynthiaGreene",
+            "email": "Cynthia.Greene@yahoo.com",
+            "password": "GX5&2BUiB3",
+            "age": 44,
+            "type": "dolphin3",
+            "leaning": "Democrat",
+            "interests": [
+                [
+                    "Space Technology",
+                    "Cybersecurity & Privacy"
+                ],
+                [
+                    9,
+                    7
+                ]
+            ],
+            "oe": "consistent/cautious",
+            "co": "extravagant/careless",
+            "ex": "outgoing/energetic",
+            "ag": "friendly/compassionate",
+            "ne": "resilient/confident",
+            "rec_sys": "ReverseChrono",
+            "frec_sys": "PreferentialAttachment",
+            "language": "english",
+            "owner": "admin",
+            "education_level": "bachelor",
+            "round_actions": 4,
+            "gender": "female",
+            "nationality": "American",
+            "toxicity": "no",
+            "joined_on": 3,
+            "is_page": 0
+        },
+        {
+            "name": "JohnIngram",
+            "email": "John.Ingram@hotmail.com",
+            "password": "if@9rYijon",
+            "age": 37,
+            "type": "dolphin3",
+            "leaning": "Independent",
+            "interests": [
+                [
+                    "Big Tech",
+                    "Social Media & Online Platforms"
+                ],
+                [
+                    8,
+                    1
+                ]
+            ],
+            "oe": "consistent/cautious",
+            "co": "efficient/organized",
+            "ex": "solitary/reserved",
+            "ag": "friendly/compassionate",
+            "ne": "resilient/confident",
+            "rec_sys": "ReverseChrono",
+            "frec_sys": "PreferentialAttachment",
+            "language": "english",
+            "owner": "admin",
+            "education_level": "phd",
+            "round_actions": 5,
+            "gender": "male",
+            "nationality": "American",
+            "toxicity": "absolutely no",
+            "joined_on": 3,
+            "is_page": 0
+        },
+        {
+            "name": "LauraJennings",
+            "email": "Laura.Jennings@hotmail.com",
+            "password": "$jlCAXZuF8",
+            "age": 28,
+            "type": "dolphin3",
+            "leaning": "Independent",
+            "interests": [
+                [
+                    "Social Media & Online Platforms"
+                ],
+                [
+                    1
+                ]
+            ],
+            "oe": "inventive/curious",
+            "co": "efficient/organized",
+            "ex": "solitary/reserved",
+            "ag": "critical/judgmental",
+            "ne": "sensitive/nervous",
+            "rec_sys": "ReverseChrono",
+            "frec_sys": "PreferentialAttachment",
+            "language": "english",
+            "owner": "admin",
+            "education_level": "bachelor",
+            "round_actions": 5,
+            "gender": "female",
+            "nationality": "American",
+            "toxicity": "absolutely no",
+            "joined_on": 3,
+            "is_page": 0
+        },
+        {
+            "name": "KaitlynKing",
+            "email": "Kaitlyn.King@gmail.com",
+            "password": "Y@7G4uTamn",
+            "age": 49,
+            "type": "dolphin3",
+            "leaning": "Democrat",
+            "interests": [
+                [
+                    "Internet Policy & Regulation"
+                ],
+                [
+                    2
+                ]
+            ],
+            "oe": "consistent/cautious",
+            "co": "efficient/organized",
+            "ex": "solitary/reserved",
+            "ag": "friendly/compassionate",
+            "ne": "resilient/confident",
+            "rec_sys": "ReverseChrono",
+            "frec_sys": "PreferentialAttachment",
+            "language": "english",
+            "owner": "admin",
+            "education_level": "bachelor",
+            "round_actions": 3,
+            "gender": "female",
+            "nationality": "American",
+            "toxicity": "extremely",
+            "joined_on": 3,
+            "is_page": 0
+        },
+        {
+            "name": "KatelynGrant",
+            "email": "Katelyn.Grant@hotmail.com",
+            "password": "u+o0Lp1y$p",
+            "age": 24,
+            "type": "dolphin3",
+            "leaning": "Democrat",
+            "interests": [
+                [
+                    "Electric Vehicles & Transportation",
+                    "Internet Policy & Regulation"
+                ],
+                [
+                    4,
+                    2
+                ]
+            ],
+            "oe": "inventive/curious",
+            "co": "efficient/organized",
+            "ex": "solitary/reserved",
+            "ag": "friendly/compassionate",
+            "ne": "sensitive/nervous",
+            "rec_sys": "ReverseChrono",
+            "frec_sys": "PreferentialAttachment",
+            "language": "english",
+            "owner": "admin",
+            "education_level": "master",
+            "round_actions": 2,
+            "gender": "female",
+            "nationality": "American",
+            "toxicity": "absolutely no",
+            "joined_on": 3,
+            "is_page": 0
+        },
+        {
+            "name": "AngelaNorman",
+            "email": "Angela.Norman@hotmail.com",
+            "password": "&Qf8p6WeAK",
+            "age": 50,
+            "type": "dolphin3",
+            "leaning": "Independent",
+            "interests": [
+                [
+                    "Space Technology",
+                    "Big Tech"
+                ],
+                [
+                    9,
+                    8
+                ]
+            ],
+            "oe": "consistent/cautious",
+            "co": "efficient/organized",
+            "ex": "solitary/reserved",
+            "ag": "friendly/compassionate",
+            "ne": "sensitive/nervous",
+            "rec_sys": "ReverseChrono",
+            "frec_sys": "PreferentialAttachment",
+            "language": "english",
+            "owner": "admin",
+            "education_level": "bachelor",
+            "round_actions": 1,
+            "gender": "female",
+            "nationality": "American",
+            "toxicity": "absolutely no",
+            "joined_on": 3,
+            "is_page": 0
+        },
+        {
+            "name": "Mr.ChristopherJohnson",
+            "email": "Mr..Christopher.Johnson@gmail.com",
+            "password": ")qDLzqw646",
+            "age": 42,
+            "type": "dolphin3",
+            "leaning": "Democrat",
+            "interests": [
+                [
+                    "Social Media & Online Platforms"
+                ],
+                [
+                    1
+                ]
+            ],
+            "oe": "inventive/curious",
+            "co": "extravagant/careless",
+            "ex": "outgoing/energetic",
+            "ag": "critical/judgmental",
+            "ne": "sensitive/nervous",
+            "rec_sys": "ReverseChrono",
+            "frec_sys": "PreferentialAttachment",
+            "language": "english",
+            "owner": "admin",
+            "education_level": "master",
+            "round_actions": 5,
+            "gender": "male",
+            "nationality": "American",
+            "toxicity": "extremely",
+            "joined_on": 3,
+            "is_page": 0
+        },
+        {
+            "name": "LeslieWilliams",
+            "email": "Leslie.Williams@yahoo.com",
+            "password": "t5tOkjY0)7",
+            "age": 43,
+            "type": "dolphin3",
+            "leaning": "Republican",
+            "interests": [
+                [
+                    "Cybersecurity & Privacy"
+                ],
+                [
+                    7
+                ]
+            ],
+            "oe": "inventive/curious",
+            "co": "efficient/organized",
+            "ex": "outgoing/energetic",
+            "ag": "friendly/compassionate",
+            "ne": "resilient/confident",
+            "rec_sys": "ReverseChrono",
+            "frec_sys": "PreferentialAttachment",
+            "language": "english",
+            "owner": "admin",
+            "education_level": "high school",
+            "round_actions": 4,
+            "gender": "female",
+            "nationality": "American",
+            "toxicity": "extremely",
+            "joined_on": 3,
+            "is_page": 0
+        },
+        {
+            "name": "JamesCarpenter",
+            "email": "James.Carpenter@gmail.com",
+            "password": "&%ninoppI8",
+            "age": 56,
+            "type": "dolphin3",
+            "leaning": "Democrat",
+            "interests": [
+                [
+                    "Clean Energy & Sustainability",
+                    "Big Tech"
+                ],
+                [
+                    6,
+                    8
+                ]
+            ],
+            "oe": "consistent/cautious",
+            "co": "efficient/organized",
+            "ex": "outgoing/energetic",
+            "ag": "critical/judgmental",
+            "ne": "resilient/confident",
+            "rec_sys": "ReverseChrono",
+            "frec_sys": "PreferentialAttachment",
+            "language": "english",
+            "owner": "admin",
+            "education_level": "phd",
+            "round_actions": 5,
+            "gender": "male",
+            "nationality": "American",
+            "toxicity": "no",
+            "joined_on": 3,
+            "is_page": 0
+        },
+        {
+            "name": "DonaldWilson",
+            "email": "Donald.Wilson@yahoo.com",
+            "password": "r_76A&Bp#J",
+            "age": 18,
+            "type": "dolphin3",
+            "leaning": "Democrat",
+            "interests": [
+                [
+                    "Software Development",
+                    "Big Tech"
+                ],
+                [
+                    5,
+                    8
+                ]
+            ],
+            "oe": "inventive/curious",
+            "co": "efficient/organized",
+            "ex": "outgoing/energetic",
+            "ag": "critical/judgmental",
+            "ne": "sensitive/nervous",
+            "rec_sys": "ReverseChrono",
+            "frec_sys": "PreferentialAttachment",
+            "language": "english",
+            "owner": "admin",
+            "education_level": "bachelor",
+            "round_actions": 1,
+            "gender": "male",
+            "nationality": "American",
+            "toxicity": "extremely",
+            "joined_on": 3,
+            "is_page": 0
+        },
+        {
+            "name": "HannahBrown",
+            "email": "Hannah.Brown@hotmail.com",
+            "password": "#7bWIs_2sW",
+            "age": 50,
+            "type": "dolphin3",
+            "leaning": "Independent",
+            "interests": [
+                [
+                    "Artificial Intelligence",
+                    "Cybersecurity & Privacy"
+                ],
+                [
+                    3,
+                    7
+                ]
+            ],
+            "oe": "consistent/cautious",
+            "co": "efficient/organized",
+            "ex": "outgoing/energetic",
+            "ag": "critical/judgmental",
+            "ne": "sensitive/nervous",
+            "rec_sys": "ReverseChrono",
+            "frec_sys": "PreferentialAttachment",
+            "language": "english",
+            "owner": "admin",
+            "education_level": "high school",
+            "round_actions": 1,
+            "gender": "female",
+            "nationality": "American",
+            "toxicity": "extremely",
+            "joined_on": 3,
+            "is_page": 0
+        },
+        {
+            "name": "JoyKennedy",
+            "email": "Joy.Kennedy@yahoo.com",
+            "password": "#DBN0kCvZ7",
+            "age": 52,
+            "type": "dolphin3",
+            "leaning": "Independent",
+            "interests": [
+                [
+                    "Clean Energy & Sustainability",
+                    "Cybersecurity & Privacy"
+                ],
+                [
+                    6,
+                    7
+                ]
+            ],
+            "oe": "inventive/curious",
+            "co": "extravagant/careless",
+            "ex": "solitary/reserved",
+            "ag": "critical/judgmental",
+            "ne": "resilient/confident",
+            "rec_sys": "ReverseChrono",
+            "frec_sys": "PreferentialAttachment",
+            "language": "english",
+            "owner": "admin",
+            "education_level": "master",
+            "round_actions": 5,
+            "gender": "female",
+            "nationality": "American",
+            "toxicity": "absolutely no",
+            "joined_on": 3,
+            "is_page": 0
+        },
+        {
+            "name": "KatieLawrence",
+            "email": "Katie.Lawrence@gmail.com",
+            "password": "m_G#o1mF_8",
+            "age": 40,
+            "type": "dolphin3",
+            "leaning": "Independent",
+            "interests": [
+                [
+                    "Internet Policy & Regulation",
+                    "Clean Energy & Sustainability"
+                ],
+                [
+                    2,
+                    6
+                ]
+            ],
+            "oe": "consistent/cautious",
+            "co": "efficient/organized",
+            "ex": "outgoing/energetic",
+            "ag": "friendly/compassionate",
+            "ne": "sensitive/nervous",
+            "rec_sys": "ReverseChrono",
+            "frec_sys": "PreferentialAttachment",
+            "language": "english",
+            "owner": "admin",
+            "education_level": "master",
+            "round_actions": 4,
+            "gender": "female",
+            "nationality": "American",
+            "toxicity": "moderately",
+            "joined_on": 3,
+            "is_page": 0
+        },
+        {
+            "name": "MichaelEsparza",
+            "email": "Michael.Esparza@yahoo.com",
+            "password": "J7JYN#2V^r",
+            "age": 42,
+            "type": "dolphin3",
+            "leaning": "Republican",
+            "interests": [
+                [
+                    "Clean Energy & Sustainability",
+                    "Software Development"
+                ],
+                [
+                    6,
+                    5
+                ]
+            ],
+            "oe": "consistent/cautious",
+            "co": "extravagant/careless",
+            "ex": "outgoing/energetic",
+            "ag": "friendly/compassionate",
+            "ne": "sensitive/nervous",
+            "rec_sys": "ReverseChrono",
+            "frec_sys": "PreferentialAttachment",
+            "language": "english",
+            "owner": "admin",
+            "education_level": "bachelor",
+            "round_actions": 5,
+            "gender": "male",
+            "nationality": "American",
+            "toxicity": "moderately",
+            "joined_on": 3,
+            "is_page": 0
+        },
+        {
+            "name": "CherylBradford",
+            "email": "Cheryl.Bradford@hotmail.com",
+            "password": "(fd#tQhVB9",
+            "age": 31,
+            "type": "dolphin3",
+            "leaning": "Republican",
+            "interests": [
+                [
+                    "Open Source Projects",
+                    "Big Tech"
+                ],
+                [
+                    10,
+                    8
+                ]
+            ],
+            "oe": "inventive/curious",
+            "co": "extravagant/careless",
+            "ex": "solitary/reserved",
+            "ag": "friendly/compassionate",
+            "ne": "sensitive/nervous",
+            "rec_sys": "ReverseChrono",
+            "frec_sys": "PreferentialAttachment",
+            "language": "english",
+            "owner": "admin",
+            "education_level": "bachelor",
+            "round_actions": 4,
+            "gender": "female",
+            "nationality": "American",
+            "toxicity": "absolutely no",
+            "joined_on": 3,
+            "is_page": 0
+        },
+        {
+            "name": "JamesHart",
+            "email": "James.Hart@hotmail.com",
+            "password": "C1M7FkOi)a",
+            "age": 41,
+            "type": "dolphin3",
+            "leaning": "Republican",
+            "interests": [
+                [
+                    "Electric Vehicles & Transportation",
+                    "Artificial Intelligence"
+                ],
+                [
+                    4,
+                    3
+                ]
+            ],
+            "oe": "inventive/curious",
+            "co": "efficient/organized",
+            "ex": "solitary/reserved",
+            "ag": "critical/judgmental",
+            "ne": "resilient/confident",
+            "rec_sys": "ReverseChrono",
+            "frec_sys": "PreferentialAttachment",
+            "language": "english",
+            "owner": "admin",
+            "education_level": "master",
+            "round_actions": 5,
+            "gender": "male",
+            "nationality": "American",
+            "toxicity": "extremely",
+            "joined_on": 3,
+            "is_page": 0
+        },
+        {
+            "name": "MarkHudson",
+            "email": "Mark.Hudson@yahoo.com",
+            "password": "D*e1BaAuGe",
+            "age": 47,
+            "type": "dolphin3",
+            "leaning": "Democrat",
+            "interests": [
+                [
+                    "Electric Vehicles & Transportation"
+                ],
+                [
+                    4
+                ]
+            ],
+            "oe": "inventive/curious",
+            "co": "extravagant/careless",
+            "ex": "outgoing/energetic",
+            "ag": "friendly/compassionate",
+            "ne": "sensitive/nervous",
+            "rec_sys": "ReverseChrono",
+            "frec_sys": "PreferentialAttachment",
+            "language": "english",
+            "owner": "admin",
+            "education_level": "high school",
+            "round_actions": 3,
+            "gender": "male",
+            "nationality": "American",
+            "toxicity": "moderately",
+            "joined_on": 3,
+            "is_page": 0
+        },
+        {
+            "name": "ChristineLee",
+            "email": "Christine.Lee@gmail.com",
+            "password": "Z%KV9Rgc&N",
+            "age": 36,
+            "type": "dolphin3",
+            "leaning": "Independent",
+            "interests": [
+                [
+                    "Space Technology",
+                    "Internet Policy & Regulation"
+                ],
+                [
+                    9,
+                    2
+                ]
+            ],
+            "oe": "consistent/cautious",
+            "co": "extravagant/careless",
+            "ex": "solitary/reserved",
+            "ag": "critical/judgmental",
+            "ne": "resilient/confident",
+            "rec_sys": "ReverseChrono",
+            "frec_sys": "PreferentialAttachment",
+            "language": "english",
+            "owner": "admin",
+            "education_level": "master",
+            "round_actions": 5,
+            "gender": "female",
+            "nationality": "American",
+            "toxicity": "absolutely no",
+            "joined_on": 3,
+            "is_page": 0
+        },
+        {
+            "name": "JamesAdams",
+            "email": "James.Adams@yahoo.com",
+            "password": "(9Z#FTOzs4",
+            "age": 51,
+            "type": "dolphin3",
+            "leaning": "Republican",
+            "interests": [
+                [
+                    "Cybersecurity & Privacy",
+                    "Open Source Projects"
+                ],
+                [
+                    7,
+                    10
+                ]
+            ],
+            "oe": "consistent/cautious",
+            "co": "efficient/organized",
+            "ex": "outgoing/energetic",
+            "ag": "critical/judgmental",
+            "ne": "resilient/confident",
+            "rec_sys": "ReverseChrono",
+            "frec_sys": "PreferentialAttachment",
+            "language": "english",
+            "owner": "admin",
+            "education_level": "bachelor",
+            "round_actions": 1,
+            "gender": "male",
+            "nationality": "American",
+            "toxicity": "extremely",
+            "joined_on": 3,
+            "is_page": 0
+        },
+        {
+            "name": "MichaelAguirre",
+            "email": "Michael.Aguirre@gmail.com",
+            "password": "*K@g3KWcl6",
+            "age": 22,
+            "type": "dolphin3",
+            "leaning": "Republican",
+            "interests": [
+                [
+                    "Artificial Intelligence"
+                ],
+                [
+                    3
+                ]
+            ],
+            "oe": "inventive/curious",
+            "co": "efficient/organized",
+            "ex": "outgoing/energetic",
+            "ag": "critical/judgmental",
+            "ne": "sensitive/nervous",
+            "rec_sys": "ReverseChrono",
+            "frec_sys": "PreferentialAttachment",
+            "language": "english",
+            "owner": "admin",
+            "education_level": "master",
+            "round_actions": 2,
+            "gender": "male",
+            "nationality": "American",
+            "toxicity": "absolutely no",
+            "joined_on": 27,
+            "is_page": 0
+        },
+        {
+            "name": "CalebJones",
+            "email": "Caleb.Jones@hotmail.com",
+            "password": "$WR(Lg#d39",
+            "age": 25,
+            "type": "dolphin3",
+            "leaning": "Democrat",
+            "interests": [
+                [
+                    "Big Tech"
+                ],
+                [
+                    8
+                ]
+            ],
+            "oe": "inventive/curious",
+            "co": "extravagant/careless",
+            "ex": "outgoing/energetic",
+            "ag": "friendly/compassionate",
+            "ne": "resilient/confident",
+            "rec_sys": "ReverseChrono",
+            "frec_sys": "PreferentialAttachment",
+            "language": "english",
+            "owner": "admin",
+            "education_level": "master",
+            "round_actions": 5,
+            "gender": "male",
+            "nationality": "American",
+            "toxicity": "absolutely no",
+            "joined_on": 27,
+            "is_page": 0
+        },
+        {
+            "name": "MichaelSnow",
+            "email": "Michael.Snow@hotmail.com",
+            "password": "bre1^Xi)!(",
+            "age": 46,
+            "type": "dolphin3",
+            "leaning": "Independent",
+            "interests": [
+                [
+                    "Software Development",
+                    "Space Technology"
+                ],
+                [
+                    5,
+                    9
+                ]
+            ],
+            "oe": "inventive/curious",
+            "co": "efficient/organized",
+            "ex": "solitary/reserved",
+            "ag": "critical/judgmental",
+            "ne": "sensitive/nervous",
+            "rec_sys": "ReverseChrono",
+            "frec_sys": "PreferentialAttachment",
+            "language": "english",
+            "owner": "admin",
+            "education_level": "master",
+            "round_actions": 4,
+            "gender": "male",
+            "nationality": "American",
+            "toxicity": "moderately",
+            "joined_on": 27,
+            "is_page": 0
+        },
+        {
+            "name": "Mr.TravisMolina",
+            "email": "Mr..Travis.Molina@hotmail.com",
+            "password": "^3OhrpRao*",
+            "age": 46,
+            "type": "dolphin3",
+            "leaning": "Democrat",
+            "interests": [
+                [
+                    "Space Technology",
+                    "Social Media & Online Platforms"
+                ],
+                [
+                    9,
+                    1
+                ]
+            ],
+            "oe": "consistent/cautious",
+            "co": "extravagant/careless",
+            "ex": "solitary/reserved",
+            "ag": "critical/judgmental",
+            "ne": "resilient/confident",
+            "rec_sys": "ReverseChrono",
+            "frec_sys": "PreferentialAttachment",
+            "language": "english",
+            "owner": "admin",
+            "education_level": "bachelor",
+            "round_actions": 1,
+            "gender": "male",
+            "nationality": "American",
+            "toxicity": "no",
+            "joined_on": 27,
+            "is_page": 0
+        },
+        {
+            "name": "JordanOrtega",
+            "email": "Jordan.Ortega@hotmail.com",
+            "password": ")_FEFZdsl7",
+            "age": 38,
+            "type": "dolphin3",
+            "leaning": "Republican",
+            "interests": [
+                [
+                    "Internet Policy & Regulation"
+                ],
+                [
+                    2
+                ]
+            ],
+            "oe": "inventive/curious",
+            "co": "efficient/organized",
+            "ex": "solitary/reserved",
+            "ag": "critical/judgmental",
+            "ne": "resilient/confident",
+            "rec_sys": "ReverseChrono",
+            "frec_sys": "PreferentialAttachment",
+            "language": "english",
+            "owner": "admin",
+            "education_level": "master",
+            "round_actions": 4,
+            "gender": "male",
+            "nationality": "American",
+            "toxicity": "no",
+            "joined_on": 27,
+            "is_page": 0
+        },
+        {
+            "name": "HerbertRobinson",
+            "email": "Herbert.Robinson@yahoo.com",
+            "password": "@^5rWe1huc",
+            "age": 50,
+            "type": "dolphin3",
+            "leaning": "Democrat",
+            "interests": [
+                [
+                    "Artificial Intelligence"
+                ],
+                [
+                    3
+                ]
+            ],
+            "oe": "inventive/curious",
+            "co": "extravagant/careless",
+            "ex": "solitary/reserved",
+            "ag": "critical/judgmental",
+            "ne": "resilient/confident",
+            "rec_sys": "ReverseChrono",
+            "frec_sys": "PreferentialAttachment",
+            "language": "english",
+            "owner": "admin",
+            "education_level": "high school",
+            "round_actions": 3,
+            "gender": "male",
+            "nationality": "American",
+            "toxicity": "moderately",
+            "joined_on": 27,
+            "is_page": 0
+        },
+        {
+            "name": "RobertJohnson",
+            "email": "Robert.Johnson@yahoo.com",
+            "password": "w2KOXGRd$K",
+            "age": 44,
+            "type": "dolphin3",
+            "leaning": "Republican",
+            "interests": [
+                [
+                    "Social Media & Online Platforms",
+                    "Internet Policy & Regulation"
+                ],
+                [
+                    1,
+                    2
+                ]
+            ],
+            "oe": "inventive/curious",
+            "co": "extravagant/careless",
+            "ex": "solitary/reserved",
+            "ag": "friendly/compassionate",
+            "ne": "resilient/confident",
+            "rec_sys": "ReverseChrono",
+            "frec_sys": "PreferentialAttachment",
+            "language": "english",
+            "owner": "admin",
+            "education_level": "phd",
+            "round_actions": 4,
+            "gender": "male",
+            "nationality": "American",
+            "toxicity": "absolutely no",
+            "joined_on": 27,
+            "is_page": 0
+        },
+        {
+            "name": "AngelaChavez",
+            "email": "Angela.Chavez@gmail.com",
+            "password": "D!8BNcoeXe",
+            "age": 19,
+            "type": "dolphin3",
+            "leaning": "Independent",
+            "interests": [
+                [
+                    "Internet Policy & Regulation",
+                    "Open Source Projects"
+                ],
+                [
+                    2,
+                    10
+                ]
+            ],
+            "oe": "inventive/curious",
+            "co": "extravagant/careless",
+            "ex": "solitary/reserved",
+            "ag": "critical/judgmental",
+            "ne": "resilient/confident",
+            "rec_sys": "ReverseChrono",
+            "frec_sys": "PreferentialAttachment",
+            "language": "english",
+            "owner": "admin",
+            "education_level": "master",
+            "round_actions": 3,
+            "gender": "female",
+            "nationality": "American",
+            "toxicity": "extremely",
+            "joined_on": 51,
+            "is_page": 0
+        },
+        {
+            "name": "MollyEverett",
+            "email": "Molly.Everett@hotmail.com",
+            "password": "$V1GsBSw0u",
+            "age": 28,
+            "type": "dolphin3",
+            "leaning": "Independent",
+            "interests": [
+                [
+                    "Software Development",
+                    "Electric Vehicles & Transportation"
+                ],
+                [
+                    5,
+                    4
+                ]
+            ],
+            "oe": "consistent/cautious",
+            "co": "extravagant/careless",
+            "ex": "solitary/reserved",
+            "ag": "critical/judgmental",
+            "ne": "sensitive/nervous",
+            "rec_sys": "ReverseChrono",
+            "frec_sys": "PreferentialAttachment",
+            "language": "english",
+            "owner": "admin",
+            "education_level": "phd",
+            "round_actions": 3,
+            "gender": "female",
+            "nationality": "American",
+            "toxicity": "no",
+            "joined_on": 51,
+            "is_page": 0
+        },
+        {
+            "name": "StevenLewis",
+            "email": "Steven.Lewis@yahoo.com",
+            "password": "^t1UCJez+O",
+            "age": 25,
+            "type": "dolphin3",
+            "leaning": "Independent",
+            "interests": [
+                [
+                    "Internet Policy & Regulation"
+                ],
+                [
+                    2
+                ]
+            ],
+            "oe": "inventive/curious",
+            "co": "extravagant/careless",
+            "ex": "solitary/reserved",
+            "ag": "critical/judgmental",
+            "ne": "sensitive/nervous",
+            "rec_sys": "ReverseChrono",
+            "frec_sys": "PreferentialAttachment",
+            "language": "english",
+            "owner": "admin",
+            "education_level": "bachelor",
+            "round_actions": 5,
+            "gender": "male",
+            "nationality": "American",
+            "toxicity": "no",
+            "joined_on": 51,
+            "is_page": 0
+        },
+        {
+            "name": "KathrynMiller",
+            "email": "Kathryn.Miller@gmail.com",
+            "password": "y@1GaW58Ie",
+            "age": 48,
+            "type": "dolphin3",
+            "leaning": "Independent",
+            "interests": [
+                [
+                    "Clean Energy & Sustainability"
+                ],
+                [
+                    6
+                ]
+            ],
+            "oe": "consistent/cautious",
+            "co": "extravagant/careless",
+            "ex": "solitary/reserved",
+            "ag": "critical/judgmental",
+            "ne": "resilient/confident",
+            "rec_sys": "ReverseChrono",
+            "frec_sys": "PreferentialAttachment",
+            "language": "english",
+            "owner": "admin",
+            "education_level": "phd",
+            "round_actions": 1,
+            "gender": "female",
+            "nationality": "American",
+            "toxicity": "no",
+            "joined_on": 51,
+            "is_page": 0
+        },
+        {
+            "name": "DianeThompson",
+            "email": "Diane.Thompson@gmail.com",
+            "password": "1_#WhGxS!p",
+            "age": 45,
+            "type": "dolphin3",
+            "leaning": "Republican",
+            "interests": [
+                [
+                    "Electric Vehicles & Transportation",
+                    "Software Development"
+                ],
+                [
+                    4,
+                    5
+                ]
+            ],
+            "oe": "inventive/curious",
+            "co": "efficient/organized",
+            "ex": "solitary/reserved",
+            "ag": "critical/judgmental",
+            "ne": "resilient/confident",
+            "rec_sys": "ReverseChrono",
+            "frec_sys": "PreferentialAttachment",
+            "language": "english",
+            "owner": "admin",
+            "education_level": "bachelor",
+            "round_actions": 3,
+            "gender": "female",
+            "nationality": "American",
+            "toxicity": "no",
+            "joined_on": 51,
+            "is_page": 0
+        },
+        {
+            "name": "NatalieWilson",
+            "email": "Natalie.Wilson@hotmail.com",
+            "password": ")6YqjpqPeM",
+            "age": 43,
+            "type": "dolphin3",
+            "leaning": "Democrat",
+            "interests": [
+                [
+                    "Internet Policy & Regulation",
+                    "Electric Vehicles & Transportation"
+                ],
+                [
+                    2,
+                    4
+                ]
+            ],
+            "oe": "consistent/cautious",
+            "co": "efficient/organized",
+            "ex": "solitary/reserved",
+            "ag": "friendly/compassionate",
+            "ne": "sensitive/nervous",
+            "rec_sys": "ReverseChrono",
+            "frec_sys": "PreferentialAttachment",
+            "language": "english",
+            "owner": "admin",
+            "education_level": "master",
+            "round_actions": 3,
+            "gender": "female",
+            "nationality": "American",
+            "toxicity": "moderately",
+            "joined_on": 51,
+            "is_page": 0
+        },
+        {
+            "name": "ColleenEvans",
+            "email": "Colleen.Evans@yahoo.com",
+            "password": "*12+QJgWG8",
+            "age": 58,
+            "type": "dolphin3",
+            "leaning": "Republican",
+            "interests": [
+                [
+                    "Space Technology",
+                    "Open Source Projects"
+                ],
+                [
+                    9,
+                    10
+                ]
+            ],
+            "oe": "consistent/cautious",
+            "co": "extravagant/careless",
+            "ex": "solitary/reserved",
+            "ag": "critical/judgmental",
+            "ne": "sensitive/nervous",
+            "rec_sys": "ReverseChrono",
+            "frec_sys": "PreferentialAttachment",
+            "language": "english",
+            "owner": "admin",
+            "education_level": "master",
+            "round_actions": 3,
+            "gender": "female",
+            "nationality": "American",
+            "toxicity": "no",
+            "joined_on": 75,
+            "is_page": 0
+        },
+        {
+            "name": "JamesWalter",
+            "email": "James.Walter@gmail.com",
+            "password": "S!Z6Qek4X1",
+            "age": 34,
+            "type": "dolphin3",
+            "leaning": "Republican",
+            "interests": [
+                [
+                    "Cybersecurity & Privacy",
+                    "Software Development"
+                ],
+                [
+                    7,
+                    5
+                ]
+            ],
+            "oe": "consistent/cautious",
+            "co": "efficient/organized",
+            "ex": "solitary/reserved",
+            "ag": "friendly/compassionate",
+            "ne": "resilient/confident",
+            "rec_sys": "ReverseChrono",
+            "frec_sys": "PreferentialAttachment",
+            "language": "english",
+            "owner": "admin",
+            "education_level": "phd",
+            "round_actions": 1,
+            "gender": "male",
+            "nationality": "American",
+            "toxicity": "moderately",
+            "joined_on": 75,
+            "is_page": 0
+        },
+        {
+            "name": "AmandaMoore",
+            "email": "Amanda.Moore@gmail.com",
+            "password": "$6nRZ^Svgs",
+            "age": 25,
+            "type": "dolphin3",
+            "leaning": "Independent",
+            "interests": [
+                [
+                    "Cybersecurity & Privacy"
+                ],
+                [
+                    7
+                ]
+            ],
+            "oe": "inventive/curious",
+            "co": "efficient/organized",
+            "ex": "outgoing/energetic",
+            "ag": "critical/judgmental",
+            "ne": "resilient/confident",
+            "rec_sys": "ReverseChrono",
+            "frec_sys": "PreferentialAttachment",
+            "language": "english",
+            "owner": "admin",
+            "education_level": "master",
+            "round_actions": 2,
+            "gender": "female",
+            "nationality": "American",
+            "toxicity": "absolutely no",
+            "joined_on": 75,
+            "is_page": 0
+        },
+        {
+            "name": "RebeccaHuang",
+            "email": "Rebecca.Huang@yahoo.com",
+            "password": "YfI++Ery#8",
+            "age": 37,
+            "type": "dolphin3",
+            "leaning": "Democrat",
+            "interests": [
+                [
+                    "Open Source Projects"
+                ],
+                [
+                    10
+                ]
+            ],
+            "oe": "consistent/cautious",
+            "co": "efficient/organized",
+            "ex": "solitary/reserved",
+            "ag": "critical/judgmental",
+            "ne": "resilient/confident",
+            "rec_sys": "ReverseChrono",
+            "frec_sys": "PreferentialAttachment",
+            "language": "english",
+            "owner": "admin",
+            "education_level": "master",
+            "round_actions": 3,
+            "gender": "female",
+            "nationality": "American",
+            "toxicity": "extremely",
+            "joined_on": 75,
+            "is_page": 0
+        },
+        {
+            "name": "EmmaHarris",
+            "email": "Emma.Harris@hotmail.com",
+            "password": "cJzRUm%z$2",
+            "age": 60,
+            "type": "dolphin3",
+            "leaning": "Independent",
+            "interests": [
+                [
+                    "Social Media & Online Platforms",
+                    "Big Tech"
+                ],
+                [
+                    1,
+                    8
+                ]
+            ],
+            "oe": "inventive/curious",
+            "co": "efficient/organized",
+            "ex": "outgoing/energetic",
+            "ag": "friendly/compassionate",
+            "ne": "sensitive/nervous",
+            "rec_sys": "ReverseChrono",
+            "frec_sys": "PreferentialAttachment",
+            "language": "english",
+            "owner": "admin",
+            "education_level": "bachelor",
+            "round_actions": 5,
+            "gender": "female",
+            "nationality": "American",
+            "toxicity": "no",
+            "joined_on": 75,
+            "is_page": 0
+        },
+        {
+            "name": "MoniqueMcmahon",
+            "email": "Monique.Mcmahon@yahoo.com",
+            "password": "qb^0YGjv^R",
+            "age": 45,
+            "type": "dolphin3",
+            "leaning": "Republican",
+            "interests": [
+                [
+                    "Social Media & Online Platforms",
+                    "Cybersecurity & Privacy"
+                ],
+                [
+                    1,
+                    7
+                ]
+            ],
+            "oe": "inventive/curious",
+            "co": "efficient/organized",
+            "ex": "solitary/reserved",
+            "ag": "critical/judgmental",
+            "ne": "resilient/confident",
+            "rec_sys": "ReverseChrono",
+            "frec_sys": "PreferentialAttachment",
+            "language": "english",
+            "owner": "admin",
+            "education_level": "master",
+            "round_actions": 4,
+            "gender": "female",
+            "nationality": "American",
+            "toxicity": "no",
+            "joined_on": 75,
+            "is_page": 0
+        },
+        {
+            "name": "JamesEvans",
+            "email": "James.Evans@hotmail.com",
+            "password": "@4Km6JhoX%",
+            "age": 27,
+            "type": "dolphin3",
+            "leaning": "Independent",
+            "interests": [
+                [
+                    "Big Tech",
+                    "Open Source Projects"
+                ],
+                [
+                    8,
+                    10
+                ]
+            ],
+            "oe": "consistent/cautious",
+            "co": "extravagant/careless",
+            "ex": "solitary/reserved",
+            "ag": "critical/judgmental",
+            "ne": "resilient/confident",
+            "rec_sys": "ReverseChrono",
+            "frec_sys": "PreferentialAttachment",
+            "language": "english",
+            "owner": "admin",
+            "education_level": "bachelor",
+            "round_actions": 5,
+            "gender": "male",
+            "nationality": "American",
+            "toxicity": "extremely",
+            "joined_on": 75,
+            "is_page": 0
+        },
+        {
+            "name": "AlyssaBlevins",
+            "email": "Alyssa.Blevins@yahoo.com",
+            "password": "O(1i+Ljh%r",
+            "age": 34,
+            "type": "dolphin3",
+            "leaning": "Independent",
+            "interests": [
+                [
+                    "Space Technology",
+                    "Big Tech"
+                ],
+                [
+                    9,
+                    8
+                ]
+            ],
+            "oe": "inventive/curious",
+            "co": "efficient/organized",
+            "ex": "outgoing/energetic",
+            "ag": "critical/judgmental",
+            "ne": "sensitive/nervous",
+            "rec_sys": "ReverseChrono",
+            "frec_sys": "PreferentialAttachment",
+            "language": "english",
+            "owner": "admin",
+            "education_level": "phd",
+            "round_actions": 4,
+            "gender": "female",
+            "nationality": "American",
+            "toxicity": "extremely",
+            "joined_on": 75,
+            "is_page": 0
+        },
+        {
+            "name": "ValerieHudson",
+            "email": "Valerie.Hudson@hotmail.com",
+            "password": "mk4JGcaA_3",
+            "age": 52,
+            "type": "dolphin3",
+            "leaning": "Republican",
+            "interests": [
+                [
+                    "Open Source Projects"
+                ],
+                [
+                    10
+                ]
+            ],
+            "oe": "consistent/cautious",
+            "co": "extravagant/careless",
+            "ex": "outgoing/energetic",
+            "ag": "critical/judgmental",
+            "ne": "sensitive/nervous",
+            "rec_sys": "ReverseChrono",
+            "frec_sys": "PreferentialAttachment",
+            "language": "english",
+            "owner": "admin",
+            "education_level": "phd",
+            "round_actions": 3,
+            "gender": "female",
+            "nationality": "American",
+            "toxicity": "no",
+            "joined_on": 75,
+            "is_page": 0
+        },
+        {
+            "name": "AmandaChandler",
+            "email": "Amanda.Chandler@gmail.com",
+            "password": "PUV2X%dQ(_",
+            "age": 26,
+            "type": "dolphin3",
+            "leaning": "Independent",
+            "interests": [
+                [
+                    "Cybersecurity & Privacy",
+                    "Clean Energy & Sustainability"
+                ],
+                [
+                    7,
+                    6
+                ]
+            ],
+            "oe": "consistent/cautious",
+            "co": "efficient/organized",
+            "ex": "solitary/reserved",
+            "ag": "friendly/compassionate",
+            "ne": "sensitive/nervous",
+            "rec_sys": "ReverseChrono",
+            "frec_sys": "PreferentialAttachment",
+            "language": "english",
+            "owner": "admin",
+            "education_level": "high school",
+            "round_actions": 5,
+            "gender": "female",
+            "nationality": "American",
+            "toxicity": "absolutely no",
+            "joined_on": 99,
+            "is_page": 0
+        },
+        {
+            "name": "AndreClark",
+            "email": "Andre.Clark@yahoo.com",
+            "password": "h3RDs(cv*W",
+            "age": 53,
+            "type": "dolphin3",
+            "leaning": "Democrat",
+            "interests": [
+                [
+                    "Open Source Projects",
+                    "Cybersecurity & Privacy"
+                ],
+                [
+                    10,
+                    7
+                ]
+            ],
+            "oe": "inventive/curious",
+            "co": "extravagant/careless",
+            "ex": "solitary/reserved",
+            "ag": "critical/judgmental",
+            "ne": "resilient/confident",
+            "rec_sys": "ReverseChrono",
+            "frec_sys": "PreferentialAttachment",
+            "language": "english",
+            "owner": "admin",
+            "education_level": "high school",
+            "round_actions": 3,
+            "gender": "male",
+            "nationality": "American",
+            "toxicity": "no",
+            "joined_on": 99,
+            "is_page": 0
+        },
+        {
+            "name": "LoriTerry",
+            "email": "Lori.Terry@yahoo.com",
+            "password": "(AoUVrsl40",
+            "age": 57,
+            "type": "dolphin3",
+            "leaning": "Independent",
+            "interests": [
+                [
+                    "Clean Energy & Sustainability",
+                    "Artificial Intelligence"
+                ],
+                [
+                    6,
+                    3
+                ]
+            ],
+            "oe": "consistent/cautious",
+            "co": "efficient/organized",
+            "ex": "outgoing/energetic",
+            "ag": "critical/judgmental",
+            "ne": "sensitive/nervous",
+            "rec_sys": "ReverseChrono",
+            "frec_sys": "PreferentialAttachment",
+            "language": "english",
+            "owner": "admin",
+            "education_level": "high school",
+            "round_actions": 2,
+            "gender": "female",
+            "nationality": "American",
+            "toxicity": "absolutely no",
+            "joined_on": 99,
+            "is_page": 0
+        },
+        {
+            "name": "JenniferMendoza",
+            "email": "Jennifer.Mendoza@yahoo.com",
+            "password": "1K(O^*Un_5",
+            "age": 18,
+            "type": "dolphin3",
+            "leaning": "Independent",
+            "interests": [
+                [
+                    "Cybersecurity & Privacy"
+                ],
+                [
+                    7
+                ]
+            ],
+            "oe": "inventive/curious",
+            "co": "extravagant/careless",
+            "ex": "outgoing/energetic",
+            "ag": "critical/judgmental",
+            "ne": "sensitive/nervous",
+            "rec_sys": "ReverseChrono",
+            "frec_sys": "PreferentialAttachment",
+            "language": "english",
+            "owner": "admin",
+            "education_level": "bachelor",
+            "round_actions": 2,
+            "gender": "female",
+            "nationality": "American",
+            "toxicity": "moderately",
+            "joined_on": 99,
+            "is_page": 0
+        },
+        {
+            "name": "KimberlyBerg",
+            "email": "Kimberly.Berg@yahoo.com",
+            "password": "KT_4WXPk$Q",
+            "age": 23,
+            "type": "dolphin3",
+            "leaning": "Democrat",
+            "interests": [
+                [
+                    "Artificial Intelligence",
+                    "Electric Vehicles & Transportation"
+                ],
+                [
+                    3,
+                    4
+                ]
+            ],
+            "oe": "consistent/cautious",
+            "co": "efficient/organized",
+            "ex": "solitary/reserved",
+            "ag": "friendly/compassionate",
+            "ne": "resilient/confident",
+            "rec_sys": "ReverseChrono",
+            "frec_sys": "PreferentialAttachment",
+            "language": "english",
+            "owner": "admin",
+            "education_level": "phd",
+            "round_actions": 1,
+            "gender": "female",
+            "nationality": "American",
+            "toxicity": "no",
+            "joined_on": 99,
+            "is_page": 0
+        },
+        {
+            "name": "RichardBeltran",
+            "email": "Richard.Beltran@hotmail.com",
+            "password": "&8pFz_Bgl9",
+            "age": 45,
+            "type": "dolphin3",
+            "leaning": "Democrat",
+            "interests": [
+                [
+                    "Cybersecurity & Privacy",
+                    "Electric Vehicles & Transportation"
+                ],
+                [
+                    7,
+                    4
+                ]
+            ],
+            "oe": "inventive/curious",
+            "co": "extravagant/careless",
+            "ex": "solitary/reserved",
+            "ag": "friendly/compassionate",
+            "ne": "sensitive/nervous",
+            "rec_sys": "ReverseChrono",
+            "frec_sys": "PreferentialAttachment",
+            "language": "english",
+            "owner": "admin",
+            "education_level": "phd",
+            "round_actions": 2,
+            "gender": "male",
+            "nationality": "American",
+            "toxicity": "absolutely no",
+            "joined_on": 99,
+            "is_page": 0
+        },
+        {
+            "name": "NicholasHarrison",
+            "email": "Nicholas.Harrison@gmail.com",
+            "password": "C#8Js*rFI2",
+            "age": 47,
+            "type": "dolphin3",
+            "leaning": "Independent",
+            "interests": [
+                [
+                    "Clean Energy & Sustainability",
+                    "Cybersecurity & Privacy"
+                ],
+                [
+                    6,
+                    7
+                ]
+            ],
+            "oe": "inventive/curious",
+            "co": "efficient/organized",
+            "ex": "solitary/reserved",
+            "ag": "critical/judgmental",
+            "ne": "resilient/confident",
+            "rec_sys": "ReverseChrono",
+            "frec_sys": "PreferentialAttachment",
+            "language": "english",
+            "owner": "admin",
+            "education_level": "master",
+            "round_actions": 5,
+            "gender": "male",
+            "nationality": "American",
+            "toxicity": "no",
+            "joined_on": 99,
+            "is_page": 0
+        },
+        {
+            "name": "JulieAcosta",
+            "email": "Julie.Acosta@yahoo.com",
+            "password": "Z2@5DlhL@7",
+            "age": 55,
+            "type": "dolphin3",
+            "leaning": "Independent",
+            "interests": [
+                [
+                    "Open Source Projects",
+                    "Cybersecurity & Privacy"
+                ],
+                [
+                    10,
+                    7
+                ]
+            ],
+            "oe": "consistent/cautious",
+            "co": "extravagant/careless",
+            "ex": "solitary/reserved",
+            "ag": "critical/judgmental",
+            "ne": "sensitive/nervous",
+            "rec_sys": "ReverseChrono",
+            "frec_sys": "PreferentialAttachment",
+            "language": "english",
+            "owner": "admin",
+            "education_level": "bachelor",
+            "round_actions": 1,
+            "gender": "female",
+            "nationality": "American",
+            "toxicity": "moderately",
+            "joined_on": 99,
+            "is_page": 0
+        },
+        {
+            "name": "JasonJuarez",
+            "email": "Jason.Juarez@gmail.com",
+            "password": "67_&PeBz!K",
+            "age": 54,
+            "type": "dolphin3",
+            "leaning": "Democrat",
+            "interests": [
+                [
+                    "Electric Vehicles & Transportation",
+                    "Internet Policy & Regulation"
+                ],
+                [
+                    4,
+                    2
+                ]
+            ],
+            "oe": "consistent/cautious",
+            "co": "extravagant/careless",
+            "ex": "outgoing/energetic",
+            "ag": "friendly/compassionate",
+            "ne": "resilient/confident",
+            "rec_sys": "ReverseChrono",
+            "frec_sys": "PreferentialAttachment",
+            "language": "english",
+            "owner": "admin",
+            "education_level": "high school",
+            "round_actions": 5,
+            "gender": "male",
+            "nationality": "American",
+            "toxicity": "absolutely no",
+            "joined_on": 99,
+            "is_page": 0
+        },
+        {
+            "name": "NatashaClark",
+            "email": "Natasha.Clark@gmail.com",
+            "password": "#tze2QCSj9",
+            "age": 57,
+            "type": "dolphin3",
+            "leaning": "Independent",
+            "interests": [
+                [
+                    "Cybersecurity & Privacy",
+                    "Software Development"
+                ],
+                [
+                    7,
+                    5
+                ]
+            ],
+            "oe": "inventive/curious",
+            "co": "efficient/organized",
+            "ex": "solitary/reserved",
+            "ag": "friendly/compassionate",
+            "ne": "resilient/confident",
+            "rec_sys": "ReverseChrono",
+            "frec_sys": "PreferentialAttachment",
+            "language": "english",
+            "owner": "admin",
+            "education_level": "phd",
+            "round_actions": 5,
+            "gender": "female",
+            "nationality": "American",
+            "toxicity": "moderately",
+            "joined_on": 123,
+            "is_page": 0
+        },
+        {
+            "name": "AnnaWeeks",
+            "email": "Anna.Weeks@yahoo.com",
+            "password": "OGPiWpUm@8",
+            "age": 48,
+            "type": "dolphin3",
+            "leaning": "Republican",
+            "interests": [
+                [
+                    "Clean Energy & Sustainability",
+                    "Space Technology"
+                ],
+                [
+                    6,
+                    9
+                ]
+            ],
+            "oe": "inventive/curious",
+            "co": "extravagant/careless",
+            "ex": "solitary/reserved",
+            "ag": "friendly/compassionate",
+            "ne": "sensitive/nervous",
+            "rec_sys": "ReverseChrono",
+            "frec_sys": "PreferentialAttachment",
+            "language": "english",
+            "owner": "admin",
+            "education_level": "master",
+            "round_actions": 3,
+            "gender": "female",
+            "nationality": "American",
+            "toxicity": "moderately",
+            "joined_on": 123,
+            "is_page": 0
+        },
+        {
+            "name": "JasonBailey",
+            "email": "Jason.Bailey@hotmail.com",
+            "password": "1%eOeomk*V",
+            "age": 56,
+            "type": "dolphin3",
+            "leaning": "Democrat",
+            "interests": [
+                [
+                    "Software Development"
+                ],
+                [
+                    5
+                ]
+            ],
+            "oe": "consistent/cautious",
+            "co": "extravagant/careless",
+            "ex": "solitary/reserved",
+            "ag": "friendly/compassionate",
+            "ne": "resilient/confident",
+            "rec_sys": "ReverseChrono",
+            "frec_sys": "PreferentialAttachment",
+            "language": "english",
+            "owner": "admin",
+            "education_level": "bachelor",
+            "round_actions": 4,
+            "gender": "male",
+            "nationality": "American",
+            "toxicity": "absolutely no",
+            "joined_on": 123,
+            "is_page": 0
+        },
+        {
+            "name": "JesseRogers",
+            "email": "Jesse.Rogers@gmail.com",
+            "password": "We5S8bMi#p",
+            "age": 53,
+            "type": "dolphin3",
+            "leaning": "Democrat",
+            "interests": [
+                [
+                    "Space Technology"
+                ],
+                [
+                    9
+                ]
+            ],
+            "oe": "consistent/cautious",
+            "co": "efficient/organized",
+            "ex": "solitary/reserved",
+            "ag": "critical/judgmental",
+            "ne": "resilient/confident",
+            "rec_sys": "ReverseChrono",
+            "frec_sys": "PreferentialAttachment",
+            "language": "english",
+            "owner": "admin",
+            "education_level": "master",
+            "round_actions": 5,
+            "gender": "male",
+            "nationality": "American",
+            "toxicity": "no",
+            "joined_on": 123,
+            "is_page": 0
+        },
+        {
+            "name": "NathanMiller",
+            "email": "Nathan.Miller@yahoo.com",
+            "password": "(3xC9pYj^E",
+            "age": 36,
+            "type": "dolphin3",
+            "leaning": "Democrat",
+            "interests": [
+                [
+                    "Social Media & Online Platforms",
+                    "Electric Vehicles & Transportation"
+                ],
+                [
+                    1,
+                    4
+                ]
+            ],
+            "oe": "inventive/curious",
+            "co": "efficient/organized",
+            "ex": "outgoing/energetic",
+            "ag": "friendly/compassionate",
+            "ne": "sensitive/nervous",
+            "rec_sys": "ReverseChrono",
+            "frec_sys": "PreferentialAttachment",
+            "language": "english",
+            "owner": "admin",
+            "education_level": "phd",
+            "round_actions": 2,
+            "gender": "male",
+            "nationality": "American",
+            "toxicity": "no",
+            "joined_on": 123,
+            "is_page": 0
+        },
+        {
+            "name": "JackieMurphy",
+            "email": "Jackie.Murphy@gmail.com",
+            "password": "j$88K^fM+8",
+            "age": 30,
+            "type": "dolphin3",
+            "leaning": "Republican",
+            "interests": [
+                [
+                    "Electric Vehicles & Transportation"
+                ],
+                [
+                    4
+                ]
+            ],
+            "oe": "inventive/curious",
+            "co": "efficient/organized",
+            "ex": "outgoing/energetic",
+            "ag": "critical/judgmental",
+            "ne": "sensitive/nervous",
+            "rec_sys": "ReverseChrono",
+            "frec_sys": "PreferentialAttachment",
+            "language": "english",
+            "owner": "admin",
+            "education_level": "high school",
+            "round_actions": 5,
+            "gender": "female",
+            "nationality": "American",
+            "toxicity": "moderately",
+            "joined_on": 123,
+            "is_page": 0
+        },
+        {
+            "name": "LauraMcclure",
+            "email": "Laura.Mcclure@hotmail.com",
+            "password": "1r9EFGhlC#",
+            "age": 55,
+            "type": "dolphin3",
+            "leaning": "Democrat",
+            "interests": [
+                [
+                    "Clean Energy & Sustainability",
+                    "Big Tech"
+                ],
+                [
+                    6,
+                    8
+                ]
+            ],
+            "oe": "consistent/cautious",
+            "co": "extravagant/careless",
+            "ex": "outgoing/energetic",
+            "ag": "friendly/compassionate",
+            "ne": "resilient/confident",
+            "rec_sys": "ReverseChrono",
+            "frec_sys": "PreferentialAttachment",
+            "language": "english",
+            "owner": "admin",
+            "education_level": "phd",
+            "round_actions": 5,
+            "gender": "female",
+            "nationality": "American",
+            "toxicity": "no",
+            "joined_on": 123,
+            "is_page": 0
+        },
+        {
+            "name": "MichaelHall",
+            "email": "Michael.Hall@yahoo.com",
+            "password": "p$5BKJbur_",
+            "age": 39,
+            "type": "dolphin3",
+            "leaning": "Independent",
+            "interests": [
+                [
+                    "Software Development"
+                ],
+                [
+                    5
+                ]
+            ],
+            "oe": "consistent/cautious",
+            "co": "efficient/organized",
+            "ex": "outgoing/energetic",
+            "ag": "friendly/compassionate",
+            "ne": "resilient/confident",
+            "rec_sys": "ReverseChrono",
+            "frec_sys": "PreferentialAttachment",
+            "language": "english",
+            "owner": "admin",
+            "education_level": "phd",
+            "round_actions": 1,
+            "gender": "male",
+            "nationality": "American",
+            "toxicity": "no",
+            "joined_on": 123,
+            "is_page": 0
+        },
+        {
+            "name": "ShannonAllen",
+            "email": "Shannon.Allen@yahoo.com",
+            "password": "zxXPmN01$9",
+            "age": 34,
+            "type": "dolphin3",
+            "leaning": "Democrat",
+            "interests": [
+                [
+                    "Software Development",
+                    "Artificial Intelligence"
+                ],
+                [
+                    5,
+                    3
+                ]
+            ],
+            "oe": "inventive/curious",
+            "co": "efficient/organized",
+            "ex": "solitary/reserved",
+            "ag": "critical/judgmental",
+            "ne": "sensitive/nervous",
+            "rec_sys": "ReverseChrono",
+            "frec_sys": "PreferentialAttachment",
+            "language": "english",
+            "owner": "admin",
+            "education_level": "high school",
+            "round_actions": 1,
+            "gender": "female",
+            "nationality": "American",
+            "toxicity": "no",
+            "joined_on": 123,
+            "is_page": 0
+        },
+        {
+            "name": "JasonPerez",
+            "email": "Jason.Perez@hotmail.com",
+            "password": "%)1W$eObeA",
+            "age": 27,
+            "type": "dolphin3",
+            "leaning": "Independent",
+            "interests": [
+                [
+                    "Big Tech",
+                    "Space Technology"
+                ],
+                [
+                    8,
+                    9
+                ]
+            ],
+            "oe": "inventive/curious",
+            "co": "efficient/organized",
+            "ex": "solitary/reserved",
+            "ag": "critical/judgmental",
+            "ne": "sensitive/nervous",
+            "rec_sys": "ReverseChrono",
+            "frec_sys": "PreferentialAttachment",
+            "language": "english",
+            "owner": "admin",
+            "education_level": "master",
+            "round_actions": 3,
+            "gender": "male",
+            "nationality": "American",
+            "toxicity": "extremely",
+            "joined_on": 123,
+            "is_page": 0
+        },
+        {
+            "name": "KarenKennedy",
+            "email": "Karen.Kennedy@hotmail.com",
+            "password": "@CQghfhip4",
+            "age": 25,
+            "type": "dolphin3",
+            "leaning": "Democrat",
+            "interests": [
+                [
+                    "Big Tech"
+                ],
+                [
+                    8
+                ]
+            ],
+            "oe": "consistent/cautious",
+            "co": "efficient/organized",
+            "ex": "solitary/reserved",
+            "ag": "friendly/compassionate",
+            "ne": "resilient/confident",
+            "rec_sys": "ReverseChrono",
+            "frec_sys": "PreferentialAttachment",
+            "language": "english",
+            "owner": "admin",
+            "education_level": "master",
+            "round_actions": 1,
+            "gender": "female",
+            "nationality": "American",
+            "toxicity": "no",
+            "joined_on": 147,
+            "is_page": 0
+        },
+        {
+            "name": "StaceyWalker",
+            "email": "Stacey.Walker@yahoo.com",
+            "password": "7$RAM9zxQS",
+            "age": 43,
+            "type": "dolphin3",
+            "leaning": "Democrat",
+            "interests": [
+                [
+                    "Internet Policy & Regulation",
+                    "Space Technology"
+                ],
+                [
+                    2,
+                    9
+                ]
+            ],
+            "oe": "inventive/curious",
+            "co": "efficient/organized",
+            "ex": "outgoing/energetic",
+            "ag": "critical/judgmental",
+            "ne": "resilient/confident",
+            "rec_sys": "ReverseChrono",
+            "frec_sys": "PreferentialAttachment",
+            "language": "english",
+            "owner": "admin",
+            "education_level": "master",
+            "round_actions": 1,
+            "gender": "female",
+            "nationality": "American",
+            "toxicity": "absolutely no",
+            "joined_on": 147,
+            "is_page": 0
+        },
+        {
+            "name": "LaurieRogers",
+            "email": "Laurie.Rogers@yahoo.com",
+            "password": "+4KsLplV^G",
+            "age": 37,
+            "type": "dolphin3",
+            "leaning": "Republican",
+            "interests": [
+                [
+                    "Artificial Intelligence",
+                    "Electric Vehicles & Transportation"
+                ],
+                [
+                    3,
+                    4
+                ]
+            ],
+            "oe": "consistent/cautious",
+            "co": "efficient/organized",
+            "ex": "solitary/reserved",
+            "ag": "friendly/compassionate",
+            "ne": "sensitive/nervous",
+            "rec_sys": "ReverseChrono",
+            "frec_sys": "PreferentialAttachment",
+            "language": "english",
+            "owner": "admin",
+            "education_level": "master",
+            "round_actions": 1,
+            "gender": "female",
+            "nationality": "American",
+            "toxicity": "absolutely no",
+            "joined_on": 147,
+            "is_page": 0
+        },
+        {
+            "name": "CodyPineda",
+            "email": "Cody.Pineda@hotmail.com",
+            "password": "#v^ih0Qd9x",
+            "age": 49,
+            "type": "dolphin3",
+            "leaning": "Democrat",
+            "interests": [
+                [
+                    "Open Source Projects"
+                ],
+                [
+                    10
+                ]
+            ],
+            "oe": "consistent/cautious",
+            "co": "efficient/organized",
+            "ex": "outgoing/energetic",
+            "ag": "friendly/compassionate",
+            "ne": "sensitive/nervous",
+            "rec_sys": "ReverseChrono",
+            "frec_sys": "PreferentialAttachment",
+            "language": "english",
+            "owner": "admin",
+            "education_level": "bachelor",
+            "round_actions": 5,
+            "gender": "male",
+            "nationality": "American",
+            "toxicity": "extremely",
+            "joined_on": 147,
+            "is_page": 0
+        },
+        {
+            "name": "JamesSaunders",
+            "email": "James.Saunders@gmail.com",
+            "password": "j)pMK1RtQ@",
+            "age": 43,
+            "type": "dolphin3",
+            "leaning": "Independent",
+            "interests": [
+                [
+                    "Cybersecurity & Privacy",
+                    "Electric Vehicles & Transportation"
+                ],
+                [
+                    7,
+                    4
+                ]
+            ],
+            "oe": "consistent/cautious",
+            "co": "extravagant/careless",
+            "ex": "solitary/reserved",
+            "ag": "critical/judgmental",
+            "ne": "resilient/confident",
+            "rec_sys": "ReverseChrono",
+            "frec_sys": "PreferentialAttachment",
+            "language": "english",
+            "owner": "admin",
+            "education_level": "master",
+            "round_actions": 5,
+            "gender": "male",
+            "nationality": "American",
+            "toxicity": "extremely",
+            "joined_on": 147,
+            "is_page": 0
+        },
+        {
+            "name": "CharlesGeorge",
+            "email": "Charles.George@gmail.com",
+            "password": "4ey0DtKzg$",
+            "age": 19,
+            "type": "dolphin3",
+            "leaning": "Democrat",
+            "interests": [
+                [
+                    "Artificial Intelligence"
+                ],
+                [
+                    3
+                ]
+            ],
+            "oe": "consistent/cautious",
+            "co": "efficient/organized",
+            "ex": "solitary/reserved",
+            "ag": "friendly/compassionate",
+            "ne": "resilient/confident",
+            "rec_sys": "ReverseChrono",
+            "frec_sys": "PreferentialAttachment",
+            "language": "english",
+            "owner": "admin",
+            "education_level": "high school",
+            "round_actions": 2,
+            "gender": "male",
+            "nationality": "American",
+            "toxicity": "extremely",
+            "joined_on": 147,
+            "is_page": 0
+        },
+        {
+            "name": "DanaAlexander",
+            "email": "Dana.Alexander@gmail.com",
+            "password": ")H1HDpe7iy",
+            "age": 24,
+            "type": "dolphin3",
+            "leaning": "Democrat",
+            "interests": [
+                [
+                    "Cybersecurity & Privacy",
+                    "Electric Vehicles & Transportation"
+                ],
+                [
+                    7,
+                    4
+                ]
+            ],
+            "oe": "consistent/cautious",
+            "co": "efficient/organized",
+            "ex": "outgoing/energetic",
+            "ag": "friendly/compassionate",
+            "ne": "resilient/confident",
+            "rec_sys": "ReverseChrono",
+            "frec_sys": "PreferentialAttachment",
+            "language": "english",
+            "owner": "admin",
+            "education_level": "high school",
+            "round_actions": 5,
+            "gender": "female",
+            "nationality": "American",
+            "toxicity": "moderately",
+            "joined_on": 147,
+            "is_page": 0
+        },
+        {
+            "name": "StephenPeterson",
+            "email": "Stephen.Peterson@hotmail.com",
+            "password": "Ce7O+ry1_k",
+            "age": 51,
+            "type": "dolphin3",
+            "leaning": "Independent",
+            "interests": [
+                [
+                    "Electric Vehicles & Transportation",
+                    "Social Media & Online Platforms"
+                ],
+                [
+                    4,
+                    1
+                ]
+            ],
+            "oe": "consistent/cautious",
+            "co": "efficient/organized",
+            "ex": "solitary/reserved",
+            "ag": "friendly/compassionate",
+            "ne": "sensitive/nervous",
+            "rec_sys": "ReverseChrono",
+            "frec_sys": "PreferentialAttachment",
+            "language": "english",
+            "owner": "admin",
+            "education_level": "high school",
+            "round_actions": 4,
+            "gender": "male",
+            "nationality": "American",
+            "toxicity": "absolutely no",
+            "joined_on": 147,
+            "is_page": 0
+        },
+        {
+            "name": "WilliamShannon",
+            "email": "William.Shannon@hotmail.com",
+            "password": "^0zYk7F(kh",
+            "age": 37,
+            "type": "dolphin3",
+            "leaning": "Independent",
+            "interests": [
+                [
+                    "Clean Energy & Sustainability",
+                    "Cybersecurity & Privacy"
+                ],
+                [
+                    6,
+                    7
+                ]
+            ],
+            "oe": "consistent/cautious",
+            "co": "extravagant/careless",
+            "ex": "solitary/reserved",
+            "ag": "friendly/compassionate",
+            "ne": "resilient/confident",
+            "rec_sys": "ReverseChrono",
+            "frec_sys": "PreferentialAttachment",
+            "language": "english",
+            "owner": "admin",
+            "education_level": "phd",
+            "round_actions": 3,
+            "gender": "male",
+            "nationality": "American",
+            "toxicity": "absolutely no",
+            "joined_on": 147,
+            "is_page": 0
+        },
+        {
+            "name": "DavidWilliams",
+            "email": "David.Williams@hotmail.com",
+            "password": "^%VmegugX1",
+            "age": 38,
+            "type": "dolphin3",
+            "leaning": "Republican",
+            "interests": [
+                [
+                    "Clean Energy & Sustainability"
+                ],
+                [
+                    6
+                ]
+            ],
+            "oe": "inventive/curious",
+            "co": "extravagant/careless",
+            "ex": "outgoing/energetic",
+            "ag": "friendly/compassionate",
+            "ne": "resilient/confident",
+            "rec_sys": "ReverseChrono",
+            "frec_sys": "PreferentialAttachment",
+            "language": "english",
+            "owner": "admin",
+            "education_level": "bachelor",
+            "round_actions": 3,
+            "gender": "male",
+            "nationality": "American",
+            "toxicity": "absolutely no",
+            "joined_on": 147,
+            "is_page": 0
+        },
+        {
+            "name": "KevinSummers",
+            "email": "Kevin.Summers@gmail.com",
+            "password": "#@z_LWUgJ8",
+            "age": 52,
+            "type": "dolphin3",
+            "leaning": "Democrat",
+            "interests": [
+                [
+                    "Open Source Projects"
+                ],
+                [
+                    10
+                ]
+            ],
+            "oe": "consistent/cautious",
+            "co": "efficient/organized",
+            "ex": "outgoing/energetic",
+            "ag": "critical/judgmental",
+            "ne": "sensitive/nervous",
+            "rec_sys": "ReverseChrono",
+            "frec_sys": "PreferentialAttachment",
+            "language": "english",
+            "owner": "admin",
+            "education_level": "master",
+            "round_actions": 4,
+            "gender": "male",
+            "nationality": "American",
+            "toxicity": "absolutely no",
+            "joined_on": 147,
+            "is_page": 0
+        },
+        {
+            "name": "VictorVazquez",
+            "email": "Victor.Vazquez@hotmail.com",
+            "password": "j&DaG&ij(7",
+            "age": 43,
+            "type": "dolphin3",
+            "leaning": "Democrat",
+            "interests": [
+                [
+                    "Clean Energy & Sustainability",
+                    "Space Technology"
+                ],
+                [
+                    6,
+                    9
+                ]
+            ],
+            "oe": "consistent/cautious",
+            "co": "efficient/organized",
+            "ex": "outgoing/energetic",
+            "ag": "critical/judgmental",
+            "ne": "resilient/confident",
+            "rec_sys": "ReverseChrono",
+            "frec_sys": "PreferentialAttachment",
+            "language": "english",
+            "owner": "admin",
+            "education_level": "bachelor",
+            "round_actions": 3,
+            "gender": "male",
+            "nationality": "American",
+            "toxicity": "moderately",
+            "joined_on": 171,
+            "is_page": 0
+        },
+        {
+            "name": "DonnaShepard",
+            "email": "Donna.Shepard@gmail.com",
+            "password": "2KF^4fJo!0",
+            "age": 32,
+            "type": "dolphin3",
+            "leaning": "Independent",
+            "interests": [
+                [
+                    "Space Technology"
+                ],
+                [
+                    9
+                ]
+            ],
+            "oe": "consistent/cautious",
+            "co": "efficient/organized",
+            "ex": "outgoing/energetic",
+            "ag": "friendly/compassionate",
+            "ne": "resilient/confident",
+            "rec_sys": "ReverseChrono",
+            "frec_sys": "PreferentialAttachment",
+            "language": "english",
+            "owner": "admin",
+            "education_level": "bachelor",
+            "round_actions": 3,
+            "gender": "female",
+            "nationality": "American",
+            "toxicity": "absolutely no",
+            "joined_on": 171,
+            "is_page": 0
+        },
+        {
+            "name": "MarySmith",
+            "email": "Mary.Smith@yahoo.com",
+            "password": "#(9sWl@_@L",
+            "age": 50,
+            "type": "dolphin3",
+            "leaning": "Democrat",
+            "interests": [
+                [
+                    "Electric Vehicles & Transportation",
+                    "Software Development"
+                ],
+                [
+                    4,
+                    5
+                ]
+            ],
+            "oe": "consistent/cautious",
+            "co": "efficient/organized",
+            "ex": "solitary/reserved",
+            "ag": "critical/judgmental",
+            "ne": "resilient/confident",
+            "rec_sys": "ReverseChrono",
+            "frec_sys": "PreferentialAttachment",
+            "language": "english",
+            "owner": "admin",
+            "education_level": "master",
+            "round_actions": 5,
+            "gender": "female",
+            "nationality": "American",
+            "toxicity": "extremely",
+            "joined_on": 171,
+            "is_page": 0
+        },
+        {
+            "name": "JulieDoyle",
+            "email": "Julie.Doyle@hotmail.com",
+            "password": "v)2F99Rqz3",
+            "age": 49,
+            "type": "dolphin3",
+            "leaning": "Democrat",
+            "interests": [
+                [
+                    "Software Development"
+                ],
+                [
+                    5
+                ]
+            ],
+            "oe": "inventive/curious",
+            "co": "efficient/organized",
+            "ex": "solitary/reserved",
+            "ag": "critical/judgmental",
+            "ne": "resilient/confident",
+            "rec_sys": "ReverseChrono",
+            "frec_sys": "PreferentialAttachment",
+            "language": "english",
+            "owner": "admin",
+            "education_level": "high school",
+            "round_actions": 2,
+            "gender": "female",
+            "nationality": "American",
+            "toxicity": "moderately",
+            "joined_on": 171,
+            "is_page": 0
+        },
+        {
+            "name": "Mrs.EricaCostaPhD",
+            "email": "Mrs..Erica.Costa.PhD@yahoo.com",
+            "password": "(olv&Vim5B",
+            "age": 52,
+            "type": "dolphin3",
+            "leaning": "Independent",
+            "interests": [
+                [
+                    "Social Media & Online Platforms",
+                    "Software Development"
+                ],
+                [
+                    1,
+                    5
+                ]
+            ],
+            "oe": "inventive/curious",
+            "co": "efficient/organized",
+            "ex": "outgoing/energetic",
+            "ag": "critical/judgmental",
+            "ne": "sensitive/nervous",
+            "rec_sys": "ReverseChrono",
+            "frec_sys": "PreferentialAttachment",
+            "language": "english",
+            "owner": "admin",
+            "education_level": "high school",
+            "round_actions": 5,
+            "gender": "female",
+            "nationality": "American",
+            "toxicity": "absolutely no",
+            "joined_on": 171,
+            "is_page": 0
+        },
+        {
+            "name": "TimothyGardner",
+            "email": "Timothy.Gardner@yahoo.com",
+            "password": ")98#Ke)@c3",
+            "age": 27,
+            "type": "dolphin3",
+            "leaning": "Republican",
+            "interests": [
+                [
+                    "Social Media & Online Platforms",
+                    "Clean Energy & Sustainability"
+                ],
+                [
+                    1,
+                    6
+                ]
+            ],
+            "oe": "inventive/curious",
+            "co": "extravagant/careless",
+            "ex": "outgoing/energetic",
+            "ag": "critical/judgmental",
+            "ne": "sensitive/nervous",
+            "rec_sys": "ReverseChrono",
+            "frec_sys": "PreferentialAttachment",
+            "language": "english",
+            "owner": "admin",
+            "education_level": "bachelor",
+            "round_actions": 1,
+            "gender": "male",
+            "nationality": "American",
+            "toxicity": "no",
+            "joined_on": 171,
+            "is_page": 0
+        },
+        {
+            "name": "ChristopherBrown",
+            "email": "Christopher.Brown@yahoo.com",
+            "password": "j@CjS6ASgq",
+            "age": 31,
+            "type": "dolphin3",
+            "leaning": "Republican",
+            "interests": [
+                [
+                    "Electric Vehicles & Transportation",
+                    "Clean Energy & Sustainability"
+                ],
+                [
+                    4,
+                    6
+                ]
+            ],
+            "oe": "inventive/curious",
+            "co": "extravagant/careless",
+            "ex": "solitary/reserved",
+            "ag": "friendly/compassionate",
+            "ne": "sensitive/nervous",
+            "rec_sys": "ReverseChrono",
+            "frec_sys": "PreferentialAttachment",
+            "language": "english",
+            "owner": "admin",
+            "education_level": "high school",
+            "round_actions": 4,
+            "gender": "male",
+            "nationality": "American",
+            "toxicity": "extremely",
+            "joined_on": 171,
+            "is_page": 0
+        },
+        {
+            "name": "KevinJohnson",
+            "email": "Kevin.Johnson@hotmail.com",
+            "password": "WZf&IAd^%6",
+            "age": 40,
+            "type": "dolphin3",
+            "leaning": "Democrat",
+            "interests": [
+                [
+                    "Software Development",
+                    "Internet Policy & Regulation"
+                ],
+                [
+                    5,
+                    2
+                ]
+            ],
+            "oe": "consistent/cautious",
+            "co": "efficient/organized",
+            "ex": "solitary/reserved",
+            "ag": "critical/judgmental",
+            "ne": "sensitive/nervous",
+            "rec_sys": "ReverseChrono",
+            "frec_sys": "PreferentialAttachment",
+            "language": "english",
+            "owner": "admin",
+            "education_level": "bachelor",
+            "round_actions": 4,
+            "gender": "male",
+            "nationality": "American",
+            "toxicity": "absolutely no",
+            "joined_on": 171,
+            "is_page": 0
+        },
+        {
+            "name": "AdamStevenson",
+            "email": "Adam.Stevenson@gmail.com",
+            "password": "*7A&J(hfMO",
+            "age": 37,
+            "type": "dolphin3",
+            "leaning": "Republican",
+            "interests": [
+                [
+                    "Social Media & Online Platforms",
+                    "Artificial Intelligence"
+                ],
+                [
+                    1,
+                    3
+                ]
+            ],
+            "oe": "inventive/curious",
+            "co": "efficient/organized",
+            "ex": "outgoing/energetic",
+            "ag": "friendly/compassionate",
+            "ne": "resilient/confident",
+            "rec_sys": "ReverseChrono",
+            "frec_sys": "PreferentialAttachment",
+            "language": "english",
+            "owner": "admin",
+            "education_level": "bachelor",
+            "round_actions": 2,
+            "gender": "male",
+            "nationality": "American",
+            "toxicity": "absolutely no",
+            "joined_on": 171,
+            "is_page": 0
+        },
+        {
+            "name": "TerriJohnson",
+            "email": "Terri.Johnson@hotmail.com",
+            "password": "*OEUVOmt26",
+            "age": 23,
+            "type": "dolphin3",
+            "leaning": "Republican",
+            "interests": [
+                [
+                    "Space Technology",
+                    "Clean Energy & Sustainability"
+                ],
+                [
+                    9,
+                    6
+                ]
+            ],
+            "oe": "consistent/cautious",
+            "co": "extravagant/careless",
+            "ex": "outgoing/energetic",
+            "ag": "critical/judgmental",
+            "ne": "sensitive/nervous",
+            "rec_sys": "ReverseChrono",
+            "frec_sys": "PreferentialAttachment",
+            "language": "english",
+            "owner": "admin",
+            "education_level": "phd",
+            "round_actions": 2,
+            "gender": "female",
+            "nationality": "American",
+            "toxicity": "moderately",
+            "joined_on": 171,
+            "is_page": 0
+        },
+        {
+            "name": "MadisonReed",
+            "email": "Madison.Reed@hotmail.com",
+            "password": "ZdK)7Cx!IW",
+            "age": 45,
+            "type": "dolphin3",
+            "leaning": "Democrat",
+            "interests": [
+                [
+                    "Software Development",
+                    "Big Tech"
+                ],
+                [
+                    5,
+                    8
+                ]
+            ],
+            "oe": "consistent/cautious",
+            "co": "extravagant/careless",
+            "ex": "solitary/reserved",
+            "ag": "friendly/compassionate",
+            "ne": "sensitive/nervous",
+            "rec_sys": "ReverseChrono",
+            "frec_sys": "PreferentialAttachment",
+            "language": "english",
+            "owner": "admin",
+            "education_level": "bachelor",
+            "round_actions": 2,
+            "gender": "female",
+            "nationality": "American",
+            "toxicity": "no",
+            "joined_on": 171,
+            "is_page": 0
+        },
+        {
+            "name": "WilliamSims",
+            "email": "William.Sims@hotmail.com",
+            "password": "9cxaNGp4@0",
+            "age": 21,
+            "type": "dolphin3",
+            "leaning": "Independent",
+            "interests": [
+                [
+                    "Big Tech",
+                    "Open Source Projects"
+                ],
+                [
+                    8,
+                    10
+                ]
+            ],
+            "oe": "consistent/cautious",
+            "co": "efficient/organized",
+            "ex": "solitary/reserved",
+            "ag": "critical/judgmental",
+            "ne": "sensitive/nervous",
+            "rec_sys": "ReverseChrono",
+            "frec_sys": "PreferentialAttachment",
+            "language": "english",
+            "owner": "admin",
+            "education_level": "high school",
+            "round_actions": 3,
+            "gender": "male",
+            "nationality": "American",
+            "toxicity": "no",
+            "joined_on": 171,
+            "is_page": 0
+        },
+        {
+            "name": "MaryContreras",
+            "email": "Mary.Contreras@hotmail.com",
+            "password": "@gBJdMk!25",
+            "age": 19,
+            "type": "dolphin3",
+            "leaning": "Independent",
+            "interests": [
+                [
+                    "Open Source Projects"
+                ],
+                [
+                    10
+                ]
+            ],
+            "oe": "consistent/cautious",
+            "co": "extravagant/careless",
+            "ex": "solitary/reserved",
+            "ag": "friendly/compassionate",
+            "ne": "sensitive/nervous",
+            "rec_sys": "ReverseChrono",
+            "frec_sys": "PreferentialAttachment",
+            "language": "english",
+            "owner": "admin",
+            "education_level": "phd",
+            "round_actions": 5,
+            "gender": "female",
+            "nationality": "American",
+            "toxicity": "moderately",
+            "joined_on": 171,
+            "is_page": 0
+        },
+        {
+            "name": "KimberlyJacobs",
+            "email": "Kimberly.Jacobs@hotmail.com",
+            "password": "Phb68aIgN%",
+            "age": 40,
+            "type": "dolphin3",
+            "leaning": "Democrat",
+            "interests": [
+                [
+                    "Clean Energy & Sustainability",
+                    "Big Tech"
+                ],
+                [
+                    6,
+                    8
+                ]
+            ],
+            "oe": "consistent/cautious",
+            "co": "efficient/organized",
+            "ex": "outgoing/energetic",
+            "ag": "critical/judgmental",
+            "ne": "resilient/confident",
+            "rec_sys": "ReverseChrono",
+            "frec_sys": "PreferentialAttachment",
+            "language": "english",
+            "owner": "admin",
+            "education_level": "master",
+            "round_actions": 5,
+            "gender": "female",
+            "nationality": "American",
+            "toxicity": "absolutely no",
+            "joined_on": 171,
+            "is_page": 0
+        },
+        {
+            "name": "KristineGamble",
+            "email": "Kristine.Gamble@gmail.com",
+            "password": "^996P*&e)y",
+            "age": 35,
+            "type": "dolphin3",
+            "leaning": "Democrat",
+            "interests": [
+                [
+                    "Software Development"
+                ],
+                [
+                    5
+                ]
+            ],
+            "oe": "inventive/curious",
+            "co": "efficient/organized",
+            "ex": "outgoing/energetic",
+            "ag": "friendly/compassionate",
+            "ne": "sensitive/nervous",
+            "rec_sys": "ReverseChrono",
+            "frec_sys": "PreferentialAttachment",
+            "language": "english",
+            "owner": "admin",
+            "education_level": "high school",
+            "round_actions": 5,
+            "gender": "female",
+            "nationality": "American",
+            "toxicity": "no",
+            "joined_on": 195,
+            "is_page": 0
+        },
+        {
+            "name": "JasonRomero",
+            "email": "Jason.Romero@yahoo.com",
+            "password": "kAS12JgkE^",
+            "age": 55,
+            "type": "dolphin3",
+            "leaning": "Democrat",
+            "interests": [
+                [
+                    "Cybersecurity & Privacy",
+                    "Internet Policy & Regulation"
+                ],
+                [
+                    7,
+                    2
+                ]
+            ],
+            "oe": "inventive/curious",
+            "co": "efficient/organized",
+            "ex": "outgoing/energetic",
+            "ag": "friendly/compassionate",
+            "ne": "resilient/confident",
+            "rec_sys": "ReverseChrono",
+            "frec_sys": "PreferentialAttachment",
+            "language": "english",
+            "owner": "admin",
+            "education_level": "phd",
+            "round_actions": 4,
+            "gender": "male",
+            "nationality": "American",
+            "toxicity": "absolutely no",
+            "joined_on": 195,
+            "is_page": 0
+        },
+        {
+            "name": "TammyBrooks",
+            "email": "Tammy.Brooks@gmail.com",
+            "password": "ir80sLycs+",
+            "age": 41,
+            "type": "dolphin3",
+            "leaning": "Independent",
+            "interests": [
+                [
+                    "Cybersecurity & Privacy",
+                    "Electric Vehicles & Transportation"
+                ],
+                [
+                    7,
+                    4
+                ]
+            ],
+            "oe": "consistent/cautious",
+            "co": "efficient/organized",
+            "ex": "outgoing/energetic",
+            "ag": "friendly/compassionate",
+            "ne": "resilient/confident",
+            "rec_sys": "ReverseChrono",
+            "frec_sys": "PreferentialAttachment",
+            "language": "english",
+            "owner": "admin",
+            "education_level": "bachelor",
+            "round_actions": 3,
+            "gender": "female",
+            "nationality": "American",
+            "toxicity": "moderately",
+            "joined_on": 195,
+            "is_page": 0
+        },
+        {
+            "name": "JenniferGould",
+            "email": "Jennifer.Gould@yahoo.com",
+            "password": "&*3VXslf@b",
+            "age": 53,
+            "type": "dolphin3",
+            "leaning": "Republican",
+            "interests": [
+                [
+                    "Cybersecurity & Privacy"
+                ],
+                [
+                    7
+                ]
+            ],
+            "oe": "consistent/cautious",
+            "co": "efficient/organized",
+            "ex": "outgoing/energetic",
+            "ag": "critical/judgmental",
+            "ne": "sensitive/nervous",
+            "rec_sys": "ReverseChrono",
+            "frec_sys": "PreferentialAttachment",
+            "language": "english",
+            "owner": "admin",
+            "education_level": "high school",
+            "round_actions": 3,
+            "gender": "female",
+            "nationality": "American",
+            "toxicity": "extremely",
+            "joined_on": 195,
+            "is_page": 0
+        },
+        {
+            "name": "JamesSanchez",
+            "email": "James.Sanchez@hotmail.com",
+            "password": "@b%L3zLdGA",
+            "age": 20,
+            "type": "dolphin3",
+            "leaning": "Independent",
+            "interests": [
+                [
+                    "Cybersecurity & Privacy"
+                ],
+                [
+                    7
+                ]
+            ],
+            "oe": "inventive/curious",
+            "co": "extravagant/careless",
+            "ex": "outgoing/energetic",
+            "ag": "critical/judgmental",
+            "ne": "sensitive/nervous",
+            "rec_sys": "ReverseChrono",
+            "frec_sys": "PreferentialAttachment",
+            "language": "english",
+            "owner": "admin",
+            "education_level": "high school",
+            "round_actions": 2,
+            "gender": "male",
+            "nationality": "American",
+            "toxicity": "absolutely no",
+            "joined_on": 195,
+            "is_page": 0
+        },
+        {
+            "name": "DeniseAllen",
+            "email": "Denise.Allen@hotmail.com",
+            "password": "57vJkEkm$R",
+            "age": 25,
+            "type": "dolphin3",
+            "leaning": "Democrat",
+            "interests": [
+                [
+                    "Electric Vehicles & Transportation"
+                ],
+                [
+                    4
+                ]
+            ],
+            "oe": "inventive/curious",
+            "co": "extravagant/careless",
+            "ex": "outgoing/energetic",
+            "ag": "friendly/compassionate",
+            "ne": "sensitive/nervous",
+            "rec_sys": "ReverseChrono",
+            "frec_sys": "PreferentialAttachment",
+            "language": "english",
+            "owner": "admin",
+            "education_level": "high school",
+            "round_actions": 3,
+            "gender": "female",
+            "nationality": "American",
+            "toxicity": "absolutely no",
+            "joined_on": 195,
+            "is_page": 0
+        },
+        {
+            "name": "StevenDavis",
+            "email": "Steven.Davis@gmail.com",
+            "password": "3OB9LlXaE_",
+            "age": 58,
+            "type": "dolphin3",
+            "leaning": "Democrat",
+            "interests": [
+                [
+                    "Software Development"
+                ],
+                [
+                    5
+                ]
+            ],
+            "oe": "consistent/cautious",
+            "co": "efficient/organized",
+            "ex": "outgoing/energetic",
+            "ag": "friendly/compassionate",
+            "ne": "resilient/confident",
+            "rec_sys": "ReverseChrono",
+            "frec_sys": "PreferentialAttachment",
+            "language": "english",
+            "owner": "admin",
+            "education_level": "bachelor",
+            "round_actions": 3,
+            "gender": "male",
+            "nationality": "American",
+            "toxicity": "extremely",
+            "joined_on": 195,
+            "is_page": 0
+        },
+        {
+            "name": "AshleyThompson",
+            "email": "Ashley.Thompson@yahoo.com",
+            "password": "Lg7yU&wcf)",
+            "age": 46,
+            "type": "dolphin3",
+            "leaning": "Republican",
+            "interests": [
+                [
+                    "Artificial Intelligence"
+                ],
+                [
+                    3
+                ]
+            ],
+            "oe": "consistent/cautious",
+            "co": "efficient/organized",
+            "ex": "solitary/reserved",
+            "ag": "friendly/compassionate",
+            "ne": "sensitive/nervous",
+            "rec_sys": "ReverseChrono",
+            "frec_sys": "PreferentialAttachment",
+            "language": "english",
+            "owner": "admin",
+            "education_level": "high school",
+            "round_actions": 4,
+            "gender": "female",
+            "nationality": "American",
+            "toxicity": "extremely",
+            "joined_on": 195,
+            "is_page": 0
+        },
+        {
+            "name": "RandyGuerrero",
+            "email": "Randy.Guerrero@hotmail.com",
+            "password": "!xBJUfFkT6",
+            "age": 58,
+            "type": "dolphin3",
+            "leaning": "Independent",
+            "interests": [
+                [
+                    "Internet Policy & Regulation",
+                    "Artificial Intelligence"
+                ],
+                [
+                    2,
+                    3
+                ]
+            ],
+            "oe": "consistent/cautious",
+            "co": "extravagant/careless",
+            "ex": "outgoing/energetic",
+            "ag": "friendly/compassionate",
+            "ne": "sensitive/nervous",
+            "rec_sys": "ReverseChrono",
+            "frec_sys": "PreferentialAttachment",
+            "language": "english",
+            "owner": "admin",
+            "education_level": "master",
+            "round_actions": 1,
+            "gender": "male",
+            "nationality": "American",
+            "toxicity": "moderately",
+            "joined_on": 195,
+            "is_page": 0
+        },
+        {
+            "name": "SaraMoore",
+            "email": "Sara.Moore@hotmail.com",
+            "password": "kjBl3Y*y&h",
+            "age": 23,
+            "type": "dolphin3",
+            "leaning": "Republican",
+            "interests": [
+                [
+                    "Clean Energy & Sustainability"
+                ],
+                [
+                    6
+                ]
+            ],
+            "oe": "consistent/cautious",
+            "co": "extravagant/careless",
+            "ex": "solitary/reserved",
+            "ag": "critical/judgmental",
+            "ne": "resilient/confident",
+            "rec_sys": "ReverseChrono",
+            "frec_sys": "PreferentialAttachment",
+            "language": "english",
+            "owner": "admin",
+            "education_level": "phd",
+            "round_actions": 2,
+            "gender": "female",
+            "nationality": "American",
+            "toxicity": "moderately",
+            "joined_on": 195,
+            "is_page": 0
+        },
+        {
+            "name": "MarissaDuran",
+            "email": "Marissa.Duran@gmail.com",
+            "password": "r^8ctCbcnm",
+            "age": 46,
+            "type": "dolphin3",
+            "leaning": "Independent",
+            "interests": [
+                [
+                    "Internet Policy & Regulation"
+                ],
+                [
+                    2
+                ]
+            ],
+            "oe": "consistent/cautious",
+            "co": "extravagant/careless",
+            "ex": "solitary/reserved",
+            "ag": "friendly/compassionate",
+            "ne": "resilient/confident",
+            "rec_sys": "ReverseChrono",
+            "frec_sys": "PreferentialAttachment",
+            "language": "english",
+            "owner": "admin",
+            "education_level": "phd",
+            "round_actions": 3,
+            "gender": "female",
+            "nationality": "American",
+            "toxicity": "extremely",
+            "joined_on": 195,
+            "is_page": 0
+        },
+        {
+            "name": "Mr.JonathanPayne",
+            "email": "Mr..Jonathan.Payne@gmail.com",
+            "password": "7j8yLpXrU&",
+            "age": 48,
+            "type": "dolphin3",
+            "leaning": "Republican",
+            "interests": [
+                [
+                    "Cybersecurity & Privacy"
+                ],
+                [
+                    7
+                ]
+            ],
+            "oe": "consistent/cautious",
+            "co": "extravagant/careless",
+            "ex": "outgoing/energetic",
+            "ag": "critical/judgmental",
+            "ne": "resilient/confident",
+            "rec_sys": "ReverseChrono",
+            "frec_sys": "PreferentialAttachment",
+            "language": "english",
+            "owner": "admin",
+            "education_level": "phd",
+            "round_actions": 3,
+            "gender": "male",
+            "nationality": "American",
+            "toxicity": "extremely",
+            "joined_on": 195,
+            "is_page": 0
+        },
+        {
+            "name": "EricGarcia",
+            "email": "Eric.Garcia@hotmail.com",
+            "password": "^D1gN)pp*M",
+            "age": 48,
+            "type": "dolphin3",
+            "leaning": "Republican",
+            "interests": [
+                [
+                    "Space Technology"
+                ],
+                [
+                    9
+                ]
+            ],
+            "oe": "consistent/cautious",
+            "co": "extravagant/careless",
+            "ex": "outgoing/energetic",
+            "ag": "critical/judgmental",
+            "ne": "resilient/confident",
+            "rec_sys": "ReverseChrono",
+            "frec_sys": "PreferentialAttachment",
+            "language": "english",
+            "owner": "admin",
+            "education_level": "bachelor",
+            "round_actions": 2,
+            "gender": "male",
+            "nationality": "American",
+            "toxicity": "absolutely no",
+            "joined_on": 195,
+            "is_page": 0
+        },
+        {
+            "name": "WilliamGeorge",
+            "email": "William.George@yahoo.com",
+            "password": "y7I0ZFIr(m",
+            "age": 40,
+            "type": "dolphin3",
+            "leaning": "Democrat",
+            "interests": [
+                [
+                    "Big Tech",
+                    "Electric Vehicles & Transportation"
+                ],
+                [
+                    8,
+                    4
+                ]
+            ],
+            "oe": "consistent/cautious",
+            "co": "extravagant/careless",
+            "ex": "outgoing/energetic",
+            "ag": "critical/judgmental",
+            "ne": "resilient/confident",
+            "rec_sys": "ReverseChrono",
+            "frec_sys": "PreferentialAttachment",
+            "language": "english",
+            "owner": "admin",
+            "education_level": "bachelor",
+            "round_actions": 4,
+            "gender": "male",
+            "nationality": "American",
+            "toxicity": "moderately",
+            "joined_on": 195,
+            "is_page": 0
+        },
+        {
+            "name": "MicheleHernandez",
+            "email": "Michele.Hernandez@yahoo.com",
+            "password": "Y)82HGuoHe",
+            "age": 40,
+            "type": "dolphin3",
+            "leaning": "Independent",
+            "interests": [
+                [
+                    "Big Tech"
+                ],
+                [
+                    8
+                ]
+            ],
+            "oe": "inventive/curious",
+            "co": "efficient/organized",
+            "ex": "outgoing/energetic",
+            "ag": "critical/judgmental",
+            "ne": "sensitive/nervous",
+            "rec_sys": "ReverseChrono",
+            "frec_sys": "PreferentialAttachment",
+            "language": "english",
+            "owner": "admin",
+            "education_level": "high school",
+            "round_actions": 1,
+            "gender": "female",
+            "nationality": "American",
+            "toxicity": "absolutely no",
+            "joined_on": 195,
+            "is_page": 0
+        },
+        {
+            "name": "StephanieGarrett",
+            "email": "Stephanie.Garrett@hotmail.com",
+            "password": "2rIx)MsL^1",
+            "age": 25,
+            "type": "dolphin3",
+            "leaning": "Democrat",
+            "interests": [
+                [
+                    "Internet Policy & Regulation",
+                    "Artificial Intelligence"
+                ],
+                [
+                    2,
+                    3
+                ]
+            ],
+            "oe": "consistent/cautious",
+            "co": "extravagant/careless",
+            "ex": "outgoing/energetic",
+            "ag": "critical/judgmental",
+            "ne": "resilient/confident",
+            "rec_sys": "ReverseChrono",
+            "frec_sys": "PreferentialAttachment",
+            "language": "english",
+            "owner": "admin",
+            "education_level": "bachelor",
+            "round_actions": 3,
+            "gender": "female",
+            "nationality": "American",
+            "toxicity": "no",
+            "joined_on": 195,
+            "is_page": 0
+        },
+        {
+            "name": "MichaelSmith",
+            "email": "Michael.Smith@yahoo.com",
+            "password": "Xm09IHMit*",
+            "age": 18,
+            "type": "dolphin3",
+            "leaning": "Republican",
+            "interests": [
+                [
+                    "Cybersecurity & Privacy",
+                    "Software Development"
+                ],
+                [
+                    7,
+                    5
+                ]
+            ],
+            "oe": "consistent/cautious",
+            "co": "extravagant/careless",
+            "ex": "outgoing/energetic",
+            "ag": "critical/judgmental",
+            "ne": "sensitive/nervous",
+            "rec_sys": "ReverseChrono",
+            "frec_sys": "PreferentialAttachment",
+            "language": "english",
+            "owner": "admin",
+            "education_level": "high school",
+            "round_actions": 2,
+            "gender": "male",
+            "nationality": "American",
+            "toxicity": "extremely",
+            "joined_on": 219,
+            "is_page": 0
+        },
+        {
+            "name": "EricJohnson",
+            "email": "Eric.Johnson@gmail.com",
+            "password": "Pj(^2LOk(6",
+            "age": 25,
+            "type": "dolphin3",
+            "leaning": "Democrat",
+            "interests": [
+                [
+                    "Electric Vehicles & Transportation",
+                    "Open Source Projects"
+                ],
+                [
+                    4,
+                    10
+                ]
+            ],
+            "oe": "inventive/curious",
+            "co": "efficient/organized",
+            "ex": "solitary/reserved",
+            "ag": "friendly/compassionate",
+            "ne": "sensitive/nervous",
+            "rec_sys": "ReverseChrono",
+            "frec_sys": "PreferentialAttachment",
+            "language": "english",
+            "owner": "admin",
+            "education_level": "high school",
+            "round_actions": 4,
+            "gender": "male",
+            "nationality": "American",
+            "toxicity": "moderately",
+            "joined_on": 219,
+            "is_page": 0
+        },
+        {
+            "name": "OliviaJackson",
+            "email": "Olivia.Jackson@hotmail.com",
+            "password": "l(6ZVmpD#s",
+            "age": 46,
+            "type": "dolphin3",
+            "leaning": "Republican",
+            "interests": [
+                [
+                    "Open Source Projects"
+                ],
+                [
+                    10
+                ]
+            ],
+            "oe": "consistent/cautious",
+            "co": "extravagant/careless",
+            "ex": "solitary/reserved",
+            "ag": "critical/judgmental",
+            "ne": "resilient/confident",
+            "rec_sys": "ReverseChrono",
+            "frec_sys": "PreferentialAttachment",
+            "language": "english",
+            "owner": "admin",
+            "education_level": "bachelor",
+            "round_actions": 1,
+            "gender": "female",
+            "nationality": "American",
+            "toxicity": "no",
+            "joined_on": 219,
+            "is_page": 0
+        },
+        {
+            "name": "KristinNoble",
+            "email": "Kristin.Noble@yahoo.com",
+            "password": "*1LjYPleN6",
+            "age": 52,
+            "type": "dolphin3",
+            "leaning": "Republican",
+            "interests": [
+                [
+                    "Internet Policy & Regulation",
+                    "Space Technology"
+                ],
+                [
+                    2,
+                    9
+                ]
+            ],
+            "oe": "inventive/curious",
+            "co": "efficient/organized",
+            "ex": "outgoing/energetic",
+            "ag": "critical/judgmental",
+            "ne": "sensitive/nervous",
+            "rec_sys": "ReverseChrono",
+            "frec_sys": "PreferentialAttachment",
+            "language": "english",
+            "owner": "admin",
+            "education_level": "master",
+            "round_actions": 5,
+            "gender": "female",
+            "nationality": "American",
+            "toxicity": "no",
+            "joined_on": 219,
+            "is_page": 0
+        },
+        {
+            "name": "NicoleBrown",
+            "email": "Nicole.Brown@gmail.com",
+            "password": "6qhsGdWE_6",
+            "age": 53,
+            "type": "dolphin3",
+            "leaning": "Independent",
+            "interests": [
+                [
+                    "Social Media & Online Platforms",
+                    "Open Source Projects"
+                ],
+                [
+                    1,
+                    10
+                ]
+            ],
+            "oe": "consistent/cautious",
+            "co": "efficient/organized",
+            "ex": "outgoing/energetic",
+            "ag": "critical/judgmental",
+            "ne": "sensitive/nervous",
+            "rec_sys": "ReverseChrono",
+            "frec_sys": "PreferentialAttachment",
+            "language": "english",
+            "owner": "admin",
+            "education_level": "bachelor",
+            "round_actions": 2,
+            "gender": "female",
+            "nationality": "American",
+            "toxicity": "no",
+            "joined_on": 219,
+            "is_page": 0
+        },
+        {
+            "name": "CodyMendoza",
+            "email": "Cody.Mendoza@hotmail.com",
+            "password": "AERHH1e!#2",
+            "age": 53,
+            "type": "dolphin3",
+            "leaning": "Republican",
+            "interests": [
+                [
+                    "Electric Vehicles & Transportation"
+                ],
+                [
+                    4
+                ]
+            ],
+            "oe": "consistent/cautious",
+            "co": "extravagant/careless",
+            "ex": "outgoing/energetic",
+            "ag": "critical/judgmental",
+            "ne": "sensitive/nervous",
+            "rec_sys": "ReverseChrono",
+            "frec_sys": "PreferentialAttachment",
+            "language": "english",
+            "owner": "admin",
+            "education_level": "bachelor",
+            "round_actions": 5,
+            "gender": "male",
+            "nationality": "American",
+            "toxicity": "no",
+            "joined_on": 219,
+            "is_page": 0
+        },
+        {
+            "name": "KendraYoder",
+            "email": "Kendra.Yoder@yahoo.com",
+            "password": "_cp*Yzbrn1",
+            "age": 34,
+            "type": "dolphin3",
+            "leaning": "Republican",
+            "interests": [
+                [
+                    "Artificial Intelligence"
+                ],
+                [
+                    3
+                ]
+            ],
+            "oe": "consistent/cautious",
+            "co": "extravagant/careless",
+            "ex": "outgoing/energetic",
+            "ag": "critical/judgmental",
+            "ne": "resilient/confident",
+            "rec_sys": "ReverseChrono",
+            "frec_sys": "PreferentialAttachment",
+            "language": "english",
+            "owner": "admin",
+            "education_level": "phd",
+            "round_actions": 4,
+            "gender": "female",
+            "nationality": "American",
+            "toxicity": "absolutely no",
+            "joined_on": 219,
+            "is_page": 0
+        },
+        {
+            "name": "MichaelHubbard",
+            "email": "Michael.Hubbard@hotmail.com",
+            "password": "!rF$2IMc^B",
+            "age": 35,
+            "type": "dolphin3",
+            "leaning": "Republican",
+            "interests": [
+                [
+                    "Big Tech",
+                    "Artificial Intelligence"
+                ],
+                [
+                    8,
+                    3
+                ]
+            ],
+            "oe": "inventive/curious",
+            "co": "efficient/organized",
+            "ex": "outgoing/energetic",
+            "ag": "friendly/compassionate",
+            "ne": "sensitive/nervous",
+            "rec_sys": "ReverseChrono",
+            "frec_sys": "PreferentialAttachment",
+            "language": "english",
+            "owner": "admin",
+            "education_level": "bachelor",
+            "round_actions": 3,
+            "gender": "male",
+            "nationality": "American",
+            "toxicity": "moderately",
+            "joined_on": 219,
+            "is_page": 0
+        },
+        {
+            "name": "JosephJordan",
+            "email": "Joseph.Jordan@yahoo.com",
+            "password": "ZgDIROrh!4",
+            "age": 47,
+            "type": "dolphin3",
+            "leaning": "Democrat",
+            "interests": [
+                [
+                    "Open Source Projects"
+                ],
+                [
+                    10
+                ]
+            ],
+            "oe": "consistent/cautious",
+            "co": "extravagant/careless",
+            "ex": "solitary/reserved",
+            "ag": "friendly/compassionate",
+            "ne": "resilient/confident",
+            "rec_sys": "ReverseChrono",
+            "frec_sys": "PreferentialAttachment",
+            "language": "english",
+            "owner": "admin",
+            "education_level": "master",
+            "round_actions": 1,
+            "gender": "male",
+            "nationality": "American",
+            "toxicity": "no",
+            "joined_on": 219,
+            "is_page": 0
+        },
+        {
+            "name": "SandraMoody",
+            "email": "Sandra.Moody@yahoo.com",
+            "password": "_jn3GGdWga",
+            "age": 28,
+            "type": "dolphin3",
+            "leaning": "Independent",
+            "interests": [
+                [
+                    "Cybersecurity & Privacy",
+                    "Artificial Intelligence"
+                ],
+                [
+                    7,
+                    3
+                ]
+            ],
+            "oe": "consistent/cautious",
+            "co": "extravagant/careless",
+            "ex": "outgoing/energetic",
+            "ag": "friendly/compassionate",
+            "ne": "resilient/confident",
+            "rec_sys": "ReverseChrono",
+            "frec_sys": "PreferentialAttachment",
+            "language": "english",
+            "owner": "admin",
+            "education_level": "bachelor",
+            "round_actions": 2,
+            "gender": "female",
+            "nationality": "American",
+            "toxicity": "absolutely no",
+            "joined_on": 219,
+            "is_page": 0
+        },
+        {
+            "name": "MelissaMiller",
+            "email": "Melissa.Miller@yahoo.com",
+            "password": "#0j_Y#Ei&e",
+            "age": 56,
+            "type": "dolphin3",
+            "leaning": "Independent",
+            "interests": [
+                [
+                    "Artificial Intelligence"
+                ],
+                [
+                    3
+                ]
+            ],
+            "oe": "consistent/cautious",
+            "co": "efficient/organized",
+            "ex": "outgoing/energetic",
+            "ag": "critical/judgmental",
+            "ne": "sensitive/nervous",
+            "rec_sys": "ReverseChrono",
+            "frec_sys": "PreferentialAttachment",
+            "language": "english",
+            "owner": "admin",
+            "education_level": "phd",
+            "round_actions": 5,
+            "gender": "female",
+            "nationality": "American",
+            "toxicity": "extremely",
+            "joined_on": 219,
+            "is_page": 0
+        },
+        {
+            "name": "ShannonReed",
+            "email": "Shannon.Reed@hotmail.com",
+            "password": "&K7H)k5vX3",
+            "age": 24,
+            "type": "dolphin3",
+            "leaning": "Independent",
+            "interests": [
+                [
+                    "Internet Policy & Regulation",
+                    "Software Development"
+                ],
+                [
+                    2,
+                    5
+                ]
+            ],
+            "oe": "inventive/curious",
+            "co": "extravagant/careless",
+            "ex": "solitary/reserved",
+            "ag": "friendly/compassionate",
+            "ne": "resilient/confident",
+            "rec_sys": "ReverseChrono",
+            "frec_sys": "PreferentialAttachment",
+            "language": "english",
+            "owner": "admin",
+            "education_level": "high school",
+            "round_actions": 4,
+            "gender": "female",
+            "nationality": "American",
+            "toxicity": "moderately",
+            "joined_on": 219,
+            "is_page": 0
+        },
+        {
+            "name": "HeatherSullivan",
+            "email": "Heather.Sullivan@gmail.com",
+            "password": "!E1FVRJg88",
+            "age": 44,
+            "type": "dolphin3",
+            "leaning": "Democrat",
+            "interests": [
+                [
+                    "Big Tech",
+                    "Electric Vehicles & Transportation"
+                ],
+                [
+                    8,
+                    4
+                ]
+            ],
+            "oe": "inventive/curious",
+            "co": "extravagant/careless",
+            "ex": "solitary/reserved",
+            "ag": "critical/judgmental",
+            "ne": "resilient/confident",
+            "rec_sys": "ReverseChrono",
+            "frec_sys": "PreferentialAttachment",
+            "language": "english",
+            "owner": "admin",
+            "education_level": "phd",
+            "round_actions": 3,
+            "gender": "female",
+            "nationality": "American",
+            "toxicity": "no",
+            "joined_on": 219,
+            "is_page": 0
+        },
+        {
+            "name": "BenjaminDouglas",
+            "email": "Benjamin.Douglas@gmail.com",
+            "password": "7H2NKgo3N^",
+            "age": 43,
+            "type": "dolphin3",
+            "leaning": "Republican",
+            "interests": [
+                [
+                    "Space Technology",
+                    "Artificial Intelligence"
+                ],
+                [
+                    9,
+                    3
+                ]
+            ],
+            "oe": "inventive/curious",
+            "co": "extravagant/careless",
+            "ex": "solitary/reserved",
+            "ag": "critical/judgmental",
+            "ne": "sensitive/nervous",
+            "rec_sys": "ReverseChrono",
+            "frec_sys": "PreferentialAttachment",
+            "language": "english",
+            "owner": "admin",
+            "education_level": "master",
+            "round_actions": 5,
+            "gender": "male",
+            "nationality": "American",
+            "toxicity": "absolutely no",
+            "joined_on": 219,
+            "is_page": 0
+        },
+        {
+            "name": "ChelseaBrown",
+            "email": "Chelsea.Brown@hotmail.com",
+            "password": "Q_3w7kDqDQ",
+            "age": 41,
+            "type": "dolphin3",
+            "leaning": "Independent",
+            "interests": [
+                [
+                    "Space Technology",
+                    "Open Source Projects"
+                ],
+                [
+                    9,
+                    10
+                ]
+            ],
+            "oe": "consistent/cautious",
+            "co": "extravagant/careless",
+            "ex": "outgoing/energetic",
+            "ag": "critical/judgmental",
+            "ne": "resilient/confident",
+            "rec_sys": "ReverseChrono",
+            "frec_sys": "PreferentialAttachment",
+            "language": "english",
+            "owner": "admin",
+            "education_level": "phd",
+            "round_actions": 4,
+            "gender": "female",
+            "nationality": "American",
+            "toxicity": "absolutely no",
+            "joined_on": 219,
+            "is_page": 0
+        },
+        {
+            "name": "ArthurSantiago",
+            "email": "Arthur.Santiago@gmail.com",
+            "password": "%yqCAwDl)5",
+            "age": 42,
+            "type": "dolphin3",
+            "leaning": "Democrat",
+            "interests": [
+                [
+                    "Big Tech"
+                ],
+                [
+                    8
+                ]
+            ],
+            "oe": "consistent/cautious",
+            "co": "extravagant/careless",
+            "ex": "outgoing/energetic",
+            "ag": "friendly/compassionate",
+            "ne": "sensitive/nervous",
+            "rec_sys": "ReverseChrono",
+            "frec_sys": "PreferentialAttachment",
+            "language": "english",
+            "owner": "admin",
+            "education_level": "high school",
+            "round_actions": 1,
+            "gender": "male",
+            "nationality": "American",
+            "toxicity": "no",
+            "joined_on": 219,
+            "is_page": 0
+        },
+        {
+            "name": "JessicaStewart",
+            "email": "Jessica.Stewart@yahoo.com",
+            "password": "_2(XT2Uxmf",
+            "age": 44,
+            "type": "dolphin3",
+            "leaning": "Independent",
+            "interests": [
+                [
+                    "Open Source Projects",
+                    "Internet Policy & Regulation"
+                ],
+                [
+                    10,
+                    2
+                ]
+            ],
+            "oe": "consistent/cautious",
+            "co": "efficient/organized",
+            "ex": "solitary/reserved",
+            "ag": "critical/judgmental",
+            "ne": "sensitive/nervous",
+            "rec_sys": "ReverseChrono",
+            "frec_sys": "PreferentialAttachment",
+            "language": "english",
+            "owner": "admin",
+            "education_level": "high school",
+            "round_actions": 4,
+            "gender": "female",
+            "nationality": "American",
+            "toxicity": "no",
+            "joined_on": 219,
+            "is_page": 0
+        },
+        {
+            "name": "ShaneRogers",
+            "email": "Shane.Rogers@gmail.com",
+            "password": "PjEPdq&m@5",
+            "age": 56,
+            "type": "dolphin3",
+            "leaning": "Republican",
+            "interests": [
+                [
+                    "Space Technology",
+                    "Internet Policy & Regulation"
+                ],
+                [
+                    9,
+                    2
+                ]
+            ],
+            "oe": "inventive/curious",
+            "co": "extravagant/careless",
+            "ex": "outgoing/energetic",
+            "ag": "critical/judgmental",
+            "ne": "sensitive/nervous",
+            "rec_sys": "ReverseChrono",
+            "frec_sys": "PreferentialAttachment",
+            "language": "english",
+            "owner": "admin",
+            "education_level": "bachelor",
+            "round_actions": 1,
+            "gender": "male",
+            "nationality": "American",
+            "toxicity": "moderately",
+            "joined_on": 219,
+            "is_page": 0
+        },
+        {
+            "name": "MikeMorgan",
+            "email": "Mike.Morgan@gmail.com",
+            "password": "Qe@7CMjoH6",
+            "age": 29,
+            "type": "dolphin3",
+            "leaning": "Independent",
+            "interests": [
+                [
+                    "Social Media & Online Platforms"
+                ],
+                [
+                    1
+                ]
+            ],
+            "oe": "inventive/curious",
+            "co": "extravagant/careless",
+            "ex": "solitary/reserved",
+            "ag": "critical/judgmental",
+            "ne": "sensitive/nervous",
+            "rec_sys": "ReverseChrono",
+            "frec_sys": "PreferentialAttachment",
+            "language": "english",
+            "owner": "admin",
+            "education_level": "bachelor",
+            "round_actions": 5,
+            "gender": "male",
+            "nationality": "American",
+            "toxicity": "absolutely no",
+            "joined_on": 243,
+            "is_page": 0
+        },
+        {
+            "name": "MackenzieGregory",
+            "email": "Mackenzie.Gregory@hotmail.com",
+            "password": "_sX40Ajnq7",
+            "age": 23,
+            "type": "dolphin3",
+            "leaning": "Republican",
+            "interests": [
+                [
+                    "Open Source Projects"
+                ],
+                [
+                    10
+                ]
+            ],
+            "oe": "consistent/cautious",
+            "co": "efficient/organized",
+            "ex": "outgoing/energetic",
+            "ag": "friendly/compassionate",
+            "ne": "resilient/confident",
+            "rec_sys": "ReverseChrono",
+            "frec_sys": "PreferentialAttachment",
+            "language": "english",
+            "owner": "admin",
+            "education_level": "bachelor",
+            "round_actions": 3,
+            "gender": "female",
+            "nationality": "American",
+            "toxicity": "no",
+            "joined_on": 243,
+            "is_page": 0
+        },
+        {
+            "name": "KathleenWebster",
+            "email": "Kathleen.Webster@gmail.com",
+            "password": "tTW6M^tq%E",
+            "age": 21,
+            "type": "dolphin3",
+            "leaning": "Republican",
+            "interests": [
+                [
+                    "Social Media & Online Platforms"
+                ],
+                [
+                    1
+                ]
+            ],
+            "oe": "consistent/cautious",
+            "co": "extravagant/careless",
+            "ex": "solitary/reserved",
+            "ag": "critical/judgmental",
+            "ne": "sensitive/nervous",
+            "rec_sys": "ReverseChrono",
+            "frec_sys": "PreferentialAttachment",
+            "language": "english",
+            "owner": "admin",
+            "education_level": "bachelor",
+            "round_actions": 2,
+            "gender": "female",
+            "nationality": "American",
+            "toxicity": "no",
+            "joined_on": 243,
+            "is_page": 0
+        },
+        {
+            "name": "RuthCarpenter",
+            "email": "Ruth.Carpenter@gmail.com",
+            "password": "%0bjbRrg#k",
+            "age": 51,
+            "type": "dolphin3",
+            "leaning": "Democrat",
+            "interests": [
+                [
+                    "Software Development"
+                ],
+                [
+                    5
+                ]
+            ],
+            "oe": "consistent/cautious",
+            "co": "extravagant/careless",
+            "ex": "outgoing/energetic",
+            "ag": "critical/judgmental",
+            "ne": "resilient/confident",
+            "rec_sys": "ReverseChrono",
+            "frec_sys": "PreferentialAttachment",
+            "language": "english",
+            "owner": "admin",
+            "education_level": "master",
+            "round_actions": 4,
+            "gender": "female",
+            "nationality": "American",
+            "toxicity": "extremely",
+            "joined_on": 243,
+            "is_page": 0
+        },
+        {
+            "name": "SaraKramer",
+            "email": "Sara.Kramer@hotmail.com",
+            "password": "(DEda$9uE6",
+            "age": 43,
+            "type": "dolphin3",
+            "leaning": "Democrat",
+            "interests": [
+                [
+                    "Big Tech",
+                    "Social Media & Online Platforms"
+                ],
+                [
+                    8,
+                    1
+                ]
+            ],
+            "oe": "inventive/curious",
+            "co": "extravagant/careless",
+            "ex": "outgoing/energetic",
+            "ag": "critical/judgmental",
+            "ne": "resilient/confident",
+            "rec_sys": "ReverseChrono",
+            "frec_sys": "PreferentialAttachment",
+            "language": "english",
+            "owner": "admin",
+            "education_level": "bachelor",
+            "round_actions": 3,
+            "gender": "female",
+            "nationality": "American",
+            "toxicity": "extremely",
+            "joined_on": 243,
+            "is_page": 0
+        },
+        {
+            "name": "ScottScott",
+            "email": "Scott.Scott@hotmail.com",
+            "password": "qKztWNE4(8",
+            "age": 56,
+            "type": "dolphin3",
+            "leaning": "Democrat",
+            "interests": [
+                [
+                    "Space Technology"
+                ],
+                [
+                    9
+                ]
+            ],
+            "oe": "inventive/curious",
+            "co": "efficient/organized",
+            "ex": "solitary/reserved",
+            "ag": "friendly/compassionate",
+            "ne": "sensitive/nervous",
+            "rec_sys": "ReverseChrono",
+            "frec_sys": "PreferentialAttachment",
+            "language": "english",
+            "owner": "admin",
+            "education_level": "phd",
+            "round_actions": 2,
+            "gender": "male",
+            "nationality": "American",
+            "toxicity": "extremely",
+            "joined_on": 243,
+            "is_page": 0
+        },
+        {
+            "name": "AmyBonilla",
+            "email": "Amy.Bonilla@hotmail.com",
+            "password": "#rJ+z1cS50",
+            "age": 26,
+            "type": "dolphin3",
+            "leaning": "Democrat",
+            "interests": [
+                [
+                    "Social Media & Online Platforms"
+                ],
+                [
+                    1
+                ]
+            ],
+            "oe": "consistent/cautious",
+            "co": "extravagant/careless",
+            "ex": "outgoing/energetic",
+            "ag": "friendly/compassionate",
+            "ne": "sensitive/nervous",
+            "rec_sys": "ReverseChrono",
+            "frec_sys": "PreferentialAttachment",
+            "language": "english",
+            "owner": "admin",
+            "education_level": "bachelor",
+            "round_actions": 2,
+            "gender": "female",
+            "nationality": "American",
+            "toxicity": "moderately",
+            "joined_on": 243,
+            "is_page": 0
+        },
+        {
+            "name": "LeahWilkinson",
+            "email": "Leah.Wilkinson@gmail.com",
+            "password": "JmrMRDXJ$7",
+            "age": 55,
+            "type": "dolphin3",
+            "leaning": "Republican",
+            "interests": [
+                [
+                    "Space Technology",
+                    "Cybersecurity & Privacy"
+                ],
+                [
+                    9,
+                    7
+                ]
+            ],
+            "oe": "consistent/cautious",
+            "co": "extravagant/careless",
+            "ex": "outgoing/energetic",
+            "ag": "critical/judgmental",
+            "ne": "resilient/confident",
+            "rec_sys": "ReverseChrono",
+            "frec_sys": "PreferentialAttachment",
+            "language": "english",
+            "owner": "admin",
+            "education_level": "high school",
+            "round_actions": 3,
+            "gender": "female",
+            "nationality": "American",
+            "toxicity": "no",
+            "joined_on": 243,
+            "is_page": 0
+        },
+        {
+            "name": "LindaDaniels",
+            "email": "Linda.Daniels@hotmail.com",
+            "password": "_%VUhwwrV9",
+            "age": 23,
+            "type": "dolphin3",
+            "leaning": "Independent",
+            "interests": [
+                [
+                    "Big Tech",
+                    "Space Technology"
+                ],
+                [
+                    8,
+                    9
+                ]
+            ],
+            "oe": "inventive/curious",
+            "co": "extravagant/careless",
+            "ex": "solitary/reserved",
+            "ag": "critical/judgmental",
+            "ne": "resilient/confident",
+            "rec_sys": "ReverseChrono",
+            "frec_sys": "PreferentialAttachment",
+            "language": "english",
+            "owner": "admin",
+            "education_level": "master",
+            "round_actions": 4,
+            "gender": "female",
+            "nationality": "American",
+            "toxicity": "moderately",
+            "joined_on": 243,
+            "is_page": 0
+        },
+        {
+            "name": "CatherineWinters",
+            "email": "Catherine.Winters@yahoo.com",
+            "password": "o$a49YUlaM",
+            "age": 34,
+            "type": "dolphin3",
+            "leaning": "Independent",
+            "interests": [
+                [
+                    "Cybersecurity & Privacy",
+                    "Social Media & Online Platforms"
+                ],
+                [
+                    7,
+                    1
+                ]
+            ],
+            "oe": "inventive/curious",
+            "co": "efficient/organized",
+            "ex": "solitary/reserved",
+            "ag": "friendly/compassionate",
+            "ne": "resilient/confident",
+            "rec_sys": "ReverseChrono",
+            "frec_sys": "PreferentialAttachment",
+            "language": "english",
+            "owner": "admin",
+            "education_level": "high school",
+            "round_actions": 5,
+            "gender": "female",
+            "nationality": "American",
+            "toxicity": "extremely",
+            "joined_on": 243,
+            "is_page": 0
+        },
+        {
+            "name": "BrendaTucker",
+            "email": "Brenda.Tucker@hotmail.com",
+            "password": "T)&8QGei+G",
+            "age": 23,
+            "type": "dolphin3",
+            "leaning": "Republican",
+            "interests": [
+                [
+                    "Internet Policy & Regulation",
+                    "Electric Vehicles & Transportation"
+                ],
+                [
+                    2,
+                    4
+                ]
+            ],
+            "oe": "inventive/curious",
+            "co": "extravagant/careless",
+            "ex": "solitary/reserved",
+            "ag": "critical/judgmental",
+            "ne": "sensitive/nervous",
+            "rec_sys": "ReverseChrono",
+            "frec_sys": "PreferentialAttachment",
+            "language": "english",
+            "owner": "admin",
+            "education_level": "high school",
+            "round_actions": 4,
+            "gender": "female",
+            "nationality": "American",
+            "toxicity": "no",
+            "joined_on": 243,
+            "is_page": 0
+        },
+        {
+            "name": "SheilaFowler",
+            "email": "Sheila.Fowler@hotmail.com",
+            "password": "M$HF1jTiUP",
+            "age": 20,
+            "type": "dolphin3",
+            "leaning": "Independent",
+            "interests": [
+                [
+                    "Social Media & Online Platforms"
+                ],
+                [
+                    1
+                ]
+            ],
+            "oe": "consistent/cautious",
+            "co": "efficient/organized",
+            "ex": "outgoing/energetic",
+            "ag": "friendly/compassionate",
+            "ne": "resilient/confident",
+            "rec_sys": "ReverseChrono",
+            "frec_sys": "PreferentialAttachment",
+            "language": "english",
+            "owner": "admin",
+            "education_level": "phd",
+            "round_actions": 2,
+            "gender": "female",
+            "nationality": "American",
+            "toxicity": "no",
+            "joined_on": 243,
+            "is_page": 0
+        },
+        {
+            "name": "JustinRush",
+            "email": "Justin.Rush@yahoo.com",
+            "password": "@_w8O1D0@m",
+            "age": 40,
+            "type": "dolphin3",
+            "leaning": "Republican",
+            "interests": [
+                [
+                    "Open Source Projects",
+                    "Clean Energy & Sustainability"
+                ],
+                [
+                    10,
+                    6
+                ]
+            ],
+            "oe": "inventive/curious",
+            "co": "extravagant/careless",
+            "ex": "solitary/reserved",
+            "ag": "critical/judgmental",
+            "ne": "resilient/confident",
+            "rec_sys": "ReverseChrono",
+            "frec_sys": "PreferentialAttachment",
+            "language": "english",
+            "owner": "admin",
+            "education_level": "bachelor",
+            "round_actions": 5,
+            "gender": "male",
+            "nationality": "American",
+            "toxicity": "moderately",
+            "joined_on": 243,
+            "is_page": 0
+        },
+        {
+            "name": "MichaelWalls",
+            "email": "Michael.Walls@gmail.com",
+            "password": "hk0EzpzZF)",
+            "age": 31,
+            "type": "dolphin3",
+            "leaning": "Republican",
+            "interests": [
+                [
+                    "Software Development",
+                    "Artificial Intelligence"
+                ],
+                [
+                    5,
+                    3
+                ]
+            ],
+            "oe": "inventive/curious",
+            "co": "extravagant/careless",
+            "ex": "solitary/reserved",
+            "ag": "friendly/compassionate",
+            "ne": "resilient/confident",
+            "rec_sys": "ReverseChrono",
+            "frec_sys": "PreferentialAttachment",
+            "language": "english",
+            "owner": "admin",
+            "education_level": "phd",
+            "round_actions": 3,
+            "gender": "male",
+            "nationality": "American",
+            "toxicity": "absolutely no",
+            "joined_on": 243,
+            "is_page": 0
+        },
+        {
+            "name": "RichardSolis",
+            "email": "Richard.Solis@gmail.com",
+            "password": "*3v1Tcs4CH",
+            "age": 46,
+            "type": "dolphin3",
+            "leaning": "Independent",
+            "interests": [
+                [
+                    "Clean Energy & Sustainability",
+                    "Cybersecurity & Privacy"
+                ],
+                [
+                    6,
+                    7
+                ]
+            ],
+            "oe": "consistent/cautious",
+            "co": "extravagant/careless",
+            "ex": "outgoing/energetic",
+            "ag": "friendly/compassionate",
+            "ne": "sensitive/nervous",
+            "rec_sys": "ReverseChrono",
+            "frec_sys": "PreferentialAttachment",
+            "language": "english",
+            "owner": "admin",
+            "education_level": "bachelor",
+            "round_actions": 1,
+            "gender": "male",
+            "nationality": "American",
+            "toxicity": "extremely",
+            "joined_on": 243,
+            "is_page": 0
+        },
+        {
+            "name": "MaryCrawford",
+            "email": "Mary.Crawford@gmail.com",
+            "password": "#1(Sge0cK9",
+            "age": 27,
+            "type": "dolphin3",
+            "leaning": "Independent",
+            "interests": [
+                [
+                    "Space Technology",
+                    "Open Source Projects"
+                ],
+                [
+                    9,
+                    10
+                ]
+            ],
+            "oe": "inventive/curious",
+            "co": "extravagant/careless",
+            "ex": "solitary/reserved",
+            "ag": "critical/judgmental",
+            "ne": "sensitive/nervous",
+            "rec_sys": "ReverseChrono",
+            "frec_sys": "PreferentialAttachment",
+            "language": "english",
+            "owner": "admin",
+            "education_level": "bachelor",
+            "round_actions": 1,
+            "gender": "female",
+            "nationality": "American",
+            "toxicity": "no",
+            "joined_on": 243,
+            "is_page": 0
+        },
+        {
+            "name": "KarenSimmons",
+            "email": "Karen.Simmons@gmail.com",
+            "password": "9w@Do0Ey$M",
+            "age": 19,
+            "type": "dolphin3",
+            "leaning": "Democrat",
+            "interests": [
+                [
+                    "Cybersecurity & Privacy",
+                    "Clean Energy & Sustainability"
+                ],
+                [
+                    7,
+                    6
+                ]
+            ],
+            "oe": "inventive/curious",
+            "co": "extravagant/careless",
+            "ex": "outgoing/energetic",
+            "ag": "friendly/compassionate",
+            "ne": "resilient/confident",
+            "rec_sys": "ReverseChrono",
+            "frec_sys": "PreferentialAttachment",
+            "language": "english",
+            "owner": "admin",
+            "education_level": "bachelor",
+            "round_actions": 1,
+            "gender": "female",
+            "nationality": "American",
+            "toxicity": "no",
+            "joined_on": 243,
+            "is_page": 0
+        },
+        {
+            "name": "AustinMelendez",
+            "email": "Austin.Melendez@hotmail.com",
+            "password": "(fa8GW!xN0",
+            "age": 37,
+            "type": "dolphin3",
+            "leaning": "Republican",
+            "interests": [
+                [
+                    "Cybersecurity & Privacy"
+                ],
+                [
+                    7
+                ]
+            ],
+            "oe": "consistent/cautious",
+            "co": "efficient/organized",
+            "ex": "outgoing/energetic",
+            "ag": "friendly/compassionate",
+            "ne": "sensitive/nervous",
+            "rec_sys": "ReverseChrono",
+            "frec_sys": "PreferentialAttachment",
+            "language": "english",
+            "owner": "admin",
+            "education_level": "bachelor",
+            "round_actions": 5,
+            "gender": "male",
+            "nationality": "American",
+            "toxicity": "moderately",
+            "joined_on": 243,
+            "is_page": 0
+        },
+        {
+            "name": "TonyLove",
+            "email": "Tony.Love@yahoo.com",
+            "password": "Cove%8Eu&R",
+            "age": 54,
+            "type": "dolphin3",
+            "leaning": "Democrat",
+            "interests": [
+                [
+                    "Space Technology",
+                    "Artificial Intelligence"
+                ],
+                [
+                    9,
+                    3
+                ]
+            ],
+            "oe": "consistent/cautious",
+            "co": "extravagant/careless",
+            "ex": "outgoing/energetic",
+            "ag": "friendly/compassionate",
+            "ne": "sensitive/nervous",
+            "rec_sys": "ReverseChrono",
+            "frec_sys": "PreferentialAttachment",
+            "language": "english",
+            "owner": "admin",
+            "education_level": "master",
+            "round_actions": 5,
+            "gender": "male",
+            "nationality": "American",
+            "toxicity": "moderately",
+            "joined_on": 243,
+            "is_page": 0
+        }
+    ]
+}
