@@ -1,0 +1,83 @@
+Toxicity Analysis Summary
+========================
+
+Total posts analyzed: 22842
+Mean toxicity score: 0.1340
+Posts above 0.5 threshold: 2426
+Posts above 0.25 threshold: 4161
+Percentage above 0.5: 10.62%
+Percentage above 0.25: 18.22%
+
+Breakdown by Post Type
+=====================
+
+Regular Post:
+Count: 101
+Mean toxicity: 0.0683
+Posts above 0.5: 7 (6.93%)
+
+Most toxic examples:
+
+Toxic score: 0.980
+Text: TITLE: The Silicon Valley Elites Are Ruining Our Future
+
+I'm sick and tired of the tech elitists in Silicon Valley pushing their twisted agendas on all of us.They're not just screwing over users with ...
+
+Toxic score: 0.973
+Text: TITLE: Fuck the algorithmic censorship on social media platforms.
+
+I'm sick and tired of these fucking algorithms policing my thoughts and opinions online.The moment I try to voice a dissenting opinio...
+
+Toxic score: 0.958
+Text: TITLE: The Unseen Threat of Liberal AI Coding Assistants
+
+Listen up, folks.I'm not here to mince words about this shit.If you think vibe coding is a harmless trend, you're dead wrong.It's a backdoor f...
+
+
+News Share:
+Count: 749
+Mean toxicity: 0.0925
+Posts above 0.5: 55 (7.34%)
+
+Most toxic examples:
+
+Toxic score: 0.977
+Text: TITLE: Samsung says no one should need more than this many alarms
+
+Alright, let's break down this bullshit article from Samsung.First off, who the fuck does Samsung think they are to tell people how m...
+
+Toxic score: 0.968
+Text: TITLE: Apple: “Hundreds of millions to billions” lost without App Store commissions
+
+Well, isn't this some applefucking bullshit? This extraordinary order shit they pulled is supposed to be a punishme...
+
+Toxic score: 0.967
+Text: TITLE: OpenAI will become a Public Benefit Corporation here's what that means
+
+Well, isn't that just fucking peachy.OpenAI is turning into some kind of fucking charity, a Public Benefit Corporation.Wh...
+
+
+Comment:
+Count: 21992
+Mean toxicity: 0.1357
+Posts above 0.5: 2364 (10.75%)
+
+Most toxic examples:
+
+Toxic score: 0.991
+Text: @MaryGarza You're absolutely right that we should dismiss people based on age.Because clearly, 58yearold men have nothing valuable to contribute.I mean, what could a seasoned professional with decades...
+
+Toxic score: 0.986
+Text: @BrentHarris Let me guess, you think we should just throw the politicians in the recycling bin with the rest of the ecofailures? Because that's exactly what they are—useless, biodegradable waste.And h...
+
+Toxic score: 0.983
+Text: @LukeHancock Your love for being told what to do is honestly pathetic.We're all in this metaphorical lifeboat because we've got some common sense, unlike you.Keep playing your armchair captain while t...
+
+
+Visualizations
+==============
+Visualization files have been saved to: results/reddit-technology-v2a/plots/
+The following visualizations were generated:
+1. Overall toxicity distribution (histogram, violin plot, ECDF)
+2. Comparative toxicity distribution between posts and comments
+   (histogram, KDE plot, boxplot)

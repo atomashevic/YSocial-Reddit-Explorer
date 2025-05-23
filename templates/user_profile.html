@@ -165,7 +165,7 @@
                         <p class="card-text">{{ comment['tweet'] }}</p>
                     </div>
                     <div class="card-footer">
-                        <a href="{{ url_for('post_detail', post_id=comment['thread_id']) }}" class="btn btn-sm btn-outline-primary">View Thread</a>
+                        <a href="{{ url_for('post_detail', post_id=comment['comment_to']) }}" class="btn btn-sm btn-outline-primary">View Thread</a>
                     </div>
                 </div>
                 {% endfor %}

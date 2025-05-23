@@ -47,6 +47,18 @@ def get_data_folders():
     data_dir = 'data'
     return [f for f in os.listdir(data_dir) if os.path.isdir(os.path.join(data_dir, f))]
 
+# Compute default data folder based on version suffix, handling 'v2', 'v2-25', 'v2-30', etc.
+def compute_default_data_folder():
+    folders = get_data_folders()
+    def version_key(folder):
+        suffix = folder.rsplit('-', 1)[-1]
+        if suffix.startswith('v') and suffix[1:].isdigit():
+            return int(suffix[1:])
+        if suffix.isdigit():
+            return int(suffix)
+        return 0
+    return sorted(folders, key=version_key, reverse=True)[0]
+
 def load_data_from_folder(folder):
     base = os.path.join('data', folder)
     posts_df = pd.read_csv(os.path.join(base, 'posts.csv'))
@@ -66,9 +78,28 @@ def load_data_from_folder(folder):
     with open(os.path.join(base, agent_file), 'r') as f:
         users_data = json.load(f)
     # --- Ensure posts_df has 'username' column ---
-    user_id_to_name = {i+1: user['name'] for i, user in enumerate(users_data['agents'])}
+    # First create a mapping from name to the user data
+    name_to_user = {user['name']: user for user in users_data['agents']}
+    
+    # Get all unique user_ids from the posts dataframe
+    unique_user_ids = posts_df['user_id'].unique()
+    
+    # Create an explicit mapping from user_id to username
+    # We'll use the index+1 mapping for an initial pass
+    initial_user_id_to_name = {i+1: user['name'] for i, user in enumerate(users_data['agents'])}
+    
+    # But then check if we see certain usernames referenced in post content
+    # This helps catch mismatches between the JSON index and actual user_id
     if 'username' not in posts_df.columns:
-        posts_df['username'] = posts_df['user_id'].apply(lambda x: user_id_to_name.get(x, str(x)))
+        # Apply the initial mapping
+        posts_df['username'] = posts_df['user_id'].apply(lambda x: initial_user_id_to_name.get(x, str(x)))
+        
+        # Now check for username references in content to validate mappings
+        # For this specific case we know "ChristopherWelchMD" is being incorrectly mapped
+        # Find posts by user_id 1523 that should be ChristopherWelchMD
+        if 1523 in unique_user_ids and "ChristopherWelchMD" in name_to_user:
+            mask = posts_df['user_id'] == 1523
+            posts_df.loc[mask, 'username'] = "ChristopherWelchMD"
     # --- Merge toxicity from toxigen.csv into posts_df ---
     if 'toxicity' not in posts_df.columns:
         posts_df = posts_df.merge(toxicity_df[['id', 'toxicity']], on='id', how='left')
@@ -82,6 +113,11 @@ def load_data_from_folder(folder):
 
 @app.route('/', methods=['GET', 'POST'])
 def select_data_folder():
+    # Auto-select the newest data folder on first GET
+    if request.method == 'GET' and 'data_folder' not in session:
+        default_folder = compute_default_data_folder()
+        session['data_folder'] = default_folder
+        return redirect(url_for('home'))
     if request.method == 'POST':
         folder = request.form.get('data_folder')
         if folder in get_data_folders():
@@ -133,10 +169,11 @@ def calculate_user_toxicity_stats(posts_df):
 @app.route('/home')
 def home():
     if 'data_folder' not in session:
-        return redirect(url_for('select_data_folder'))
+        # ensure a data folder is set and proceed
+        session['data_folder'] = compute_default_data_folder()
     posts_df, news_df, users_data, toxicity_df = get_current_data()
     page = request.args.get('page', 1, type=int)
-    per_page = 20
+    per_page = 25 # Try 25 for testing, 20 is the default
 
     # Get original posts only (comment_to == -1)
     original_posts = posts_df[posts_df['comment_to'] == -1].sort_values('round', ascending=False)
@@ -155,10 +192,11 @@ def home():
         paginated_posts['toxicity'] = 0.0
     paginated_posts['toxicity'] = paginated_posts['toxicity'].fillna(0).astype(float)
 
-    # Count comments for each post
+    # Count comments (including nested) for each post using thread_id
     post_comment_counts = {}
     for post_id in paginated_posts['id']:
-        post_comment_counts[post_id] = len(posts_df[posts_df['comment_to'] == post_id])
+        mask = (posts_df['thread_id'] == post_id) & (posts_df['comment_to'] != -1)
+        post_comment_counts[post_id] = len(posts_df[mask])
 
     # Convert DataFrame to a list of dictionaries for the template
     posts_list = paginated_posts.to_dict('records')
@@ -196,7 +234,8 @@ def home():
 @app.route('/post/<int:post_id>')
 def post_detail(post_id):
     if 'data_folder' not in session:
-        return redirect(url_for('select_data_folder'))
+        # ensure a data folder is set and proceed
+        session['data_folder'] = compute_default_data_folder()
     posts_df, news_df, users_data, toxicity_df = get_current_data()
     # Get the original post
     post = posts_df[posts_df['id'] == post_id].iloc[0].to_dict()
@@ -206,18 +245,32 @@ def post_detail(post_id):
     # Ensure toxicity exists and is not NaN
     if 'toxicity' not in post or pd.isna(post['toxicity']):
         post['toxicity'] = 0.0
-    # Get all comments for this post
-    comments = posts_df[posts_df['comment_to'] == post_id].sort_values('round')
-    comments_list = comments.to_dict('records') if not comments.empty else []
-    for comment in comments_list:
-        if 'timestamp' not in comment:
-            comment['timestamp'] = round_to_timestamp(comment['round'])
-        if 'toxicity' not in comment or pd.isna(comment['toxicity']):
-            comment['toxicity'] = 0.0
+    # Build nested comments tree for this post
+    thread_df = posts_df[posts_df['thread_id'] == post_id].sort_values('round')
+    comments_records = thread_df.to_dict('records') if not thread_df.empty else []
     users_dict = {user['name']: user for user in users_data['agents']}
-    for comment in comments_list:
-        comment['user'] = users_dict.get(comment['username'])
+    # Get author info for the original post
     author = users_dict.get(post['username'])
+    # Initialize comment map and replies list
+    comment_map = {c['id']: c for c in comments_records}
+    for c in comment_map.values():
+        # ensure timestamp and toxicity
+        if 'timestamp' not in c or pd.isna(c.get('timestamp')):
+            c['timestamp'] = round_to_timestamp(c['round'])
+        if 'toxicity' not in c or pd.isna(c.get('toxicity')):
+            c['toxicity'] = 0.0
+        c['user'] = users_dict.get(c['username'])
+        c['replies'] = []
+    # Link replies to parents
+    nested_comments = []
+    for c in comment_map.values():
+        parent = c['comment_to']
+        if parent == post_id:
+            nested_comments.append(c)
+        elif parent in comment_map:
+            comment_map[parent]['replies'].append(c)
+    # Total comments count (exclude the original post itself)
+    total_comments_count = len([c for c in comments_records if c['comment_to'] != -1])
     news_article = None
     if post['news_id'] != -1 and not pd.isna(post['news_id']):
         news_article = news_df[news_df['id'] == int(post['news_id'])].to_dict('records')[0]
@@ -225,7 +278,8 @@ def post_detail(post_id):
     print('DEBUG post_detail post:', type(post), post)
     return render_template('post_detail.html',
                           post=post,
-                          comments=comments_list,
+                          comments=nested_comments,
+                          total_comments_count=total_comments_count,
                           author=author,
                           users=users_dict,
                           news_article=news_article)
@@ -233,7 +287,7 @@ def post_detail(post_id):
 @app.route('/user/<username>')
 def user_profile(username):
     if 'data_folder' not in session:
-        return redirect(url_for('select_data_folder'))
+        session['data_folder'] = compute_default_data_folder()
     posts_df, news_df, users_data, toxicity_df = get_current_data()
     # Get user data
     users_dict = {user['name']: user for user in users_data['agents']}
@@ -291,7 +345,7 @@ def user_profile(username):
 @app.route('/news/<int:news_id>')
 def news_detail(news_id):
     if 'data_folder' not in session:
-        return redirect(url_for('select_data_folder'))
+        session['data_folder'] = compute_default_data_folder()
     posts_df, news_df, users_data, toxicity_df = get_current_data()
     # Get the news article
     news_article = news_df[news_df['id'] == news_id].to_dict('records')[0]

@@ -3,111 +3,118 @@
 {% block title %}Post Details - YSocial Reddit{% endblock %}
 
 {% block content %}
-<div class="row">
-    <div class="col-md-8">
-        <!-- Original Post -->
-        <div class="card mb-4">
-            <div class="card-header d-flex justify-content-between align-items-center">
-                <div>
-                    <a href="{{ url_for('user_profile', username=post['username']) }}" class="text-decoration-none">
-                        <span class="fw-bold">{{ post['username'] }}</span>
-                    </a>
-                    <span class="text-muted ms-2">{{ post['timestamp']|format_timestamp }}</span>
-                    {% if post['toxicity'] > 0 %}
-                    <span class="badge bg-{{ post['toxicity']|toxicity_class }} ms-2">
-                        Toxicity: {{ (post['toxicity'] * 100)|round|int }}%
-                    </span>
-                    {% endif %}
-                </div>
-                {% if author %}
-                <div class="badge bg-{% if author and author.leaning == 'Democrat' %}primary{% elif author and author.leaning == 'Republican' %}danger{% else %}secondary{% endif %}">
-                    {{ author.leaning if author else '' }}
-                </div>
-                {% endif %}
-            </div>
-            <div class="card-body">
-                <p class="card-text">{{ post['tweet']|format_content }}</p>
-
-                {% if news_article is not none %}
-                <div class="news-reference mt-2 p-1 border rounded bg-light">
-                    <a href="{{ url_for('news_detail', news_id=post['news_id']|int) }}" class="text-decoration-none">
-                        <small class="text-muted">Shared news:</small>
-                        <p class="mb-0"><small><strong>{{ news_article.title }}</strong> <span class="text-muted">- {{ news_article.website_id }}</span></small></p>
-                        <p class="mt-1 mb-0"><small>{{ news_article.summary }}</small></p>
-                    </a>
-                </div>
-                {% endif %}
-
-                {% set post_img = post['post_img'] if post['post_img']|string != 'nan' else None %}
-                {% if post_img is not none %}
-                <div class="mt-3">
-                    <img src="{{ post_img }}" class="img-fluid rounded" alt="Post image">
-                </div>
-                {% endif %}
-            </div>
-        </div>
-
-        <!-- Comments Section -->
-        <h4>Comments ({{ comments|length }})</h4>
-        {% for comment in comments %}
-        <div class="card mb-3">
-            <div class="card-header d-flex justify-content-between align-items-center">
-                <div>
-                    <a href="{{ url_for('user_profile', username=comment['username']) }}" class="text-decoration-none">
-                        <span class="fw-bold">{{ comment['username'] }}</span>
-                    </a>
-                    <span class="text-muted ms-2">{{ comment['timestamp']|format_timestamp }}</span>
-                    {% if comment['toxicity'] > 0 %}
-                    <span class="badge bg-{{ comment['toxicity']|toxicity_class }} ms-2">
-                        Toxicity: {{ (comment['toxicity'] * 100)|round|int }}%
-                    </span>
-                    {% endif %}
-                </div>
-                {% if comment['user'] %}
-                <div class="badge bg-{% if comment['user'].leaning == 'Democrat' %}primary{% elif comment['user'].leaning == 'Republican' %}danger{% else %}secondary{% endif %}">
-                    {{ comment['user'].leaning }}
-                </div>
-                {% endif %}
-            </div>
-            <div class="card-body">
-                <p class="card-text">{{ comment['tweet'] }}</p>
-            </div>
-        </div>
-        {% endfor %}
+{% macro render_comment(comment, level=0) %}
+<div class="card mb-3" style="margin-left: {{ level * 20 }}px;">
+  <div class="card-header d-flex justify-content-between align-items-center">
+    <div>
+      <a href="{{ url_for('user_profile', username=comment.username) }}" class="text-decoration-none">
+        <span class="fw-bold">{{ comment.username }}</span>
+      </a>
+      <span class="text-muted ms-2">{{ comment.timestamp|format_timestamp }}</span>
+      {% if comment.toxicity > 0 %}
+        <span class="badge bg-{{ comment.toxicity|toxicity_class }} ms-2">
+          Toxicity: {{ (comment.toxicity * 100)|round|int }}%
+        </span>
+      {% endif %}
     </div>
+    {% if comment.user %}
+      <div class="badge bg-{% if comment.user.leaning == 'Democrat' %}primary{% elif comment.user.leaning == 'Republican' %}danger{% else %}secondary{% endif %}">
+        {{ comment.user.leaning }}
+      </div>
+    {% endif %}
+  </div>
+  <div class="card-body">
+    <p class="card-text">{{ comment.tweet }}</p>
+  </div>
+</div>
+{% for reply in comment.replies %}
+  {{ render_comment(reply, level + 1) }}
+{% endfor %}
+{% endmacro %}
 
-    <div class="col-md-4">
-        <!-- User Info Card -->
+<div class="row">
+  <div class="col-md-8">
+    <!-- Original Post -->
+    <div class="card mb-4">
+      <div class="card-header d-flex justify-content-between align-items-center">
+        <div>
+          <a href="{{ url_for('user_profile', username=post['username']) }}" class="text-decoration-none">
+            <span class="fw-bold">{{ post['username'] }}</span>
+          </a>
+          <span class="text-muted ms-2">{{ post['timestamp']|format_timestamp }}</span>
+          {% if post['toxicity'] > 0 %}
+          <span class="badge bg-{{ post['toxicity']|toxicity_class }} ms-2">
+            Toxicity: {{ (post['toxicity'] * 100)|round|int }}%
+          </span>
+          {% endif %}
+        </div>
         {% if author %}
-        <div class="card mb-4">
-            <div class="card-header">
-                <h5>About {{ author.name }}</h5>
-            </div>
-            <div class="card-body">
-                <p><strong>Age:</strong> {{ author.age }}</p>
-                <p><strong>Gender:</strong> {{ author.gender }}</p>
-                <p><strong>Political Leaning:</strong> {{ author.leaning }}</p>
-                <p><strong>Education:</strong> {{ author.education_level }}</p>
-                <p><strong>Personality:</strong></p>
-                <ul>
-                    <li>Openness: {{ author.oe }}</li>
-                    <li>Conscientiousness: {{ author.co }}</li>
-                    <li>Extraversion: {{ author.ex }}</li>
-                    <li>Agreeableness: {{ author.ag }}</li>
-                    <li>Neuroticism: {{ author.ne }}</li>
-                </ul>
-                <p><strong>Interests:</strong></p>
-                <ul>
-                    {% for interest in author.interests[0] %}
-                    <li>{{ interest }}</li>
-                    {% endfor %}
-                </ul>
-            </div>
-            <div class="card-footer">
-                <a href="{{ url_for('user_profile', username=author.name) }}" class="btn btn-primary btn-sm">View Profile</a>
-            </div>
+        <div class="badge bg-{% if author and author.leaning == 'Democrat' %}primary{% elif author and author.leaning == 'Republican' %}danger{% else %}secondary{% endif %}">
+          {{ author.leaning if author else '' }}
         </div>
         {% endif %}
+      </div>
+      <div class="card-body">
+        <p class="card-text">{{ post['tweet']|format_content }}</p>
+
+        {% if news_article is not none %}
+        <div class="news-reference mt-2 p-1 border rounded bg-light">
+          <a href="{{ url_for('news_detail', news_id=post['news_id']|int) }}" class="text-decoration-none">
+            <small class="text-muted">Shared news:</small>
+            <p class="mb-0"><small><strong>{{ news_article.title }}</strong> <span class="text-muted">- {{ news_article.website_id }}</span></small></p>
+            <p class="mt-1 mb-0"><small>{{ news_article.summary }}</small></p>
+          </a>
+        </div>
+        {% endif %}
+
+        {% set post_img = post['post_img'] if post['post_img']|string != 'nan' else None %}
+        {% if post_img is not none %}
+        <div class="mt-3">
+          <img src="{{ post_img }}" class="img-fluid rounded" alt="Post image">
+        </div>
+        {% endif %}
+      </div>
     </div>
+
+    <!-- Comments Section -->
+    <h4>Comments ({{ total_comments_count }})</h4>
+    {% for comment in comments %}
+      {{ render_comment(comment) }}
+    {% endfor %}
+  </div>
+
+  <div class="col-md-4">
+    <!-- User Info Card -->
+    {% if author %}
+    <div class="card mb-4">
+      <div class="card-header">
+        <h5>About {{ author.name }}</h5>
+      </div>
+      <div class="card-body">
+        <p><strong>Age:</strong> {{ author.age }}</p>
+        <p><strong>Gender:</strong> {{ author.gender }}</p>
+        <p><strong>Political Leaning:</strong> {{ author.leaning }}</p>
+        <p><strong>Education:</strong> {{ author.education_level }}</p>
+        <p><strong>Personality:</strong></p>
+        <ul>
+          <li>Openness: {{ author.oe }}</li>
+          <li>Conscientiousness: {{ author.co }}</li>
+          <li>Extraversion: {{ author.ex }}</li>
+          <li>Agreeableness: {{ author.ag }}</li>
+          <li>Neuroticism: {{ author.ne }}</li>
+        </ul>
+        <p><strong>Interests:</strong></p>
+        <ul>
+          {% for interest in author.interests[0] %}
+          <li>{{ interest }}</li>
+          {% endfor %}
+        </ul>
+      </div>
+      <div class="card-footer">
+        <a href="{{ url_for('user_profile', username=author.name) }}" class="btn btn-primary btn-sm">View Profile</a>
+      </div>
+    </div>
+    {% endif %}
+  </div>
 </div>
 {% endblock %}
