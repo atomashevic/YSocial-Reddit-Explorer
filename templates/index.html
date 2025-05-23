@@ -9,13 +9,74 @@
         font-size: 1.1rem;
         margin-bottom: 0.5rem;
     }
+    .form-range {
+        cursor: pointer;
+        margin-bottom: 1rem;
+    }
+    .form-range::-webkit-slider-thumb {
+        background-color: #0d6efd;
+        border: none;
+    }
+    .form-range::-moz-range-thumb {
+        background-color: #0d6efd;
+        border: none;
+    }
+    .slider-labels {
+        font-size: 0.75rem;
+        margin-top: -0.5rem;
+    }
 </style>
+<script>
+    function updateSliderValue(value) {
+        const displayValue = value == 10 ? '10+' : value;
+        document.getElementById('minCommentsValue').textContent = displayValue;
+    }
+</script>
 {% endblock %}
 
 {% block content %}
 <div class="row">
     <div class="col-md-8">
         <h1>YSocial Reddit Feed</h1>
+        
+        <!-- Comment Filter Panel -->
+        <div class="card mb-3">
+            <div class="card-header">
+                <h6 class="mb-0">Filter by Minimum Number of Comments</h6>
+            </div>
+            <div class="card-body py-3">
+                <form method="GET" id="commentFilterForm">
+                    <div class="row align-items-center">
+                        <div class="col-md-8">
+                            <label for="min_comments" class="form-label">Minimum comments: <span id="minCommentsValue">{{ min_comments if min_comments < 10 else '10+' }}</span></label>
+                            <input type="range" class="form-range" name="min_comments" id="min_comments" 
+                                   min="0" max="10" value="{{ min_comments if min_comments <= 10 else 10 }}" 
+                                   oninput="updateSliderValue(this.value)">
+                            <div class="d-flex justify-content-between text-muted slider-labels">
+                                <span>0</span>
+                                <span>1</span>
+                                <span>2</span>
+                                <span>3</span>
+                                <span>4</span>
+                                <span>5</span>
+                                <span>6</span>
+                                <span>7</span>
+                                <span>8</span>
+                                <span>9</span>
+                                <span>10+</span>
+                            </div>
+                        </div>
+                        <div class="col-md-4">
+                            <button type="submit" class="btn btn-primary btn-sm">Apply Filter</button>
+                            <a href="{{ url_for('home') }}" class="btn btn-outline-secondary btn-sm ms-2">Reset</a>
+                        </div>
+                    </div>
+                    {% if request.args.get('page') %}
+                    <input type="hidden" name="page" value="1">
+                    {% endif %}
+                </form>
+            </div>
+        </div>
 
         {% for post in posts %}
         <div class="card mb-3">
@@ -77,19 +138,19 @@
             <ul class="pagination">
                 {% if page > 1 %}
                 <li class="page-item">
-                    <a class="page-link" href="{{ url_for('home', page=page-1) }}">Previous</a>
+                    <a class="page-link" href="{{ url_for('home', page=page-1, min_comments=min_comments) }}">Previous</a>
                 </li>
                 {% endif %}
 
                 {% for p in range(max(1, page-2), min(total_pages+1, page+3)) %}
                 <li class="page-item {% if p == page %}active{% endif %}">
-                    <a class="page-link" href="{{ url_for('home', page=p) }}">{{ p }}</a>
+                    <a class="page-link" href="{{ url_for('home', page=p, min_comments=min_comments) }}">{{ p }}</a>
                 </li>
                 {% endfor %}
 
                 {% if page < total_pages %}
                 <li class="page-item">
-                    <a class="page-link" href="{{ url_for('home', page=page+1) }}">Next</a>
+                    <a class="page-link" href="{{ url_for('home', page=page+1, min_comments=min_comments) }}">Next</a>
                 </li>
                 {% endif %}
             </ul>

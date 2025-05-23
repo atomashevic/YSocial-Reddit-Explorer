@@ -91,28 +91,44 @@ def load_data_from_folder(folder):
     with open(os.path.join(base, agent_file), 'r') as f:
         users_data = json.load(f)
     # --- Ensure posts_df has 'username' column ---
-    # First create a mapping from name to the user data
-    name_to_user = {user['name']: user for user in users_data['agents']}
-    
-    # Get all unique user_ids from the posts dataframe
-    unique_user_ids = posts_df['user_id'].unique()
-    
-    # Create an explicit mapping from user_id to username
-    # We'll use the index+1 mapping for an initial pass
-    initial_user_id_to_name = {i+1: user['name'] for i, user in enumerate(users_data['agents'])}
-    
-    # But then check if we see certain usernames referenced in post content
-    # This helps catch mismatches between the JSON index and actual user_id
-    if 'username' not in posts_df.columns:
-        # Apply the initial mapping
-        posts_df['username'] = posts_df['user_id'].apply(lambda x: initial_user_id_to_name.get(x, str(x)))
+    # Try to use users.csv if available (has correct database IDs)
+    users_csv_path = os.path.join(base, 'users.csv')
+    if os.path.exists(users_csv_path):
+        # Load users.csv and create direct ID mapping
+        users_csv_df = pd.read_csv(users_csv_path)
+        id_to_username = dict(zip(users_csv_df['id'], users_csv_df['username']))
         
-        # Now check for username references in content to validate mappings
-        # For this specific case we know "ChristopherWelchMD" is being incorrectly mapped
-        # Find posts by user_id 1523 that should be ChristopherWelchMD
-        if 1523 in unique_user_ids and "ChristopherWelchMD" in name_to_user:
-            mask = posts_df['user_id'] == 1523
-            posts_df.loc[mask, 'username'] = "ChristopherWelchMD"
+        if 'username' not in posts_df.columns:
+            posts_df['username'] = posts_df['user_id'].apply(
+                lambda x: id_to_username.get(x, str(x))
+            )
+        
+        # Convert users.csv to agents format for compatibility
+        users_data = {'agents': []}
+        for _, row in users_csv_df.iterrows():
+            agent = {
+                'name': row['username'],
+                'id': row['id'],
+                'email': row.get('email', ''),
+                'age': row.get('age', 0),
+                'leaning': row.get('leaning', ''),
+                'gender': row.get('gender', ''),
+                'nationality': row.get('nationality', ''),
+                'education_level': row.get('education_level', ''),
+                'toxicity': row.get('toxicity', ''),
+                # Add other fields as needed
+            }
+            users_data['agents'].append(agent)
+    else:
+        # Fallback to simulation_agents.json with offset mapping
+        id_to_user = {user['id']: user for user in users_data['agents']}
+        
+        # Create mapping from user_id to username using agent ID field
+        # posts.csv uses 1-based user_ids, but agents use 0-based ids, so subtract 1
+        if 'username' not in posts_df.columns:
+            posts_df['username'] = posts_df['user_id'].apply(
+                lambda x: id_to_user[x-1]['name'] if (x-1) in id_to_user else str(x)
+            )
     # --- Merge toxicity from toxigen.csv into posts_df ---
     if 'toxicity' not in posts_df.columns:
         posts_df = posts_df.merge(toxicity_df[['id', 'toxicity']], on='id', how='left')
@@ -351,6 +367,23 @@ def home():
     # Get original posts only (comment_to == -1)
     original_posts = posts_df[posts_df['comment_to'] == -1].sort_values('round', ascending=False)
 
+    # Count comments for all posts first
+    all_comment_counts = {}
+    for post_id in original_posts['id']:
+        mask = (posts_df['thread_id'] == post_id) & (posts_df['comment_to'] != -1)
+        all_comment_counts[post_id] = len(posts_df[mask])
+
+    # Get comment filter parameters
+    min_comments = request.args.get('min_comments', 0, type=int)
+    
+    # Apply comment filter if specified
+    if min_comments > 0:
+        filtered_post_ids = [post_id for post_id, count in all_comment_counts.items() if count >= min_comments]
+        original_posts = original_posts[original_posts['id'].isin(filtered_post_ids)]
+
+    # Calculate max comments for filter options
+    max_comments = max(all_comment_counts.values()) if all_comment_counts else 0
+    
     # Pagination
     total_pages = (len(original_posts) + per_page - 1) // per_page
     start_idx = (page - 1) * per_page
@@ -365,11 +398,8 @@ def home():
         paginated_posts['toxicity'] = 0.0
     paginated_posts['toxicity'] = paginated_posts['toxicity'].fillna(0).astype(float)
 
-    # Count comments (including nested) for each post using thread_id
-    post_comment_counts = {}
-    for post_id in paginated_posts['id']:
-        mask = (posts_df['thread_id'] == post_id) & (posts_df['comment_to'] != -1)
-        post_comment_counts[post_id] = len(posts_df[mask])
+    # Get comment counts for paginated posts
+    post_comment_counts = {post_id: all_comment_counts[post_id] for post_id in paginated_posts['id']}
 
     # Convert DataFrame to a list of dictionaries for the template
     posts_list = paginated_posts.to_dict('records')
@@ -402,7 +432,9 @@ def home():
                           original_posts_count=original_posts_count,
                           comments_count=comments_count,
                           users_count=users_count,
-                          news_count=news_count)
+                          news_count=news_count,
+                          max_comments=max_comments,
+                          min_comments=min_comments)
 
 @app.route('/post/<int:post_id>')
 def post_detail(post_id):

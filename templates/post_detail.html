@@ -103,12 +103,6 @@
           <li>Agreeableness: {{ author.ag }}</li>
           <li>Neuroticism: {{ author.ne }}</li>
         </ul>
-        <p><strong>Interests:</strong></p>
-        <ul>
-          {% for interest in author.interests[0] %}
-          <li>{{ interest }}</li>
-          {% endfor %}
-        </ul>
       </div>
       <div class="card-footer">
         <a href="{{ url_for('user_profile', username=author.name) }}" class="btn btn-primary btn-sm">View Profile</a>
