@@ -6,3 +6,8 @@ Jinja2==3.1.2
 MarkupSafe==2.1.3
 itsdangerous==2.1.2
 click==8.1.7
+# Toxicity detection dependencies
+google-api-python-client>=2.0.0
+tqdm>=4.65.0
+# OpenAI moderation dependencies
+openai>=1.0.0

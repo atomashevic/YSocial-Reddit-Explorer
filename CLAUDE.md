@@ -25,11 +25,56 @@ To install required dependencies:
 pip install -r requirements.txt
 ```
 
+### Toxicity Detection
+
+Generate toxicity scores using Google Perspective API:
+
+```bash
+# Set up environment variable (get API key from Google Cloud Console)
+export PERSPECTIVE_API_KEY=your_api_key_here
+
+# Process all data folders
+python toxicity_detector.py
+
+# Process specific folders
+python toxicity_detector.py --folders reddit-technology-v2-25
+
+# Force reprocessing existing perspective.csv files
+python toxicity_detector.py --force
+
+# Verbose logging
+python toxicity_detector.py --verbose
+```
+
+### Content Moderation
+
+Generate content moderation scores using OpenAI Moderation API:
+
+```bash
+# Set up environment variable (get API key from OpenAI)
+export OPENAI_API_KEY=your_api_key_here
+
+# Process all data folders
+python openai_moderation.py
+
+# Process specific folders
+python openai_moderation.py --folders reddit-technology-v2-25
+
+# Force reprocessing existing moderation.csv files
+python openai_moderation.py --force
+
+# Custom rate limiting (default 1.0 seconds)
+python openai_moderation.py --delay 2.0
+
+# Verbose logging
+python openai_moderation.py --verbose
+```
+
 ## Architecture
 
 ### Data Structure
 
-The application uses three main data sources:
+The application supports multiple datasets through folder selection. Each dataset folder contains:
 
 1. **posts.csv**: Contains all posts and comments with metadata
    - Includes user ID, content, thread relationships, and news article references
@@ -39,6 +84,10 @@ The application uses three main data sources:
 
 3. **simulation_agents.json**: Contains details about simulated users
    - Includes demographics, political leaning, personality traits, and interests
+
+4. **toxigen.csv**: Contains toxicity analysis data for posts and comments
+
+The application automatically selects the newest dataset version on first visit but allows manual folder selection.
 
 ### Application Structure
 
