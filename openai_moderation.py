@@ -152,7 +152,7 @@ class DataProcessor:
             
     def detect_post_type(self, row: pd.Series) -> str:
         """Detect post type based on data."""
-        if pd.notna(row.get('is_comment')) and row['is_comment']:
+        if pd.notna(row.get('comment_to')):
             return 'comment'
         elif pd.notna(row.get('news_id')):
             return 'news_share'
@@ -166,7 +166,7 @@ class DataProcessor:
         for _, row in df.iterrows():
             post_data = {
                 'id': row['id'],
-                'content': str(row.get('content', '')),
+                'content': str(row.get('tweet', '')),
                 'post_type': self.detect_post_type(row),
                 'is_comment': bool(row.get('is_comment', False))
             }
