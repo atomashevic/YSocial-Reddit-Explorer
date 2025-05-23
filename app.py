@@ -64,6 +64,19 @@ def load_data_from_folder(folder):
     posts_df = pd.read_csv(os.path.join(base, 'posts.csv'))
     news_df = pd.read_csv(os.path.join(base, 'news.csv'))
     toxicity_df = pd.read_csv(os.path.join(base, 'toxigen.csv'))
+    
+    # Load additional moderation data if available
+    perspective_df = None
+    moderation_df = None
+    
+    perspective_path = os.path.join(base, 'perspective.csv')
+    if os.path.exists(perspective_path):
+        perspective_df = pd.read_csv(perspective_path)
+    
+    moderation_path = os.path.join(base, 'moderation.csv')
+    if os.path.exists(moderation_path):
+        moderation_df = pd.read_csv(moderation_path)
+    
     # --- Load the appropriate agents JSON fil  e ---
     agent_files = [f for f in os.listdir(base) if f.endswith('_agents.json')]
     # Always prefer simulation_agents.json
@@ -109,7 +122,7 @@ def load_data_from_folder(folder):
         posts_df['toxicity'] = posts_df.apply(
             lambda row: tox_map[row['id']] if row['id'] in tox_map else row['toxicity'], axis=1
         )
-    return posts_df, news_df, users_data, toxicity_df
+    return posts_df, news_df, users_data, toxicity_df, perspective_df, moderation_df
 
 @app.route('/', methods=['GET', 'POST'])
 def select_data_folder():
@@ -132,8 +145,8 @@ def get_current_data():
     if not folder:
         return None
     if not hasattr(g, 'data_cache') or g.get('data_cache_folder') != folder:
-        posts_df, news_df, users_data, toxicity_df = load_data_from_folder(folder)
-        g.data_cache = (posts_df, news_df, users_data, toxicity_df)
+        posts_df, news_df, users_data, toxicity_df, perspective_df, moderation_df = load_data_from_folder(folder)
+        g.data_cache = (posts_df, news_df, users_data, toxicity_df, perspective_df, moderation_df)
         g.data_cache_folder = folder
     return g.data_cache
 
@@ -166,12 +179,172 @@ def calculate_user_toxicity_stats(posts_df):
     
     return user_toxicity, percentiles
 
+# Enhanced user analytics with all moderation metrics
+def calculate_comprehensive_user_stats(posts_df, toxicity_df, perspective_df, moderation_df, target_username):
+    # Create comprehensive moderation data
+    moderation_data = create_moderation_data(posts_df, toxicity_df, perspective_df, moderation_df)
+    
+    # Filter for target user
+    user_data = moderation_data[moderation_data['username'] == target_username].copy()
+    
+    if user_data.empty:
+        return None
+    
+    # Calculate user-specific statistics
+    user_stats = {
+        'total_posts': len(user_data[user_data['comment_to'] == -1]),
+        'total_comments': len(user_data[user_data['comment_to'] != -1]),
+        'total_content': len(user_data)
+    }
+    
+    # Toxigen statistics
+    if 'toxigen_score' in user_data.columns:
+        toxigen_scores = user_data['toxigen_score'].dropna()
+        if not toxigen_scores.empty:
+            user_stats['toxigen'] = {
+                'avg_score': toxigen_scores.mean(),
+                'max_score': toxigen_scores.max(),
+                'high_toxicity_count': len(toxigen_scores[toxigen_scores >= 0.6]),
+                'total_scored': len(toxigen_scores)
+            }
+    
+    # Perspective statistics
+    if 'perspective_score' in user_data.columns:
+        perspective_scores = user_data['perspective_score'].dropna()
+        if not perspective_scores.empty:
+            user_stats['perspective'] = {
+                'avg_score': perspective_scores.mean(),
+                'max_score': perspective_scores.max(),
+                'high_toxicity_count': len(perspective_scores[perspective_scores >= 0.6]),
+                'total_scored': len(perspective_scores)
+            }
+    
+    # OpenAI moderation statistics
+    if 'flagged' in user_data.columns:
+        flagged_data = user_data['flagged'].dropna()
+        if not flagged_data.empty:
+            flagged_count = flagged_data.sum()
+            user_stats['openai_moderation'] = {
+                'flagged_count': int(flagged_count),
+                'total_checked': len(flagged_data),
+                'flagged_percentage': (flagged_count / len(flagged_data)) * 100
+            }
+            
+            # Category-specific flags
+            categories = ['hate', 'harassment', 'violence', 'sexual', 'self_harm']
+            user_stats['openai_categories'] = {}
+            for category in categories:
+                if category in user_data.columns:
+                    category_scores = user_data[category].dropna()
+                    if not category_scores.empty:
+                        user_stats['openai_categories'][category] = {
+                            'avg_score': category_scores.mean(),
+                            'max_score': category_scores.max(),
+                            'high_risk_count': len(category_scores[category_scores >= 0.5])
+                        }
+    
+    # Overall risk statistics
+    if 'overall_risk' in user_data.columns:
+        risk_scores = user_data['overall_risk'].dropna()
+        if not risk_scores.empty:
+            user_stats['overall_risk'] = {
+                'avg_risk': risk_scores.mean(),
+                'max_risk': risk_scores.max(),
+                'high_risk_count': len(risk_scores[risk_scores >= 0.6]),
+                'critical_risk_count': len(risk_scores[risk_scores >= 0.8])
+            }
+    
+    return user_stats
+
+# Generate risk distribution data for all users
+def calculate_user_risk_distribution(posts_df, toxicity_df, perspective_df, moderation_df):
+    # Create comprehensive moderation data
+    moderation_data = create_moderation_data(posts_df, toxicity_df, perspective_df, moderation_df)
+    
+    # Calculate average risk per user
+    user_risk_stats = moderation_data.groupby('username').agg({
+        'overall_risk': ['mean', 'count', 'max'],
+        'toxigen_score': 'mean',
+        'perspective_score': 'mean'
+    }).reset_index()
+    
+    # Flatten column names
+    user_risk_stats.columns = ['username', 'avg_risk', 'content_count', 'max_risk', 'avg_toxigen', 'avg_perspective']
+    
+    # Filter users with at least 3 pieces of content for meaningful stats
+    user_risk_stats = user_risk_stats[user_risk_stats['content_count'] >= 3]
+    
+    # Calculate percentiles for risk distribution
+    risk_percentiles = {
+        'p10': user_risk_stats['avg_risk'].quantile(0.10),
+        'p25': user_risk_stats['avg_risk'].quantile(0.25),
+        'p50': user_risk_stats['avg_risk'].quantile(0.50),
+        'p75': user_risk_stats['avg_risk'].quantile(0.75),
+        'p90': user_risk_stats['avg_risk'].quantile(0.90),
+        'p95': user_risk_stats['avg_risk'].quantile(0.95)
+    }
+    
+    return user_risk_stats, risk_percentiles
+
+# Merge all moderation data for a comprehensive view
+def create_moderation_data(posts_df, toxicity_df, perspective_df, moderation_df):
+    # Start with posts data
+    moderation_data = posts_df.copy()
+    
+    # Merge toxigen toxicity scores
+    if toxicity_df is not None:
+        toxicity_cols = ['id', 'toxicity']
+        if 'toxicity' in toxicity_df.columns:
+            moderation_data = moderation_data.merge(
+                toxicity_df[toxicity_cols].rename(columns={'toxicity': 'toxigen_score'}),
+                on='id', how='left'
+            )
+    
+    # Merge perspective API scores
+    if perspective_df is not None:
+        perspective_cols = ['id', 'toxicity']
+        if 'toxicity' in perspective_df.columns:
+            moderation_data = moderation_data.merge(
+                perspective_df[perspective_cols].rename(columns={'toxicity': 'perspective_score'}),
+                on='id', how='left'
+            )
+    
+    # Merge OpenAI moderation data
+    if moderation_df is not None:
+        moderation_cols = ['id', 'flagged']
+        # Add specific category scores if available
+        category_cols = ['sexual', 'harassment', 'hate', 'violence', 'self_harm']
+        available_cols = ['id'] + [col for col in category_cols if col in moderation_df.columns]
+        if 'flagged' in moderation_df.columns:
+            available_cols.append('flagged')
+        
+        moderation_data = moderation_data.merge(
+            moderation_df[available_cols],
+            on='id', how='left'
+        )
+    
+    # Add overall risk score (combination of all metrics)
+    risk_factors = []
+    if 'toxigen_score' in moderation_data.columns:
+        risk_factors.append(moderation_data['toxigen_score'].fillna(0))
+    if 'perspective_score' in moderation_data.columns:
+        risk_factors.append(moderation_data['perspective_score'].fillna(0))
+    if 'flagged' in moderation_data.columns:
+        risk_factors.append(moderation_data['flagged'].fillna(False).astype(int))
+    
+    if risk_factors:
+        moderation_data['overall_risk'] = sum(risk_factors) / len(risk_factors)
+    else:
+        moderation_data['overall_risk'] = 0
+    
+    return moderation_data
+
 @app.route('/home')
 def home():
     if 'data_folder' not in session:
         # ensure a data folder is set and proceed
         session['data_folder'] = compute_default_data_folder()
-    posts_df, news_df, users_data, toxicity_df = get_current_data()
+    posts_df, news_df, users_data, toxicity_df, perspective_df, moderation_df = get_current_data()
     page = request.args.get('page', 1, type=int)
     per_page = 25 # Try 25 for testing, 20 is the default
 
@@ -236,7 +409,7 @@ def post_detail(post_id):
     if 'data_folder' not in session:
         # ensure a data folder is set and proceed
         session['data_folder'] = compute_default_data_folder()
-    posts_df, news_df, users_data, toxicity_df = get_current_data()
+    posts_df, news_df, users_data, toxicity_df, perspective_df, moderation_df = get_current_data()
     # Get the original post
     post = posts_df[posts_df['id'] == post_id].iloc[0].to_dict()
     # Ensure timestamp exists
@@ -288,15 +461,18 @@ def post_detail(post_id):
 def user_profile(username):
     if 'data_folder' not in session:
         session['data_folder'] = compute_default_data_folder()
-    posts_df, news_df, users_data, toxicity_df = get_current_data()
+    posts_df, news_df, users_data, toxicity_df, perspective_df, moderation_df = get_current_data()
     # Get user data
     users_dict = {user['name']: user for user in users_data['agents']}
     user = users_dict.get(username)
     if not user:
         return "User not found", 404
 
-    # Get all posts and comments by this user
-    user_content = posts_df[posts_df['username'] == username].sort_values('round', ascending=False)
+    # Get comprehensive moderation data for all content
+    moderation_data = create_moderation_data(posts_df, toxicity_df, perspective_df, moderation_df)
+    
+    # Get all posts and comments by this user with moderation data
+    user_content = moderation_data[moderation_data['username'] == username].sort_values('round', ascending=False)
 
     # Separate posts and comments
     user_posts = user_content[user_content['comment_to'] == -1]
@@ -313,7 +489,7 @@ def user_profile(username):
         if 'timestamp' not in comment:
             comment['timestamp'] = round_to_timestamp(comment['round'])
     
-    # Get user toxicity statistics
+    # Get legacy toxicity statistics (for backward compatibility)
     user_toxicity_df, toxicity_percentiles = calculate_user_toxicity_stats(posts_df)
     user_toxicity_stats = user_toxicity_df[user_toxicity_df['username'] == username]
     toxicity_stats = None
@@ -334,19 +510,56 @@ def user_profile(username):
         else:
             toxicity_stats['position'] = 'top 5%'
 
+    # Get comprehensive user analytics
+    comprehensive_stats = calculate_comprehensive_user_stats(posts_df, toxicity_df, perspective_df, moderation_df, username)
+    
+    # Get risk distribution data
+    user_risk_distribution, risk_percentiles = calculate_user_risk_distribution(posts_df, toxicity_df, perspective_df, moderation_df)
+    
+    # Find user's position in risk distribution
+    user_risk_position = None
+    user_risk_percentile = None
+    if comprehensive_stats and 'overall_risk' in comprehensive_stats:
+        user_avg_risk = comprehensive_stats['overall_risk']['avg_risk']
+        # Calculate percentile rank
+        all_user_risks = user_risk_distribution['avg_risk']
+        user_risk_percentile = (all_user_risks <= user_avg_risk).mean() * 100
+        
+        # Determine position description
+        if user_risk_percentile <= 25:
+            user_risk_position = 'Low Risk (Bottom 25%)'
+        elif user_risk_percentile <= 50:
+            user_risk_position = 'Below Average Risk (25-50%)'
+        elif user_risk_percentile <= 75:
+            user_risk_position = 'Above Average Risk (50-75%)'
+        elif user_risk_percentile <= 90:
+            user_risk_position = 'High Risk (75-90%)'
+        else:
+            user_risk_position = 'Very High Risk (Top 10%)'
+    
+    # Prepare distribution data for chart (simplified for template)
+    distribution_data = {
+        'user_risk': comprehensive_stats['overall_risk']['avg_risk'] if comprehensive_stats and 'overall_risk' in comprehensive_stats else 0,
+        'user_percentile': user_risk_percentile or 0,
+        'percentiles': risk_percentiles,
+        'position_text': user_risk_position
+    }
+
     return render_template('user_profile.html',
                           user=user,
                           posts=user_posts_list,
                           comments=user_comments_list,
-                          news=news_df.to_dict('index'),
+                          news=news_df.set_index('id').to_dict('index'),
                           toxicity_stats=toxicity_stats,
-                          toxicity_percentiles=toxicity_percentiles)
+                          toxicity_percentiles=toxicity_percentiles,
+                          comprehensive_stats=comprehensive_stats,
+                          distribution_data=distribution_data)
 
 @app.route('/news/<int:news_id>')
 def news_detail(news_id):
     if 'data_folder' not in session:
         session['data_folder'] = compute_default_data_folder()
-    posts_df, news_df, users_data, toxicity_df = get_current_data()
+    posts_df, news_df, users_data, toxicity_df, perspective_df, moderation_df = get_current_data()
     # Get the news article
     news_article = news_df[news_df['id'] == news_id].to_dict('records')[0]
     if news_article is None:
@@ -404,6 +617,143 @@ def percentile_class(percentile_rank):
         return 'primary'
     else:
         return 'success'
+
+@app.template_filter('risk_level_text')
+def risk_level_text(risk_score):
+    if risk_score is None:
+        return 'Unknown'
+    if risk_score >= 0.8:
+        return 'Critical'
+    elif risk_score >= 0.6:
+        return 'High'
+    elif risk_score >= 0.4:
+        return 'Medium'
+    elif risk_score >= 0.2:
+        return 'Low'
+    else:
+        return 'Minimal'
+
+@app.template_filter('score_badge_class')
+def score_badge_class(score):
+    if score is None:
+        return 'secondary'
+    if score >= 0.8:
+        return 'danger'
+    elif score >= 0.6:
+        return 'warning'
+    elif score >= 0.4:
+        return 'info'
+    else:
+        return 'success'
+
+@app.route('/moderation')
+def moderation():
+    if 'data_folder' not in session:
+        session['data_folder'] = compute_default_data_folder()
+    
+    posts_df, news_df, users_data, toxicity_df, perspective_df, moderation_df = get_current_data()
+    
+    # Create comprehensive moderation data
+    moderation_data = create_moderation_data(posts_df, toxicity_df, perspective_df, moderation_df)
+    
+    # Get filtering parameters from request
+    toxigen_threshold = request.args.get('toxigen_threshold', 0.0, type=float)
+    perspective_threshold = request.args.get('perspective_threshold', 0.0, type=float)
+    flagged_only = request.args.get('flagged_only', False, type=bool)
+    content_type = request.args.get('content_type', 'all')
+    sort_by = request.args.get('sort_by', 'overall_risk')
+    sort_order = request.args.get('sort_order', 'desc')
+    search_query = request.args.get('search', '').strip()
+    
+    # Apply filters
+    filtered_data = moderation_data.copy()
+    
+    # Filter by toxigen threshold
+    if 'toxigen_score' in filtered_data.columns:
+        filtered_data = filtered_data[filtered_data['toxigen_score'].fillna(0) >= toxigen_threshold]
+    
+    # Filter by perspective threshold
+    if 'perspective_score' in filtered_data.columns:
+        filtered_data = filtered_data[filtered_data['perspective_score'].fillna(0) >= perspective_threshold]
+    
+    # Filter by flagged status
+    if flagged_only and 'flagged' in filtered_data.columns:
+        filtered_data = filtered_data[filtered_data['flagged'] == True]
+    
+    # Filter by content type
+    if content_type == 'posts':
+        filtered_data = filtered_data[filtered_data['comment_to'] == -1]
+    elif content_type == 'comments':
+        filtered_data = filtered_data[filtered_data['comment_to'] != -1]
+    
+    # Filter by search query
+    if search_query:
+        filtered_data = filtered_data[
+            filtered_data['tweet'].str.contains(search_query, case=False, na=False)
+        ]
+    
+    # Sort data
+    sort_columns = {
+        'overall_risk': 'overall_risk',
+        'toxigen_score': 'toxigen_score',
+        'perspective_score': 'perspective_score',
+        'timestamp': 'round'
+    }
+    
+    if sort_by in sort_columns:
+        ascending = sort_order == 'asc'
+        filtered_data = filtered_data.sort_values(
+            sort_columns[sort_by], 
+            ascending=ascending, 
+            na_position='last'
+        )
+    
+    # Pagination
+    page = request.args.get('page', 1, type=int)
+    per_page = 25
+    total_items = len(filtered_data)
+    total_pages = (total_items + per_page - 1) // per_page
+    
+    start_idx = (page - 1) * per_page
+    end_idx = start_idx + per_page
+    paginated_data = filtered_data.iloc[start_idx:end_idx].copy()
+    
+    # Add timestamps and user data
+    if 'timestamp' not in paginated_data.columns:
+        paginated_data['timestamp'] = paginated_data['round'].apply(round_to_timestamp)
+    
+    # Convert to list of dictionaries
+    moderation_list = paginated_data.to_dict('records')
+    
+    # Add user information
+    users_dict = {user['name']: user for user in users_data['agents']}
+    for item in moderation_list:
+        item['user'] = users_dict.get(item['username'])
+        if 'timestamp' not in item:
+            item['timestamp'] = round_to_timestamp(item['round'])
+    
+    # Calculate statistics
+    stats = {
+        'total_items': len(moderation_data),
+        'filtered_items': total_items,
+        'high_risk_items': len(moderation_data[moderation_data['overall_risk'] >= 0.7]),
+        'flagged_items': len(moderation_data[moderation_data.get('flagged', False) == True]) if 'flagged' in moderation_data.columns else 0
+    }
+    
+    return render_template('moderation.html',
+                          items=moderation_list,
+                          page=page,
+                          total_pages=total_pages,
+                          stats=stats,
+                          filters={
+                              'toxigen_threshold': toxigen_threshold,
+                              'perspective_threshold': perspective_threshold,
+                              'flagged_only': flagged_only,
+                              'content_type': content_type,
+                              'sort_by': sort_by,
+                              'sort_order': sort_order,
+                              'search': search_query
+                          })
 
 if __name__ == '__main__':
     app.run(debug=True)

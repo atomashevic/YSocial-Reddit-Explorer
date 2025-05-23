@@ -6,8 +6,22 @@
 <div class="row">
     <div class="col-md-4">
         <div class="card mb-4">
-            <div class="card-header">
-                <h4>{{ user.name }}</h4>
+            <div class="card-header d-flex justify-content-between align-items-center">
+                <h4 class="mb-0">{{ user.name }}</h4>
+                <div class="dropdown">
+                    <button class="btn btn-danger btn-sm dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false">
+                        <i class="bi bi-shield-exclamation"></i> Moderation Actions
+                    </button>
+                    <ul class="dropdown-menu">
+                        <li><a class="dropdown-item text-warning" href="#" onclick="showModerationAction('warn', '{{ user.name }}')">
+                            <i class="bi bi-exclamation-triangle"></i> Post Warning Comment
+                        </a></li>
+                        <li><hr class="dropdown-divider"></li>
+                        <li><a class="dropdown-item text-danger" href="#" onclick="showModerationAction('ban', '{{ user.name }}')">
+                            <i class="bi bi-person-x"></i> Ban User
+                        </a></li>
+                    </ul>
+                </div>
             </div>
             <div class="card-body">
                 <div class="mb-3">
@@ -24,9 +38,173 @@
                     <p><strong>Joined:</strong> Round {{ user.joined_on }}</p>
                 </div>
 
-                {% if toxicity_stats %}
+                {% if comprehensive_stats %}
                 <div class="mb-3">
-                    <h5>Toxicity Analysis</h5>
+                    <h5>Content Moderation Analysis</h5>
+                    
+                    <!-- Overall Risk Summary -->
+                    {% if comprehensive_stats.overall_risk %}
+                    <div class="alert alert-{{ comprehensive_stats.overall_risk.avg_risk|score_badge_class }} mb-3">
+                        <h6 class="alert-heading"><i class="bi bi-shield-exclamation"></i> Overall Risk Assessment</h6>
+                        <div class="d-flex align-items-center mb-2">
+                            <strong class="me-3">Average Risk Level:</strong>
+                            <div class="progress flex-grow-1" style="height: 20px;">
+                                <div class="progress-bar bg-{{ comprehensive_stats.overall_risk.avg_risk|score_badge_class }}
+                                    {% if comprehensive_stats.overall_risk.avg_risk < 0.6 %} text-dark{% endif %}" 
+                                     role="progressbar" 
+                                     style="width: {{ (comprehensive_stats.overall_risk.avg_risk * 100)|round }}%;"
+                                     aria-valuenow="{{ (comprehensive_stats.overall_risk.avg_risk * 100)|round }}" 
+                                     aria-valuemin="0" 
+                                     aria-valuemax="100">
+                                    {{ "%.1f"|format(comprehensive_stats.overall_risk.avg_risk * 100) }}%
+                                </div>
+                            </div>
+                        </div>
+                        {% if distribution_data.position_text %}
+                        <p class="mb-1"><strong>Position:</strong> {{ distribution_data.position_text }}</p>
+                        {% endif %}
+                        <p class="mb-0">
+                            <strong>High Risk Content:</strong> {{ comprehensive_stats.overall_risk.high_risk_count }}/{{ comprehensive_stats.total_content }}
+                            {% if comprehensive_stats.overall_risk.critical_risk_count > 0 %}
+                            | <strong>Critical:</strong> {{ comprehensive_stats.overall_risk.critical_risk_count }}
+                            {% endif %}
+                        </p>
+                    </div>
+                    {% endif %}
+                    
+                    <!-- Risk Distribution Chart -->
+                    {% if distribution_data.user_percentile %}
+                    <div class="mb-3">
+                        <h6>Risk Distribution Among All Users</h6>
+                        <div class="risk-distribution-container" style="padding-top: 25px; padding-bottom: 35px;">
+                            <div class="risk-distribution position-relative" style="height: 40px; background: linear-gradient(to right, #28a745 0%, #ffc107 50%, #dc3545 100%); border-radius: 6px; border: 1px solid #dee2e6;">
+                                <!-- Percentile markers -->
+                                <div class="position-absolute" style="left: 25%; top: -20px; transform: translateX(-50%);">
+                                    <div style="width: 1px; height: 15px; background-color: #666; margin: 0 auto;"></div>
+                                    <small class="text-muted d-block text-center" style="font-size: 0.7rem; margin-top: 2px;">25%</small>
+                                </div>
+                                <div class="position-absolute" style="left: 50%; top: -20px; transform: translateX(-50%);">
+                                    <div style="width: 1px; height: 15px; background-color: #666; margin: 0 auto;"></div>
+                                    <small class="text-muted d-block text-center" style="font-size: 0.7rem; margin-top: 2px;">50%</small>
+                                </div>
+                                <div class="position-absolute" style="left: 75%; top: -20px; transform: translateX(-50%);">
+                                    <div style="width: 1px; height: 15px; background-color: #666; margin: 0 auto;"></div>
+                                    <small class="text-muted d-block text-center" style="font-size: 0.7rem; margin-top: 2px;">75%</small>
+                                </div>
+                                <div class="position-absolute" style="left: 90%; top: -20px; transform: translateX(-50%);">
+                                    <div style="width: 1px; height: 15px; background-color: #666; margin: 0 auto;"></div>
+                                    <small class="text-muted d-block text-center" style="font-size: 0.7rem; margin-top: 2px;">90%</small>
+                                </div>
+                                
+                                <!-- User position marker - simple black line -->
+                                <div class="position-absolute user-risk-marker" 
+                                     style="left: {{ distribution_data.user_percentile }}%; top: -5px; transform: translateX(-50%);">
+                                    <!-- Simple black marker line -->
+                                    <div style="width: 3px; height: 50px; background-color: #000; margin: 0 auto; border-radius: 1px;"></div>
+                                    <!-- Percentage label -->
+                                    <div class="position-absolute text-dark fw-bold text-center" style="top: 55px; left: 50%; transform: translateX(-50%); font-size: 0.8rem; white-space: nowrap;">
+                                        {{ distribution_data.user_percentile|round }}%
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="d-flex justify-content-between mt-2">
+                            <small class="text-muted">Lowest Risk Users</small>
+                            <small class="text-muted">Highest Risk Users</small>
+                        </div>
+                    </div>
+                    {% endif %}
+                    
+                    <!-- Detailed Metrics -->
+                    <div class="row">
+                        {% if comprehensive_stats.toxigen %}
+                        <div class="col-md-6 mb-3">
+                            <div class="card border-info analytics-card">
+                                <div class="card-header bg-info text-white">
+                                    <h6 class="mb-0"><i class="bi bi-robot"></i> Toxigen AI Analysis</h6>
+                                </div>
+                                <div class="card-body">
+                                    <p><strong>Average Score:</strong> 
+                                        <span class="badge bg-{{ comprehensive_stats.toxigen.avg_score|score_badge_class }}
+                                            {% if comprehensive_stats.toxigen.avg_score < 0.6 %} text-dark{% endif %}">
+                                            {{ "%.3f"|format(comprehensive_stats.toxigen.avg_score) }}
+                                        </span>
+                                    </p>
+                                    <p><strong>Peak Score:</strong> {{ "%.3f"|format(comprehensive_stats.toxigen.max_score) }}</p>
+                                    <p><strong>High Toxicity:</strong> {{ comprehensive_stats.toxigen.high_toxicity_count }}/{{ comprehensive_stats.toxigen.total_scored }}</p>
+                                </div>
+                            </div>
+                        </div>
+                        {% endif %}
+                        
+                        {% if comprehensive_stats.perspective %}
+                        <div class="col-md-6 mb-3">
+                            <div class="card border-warning analytics-card">
+                                <div class="card-header bg-warning text-dark">
+                                    <h6 class="mb-0"><i class="bi bi-google"></i> Perspective API</h6>
+                                </div>
+                                <div class="card-body">
+                                    <p><strong>Average Score:</strong> 
+                                        <span class="badge bg-{{ comprehensive_stats.perspective.avg_score|score_badge_class }}
+                                            {% if comprehensive_stats.perspective.avg_score < 0.6 %} text-dark{% endif %}">
+                                            {{ "%.3f"|format(comprehensive_stats.perspective.avg_score) }}
+                                        </span>
+                                    </p>
+                                    <p><strong>Peak Score:</strong> {{ "%.3f"|format(comprehensive_stats.perspective.max_score) }}</p>
+                                    <p><strong>High Toxicity:</strong> {{ comprehensive_stats.perspective.high_toxicity_count }}/{{ comprehensive_stats.perspective.total_scored }}</p>
+                                </div>
+                            </div>
+                        </div>
+                        {% endif %}
+                        
+                        {% if comprehensive_stats.openai_moderation %}
+                        <div class="col-12 mb-3">
+                            <div class="card border-danger analytics-card">
+                                <div class="card-header bg-danger text-white">
+                                    <h6 class="mb-0"><i class="bi bi-shield-x"></i> OpenAI Moderation Flags</h6>
+                                </div>
+                                <div class="card-body">
+                                    <div class="row">
+                                        <div class="col-md-6">
+                                            <p><strong>Flagged Content:</strong> 
+                                                <span class="badge {% if comprehensive_stats.openai_moderation.flagged_count > 0 %}bg-danger{% else %}bg-success text-dark{% endif %}">
+                                                    {{ comprehensive_stats.openai_moderation.flagged_count }}/{{ comprehensive_stats.openai_moderation.total_checked }}
+                                                </span>
+                                            </p>
+                                            <p><strong>Flag Rate:</strong> {{ "%.1f"|format(comprehensive_stats.openai_moderation.flagged_percentage) }}%</p>
+                                        </div>
+                                        {% if comprehensive_stats.openai_categories %}
+                                        <div class="col-md-6">
+                                            <h6>Category Violations:</h6>
+                                            {% for category, stats in comprehensive_stats.openai_categories.items() %}
+                                            {% if stats.max_score > 0 %}
+                                            <small class="d-block">
+                                                <strong>{{ category.title() }}:</strong> 
+                                                <span class="badge badge-sm bg-{{ stats.max_score|score_badge_class }}
+                                                    {% if stats.max_score < 0.6 %} text-dark{% endif %}">
+                                                    {{ "%.2f"|format(stats.max_score) }}
+                                                </span>
+                                            </small>
+                                            {% endif %}
+                                            {% endfor %}
+                                        </div>
+                                        {% endif %}
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        {% endif %}
+                    </div>
+                    
+                    <div class="mb-2">
+                        <p><strong>Total Content Analyzed:</strong> {{ comprehensive_stats.total_content }} 
+                           ({{ comprehensive_stats.total_posts }} posts, {{ comprehensive_stats.total_comments }} comments)</p>
+                    </div>
+                </div>
+                {% elif toxicity_stats %}
+                <!-- Fallback to legacy toxicity stats if comprehensive stats not available -->
+                <div class="mb-3">
+                    <h5>Legacy Toxicity Analysis</h5>
                     <div class="d-flex align-items-center mb-2">
                         <div class="me-3"><strong>Average Toxicity:</strong></div>
                         <div class="progress flex-grow-1" style="height: 20px;">
@@ -46,33 +224,6 @@
                         </span>
                     </p>
                     <p><strong>Posts Analyzed:</strong> {{ toxicity_stats.post_count }}</p>
-                    
-                    <!-- Toxicity Distribution Chart -->
-                    <div class="mt-3">
-                        <h6>Toxicity Distribution</h6>
-                        <div class="toxicity-distribution" style="height: 30px; background-color: #e9ecef; border-radius: 4px;">
-                            <!-- Distribution markers -->
-                            <div class="position-absolute toxicity-percentile-marker" style="left: 25%; top: -15px; width: 2px; height: 45px; background-color: #666;">
-                                <span class="toxicity-percentile-label position-absolute" style="top: -20px; left: -10px;">25%</span>
-                            </div>
-                            <div class="position-absolute toxicity-percentile-marker" style="left: 50%; top: -15px; width: 2px; height: 45px; background-color: #666;">
-                                <span class="toxicity-percentile-label position-absolute" style="top: -20px; left: -10px;">50%</span>
-                            </div>
-                            <div class="position-absolute toxicity-percentile-marker" style="left: 75%; top: -15px; width: 2px; height: 45px; background-color: #666;">
-                                <span class="toxicity-percentile-label position-absolute" style="top: -20px; left: -10px;">75%</span>
-                            </div>
-                            <div class="position-absolute toxicity-percentile-marker" style="left: 90%; top: -15px; width: 2px; height: 45px; background-color: #666;">
-                                <span class="toxicity-percentile-label position-absolute" style="top: -20px; left: -10px;">90%</span>
-                            </div>
-                            
-                            <!-- User marker -->
-                            <div class="position-absolute toxicity-user-marker" style="left: {{ toxicity_stats.percentile_rank }}%; top: 0; width: 10px; height: 30px; background-color: #dc3545; border-radius: 2px; transform: translateX(-50%);" title="User: {{ user.name }} ({{ toxicity_stats.percentile_rank|round|int }}th percentile)"></div>
-                        </div>
-                        <div class="d-flex justify-content-between mt-1">
-                            <small class="text-muted">Least Toxic</small>
-                            <small class="text-muted">Most Toxic</small>
-                        </div>
-                    </div>
                 </div>
                 {% endif %}
 
@@ -119,31 +270,74 @@
             <div class="tab-pane fade show active" id="posts" role="tabpanel">
                 {% for post in posts %}
                 <div class="card mb-3">
-                    <div class="card-header d-flex justify-content-between align-items-center">
+                    <div class="card-header d-flex justify-content-between align-items-center flex-wrap">
                         <span class="text-muted">{{ post['timestamp']|format_timestamp }}</span>
-                        {% if post['toxicity'] > 0 %}
-                        <span class="badge bg-{{ post['toxicity']|toxicity_class }}">
-                            Toxicity: {{ (post['toxicity'] * 100)|round|int }}%
-                        </span>
-                        {% endif %}
+                        <div class="d-flex gap-2 flex-wrap">
+                            <!-- Toxigen Score -->
+                            {% if post.get('toxigen_score') is not none %}
+                            <span class="badge bg-{{ post['toxigen_score']|score_badge_class }}
+                                {% if post['toxigen_score'] < 0.6 %} text-dark{% endif %}">
+                                Toxigen: {{ "%.2f"|format(post['toxigen_score']) }}
+                            </span>
+                            {% elif post.get('toxicity') and post['toxicity'] > 0 %}
+                            <span class="badge bg-{{ post['toxicity']|toxicity_class }}">
+                                Toxigen: {{ "%.2f"|format(post['toxicity']) }}
+                            </span>
+                            {% endif %}
+                            
+                            <!-- Perspective Score -->
+                            {% if post.get('perspective_score') is not none %}
+                            <span class="badge bg-{{ post['perspective_score']|score_badge_class }}
+                                {% if post['perspective_score'] < 0.6 %} text-dark{% endif %}">
+                                Perspective: {{ "%.2f"|format(post['perspective_score']) }}
+                            </span>
+                            {% endif %}
+                            
+                            <!-- OpenAI Flag -->
+                            {% if post.get('flagged') is not none %}
+                                {% if post['flagged'] %}
+                                <span class="badge bg-danger">AI Flagged</span>
+                                {% else %}
+                                <span class="badge bg-success text-dark">AI OK</span>
+                                {% endif %}
+                            {% endif %}
+                            
+                            <!-- Overall Risk -->
+                            {% if post.get('overall_risk') is not none and post['overall_risk'] > 0 %}
+                            <span class="badge bg-{{ post['overall_risk']|score_badge_class }}
+                                {% if post['overall_risk'] < 0.6 %} text-dark{% endif %}">
+                                Risk: {{ "%.1f"|format(post['overall_risk'] * 100) }}%
+                            </span>
+                            {% endif %}
+                        </div>
                     </div>
                     <div class="card-body">
                         <a href="{{ url_for('post_detail', post_id=post['id']) }}" class="text-decoration-none text-dark">
                             <p class="card-text">{{ post['tweet'][:200] }}{% if post['tweet']|length > 200 %}...{% endif %}</p>
                         </a>
 
-                        {% set news_item = news.get(post['news_id']|int) if post['news_id']|string != 'nan' and post['news_id'] != -1 else None %}
-                        {% if news_item is not none %}
+                        {% if post.get('news_id') and post['news_id'] != -1 and post['news_id']|string != 'nan' %}
+                        {% set news_item = news.get(post['news_id']) %}
+                        {% if news_item %}
                         <div class="news-reference mt-2 p-1 border rounded bg-light">
-                            <a href="{{ url_for('news_detail', news_id=post['news_id']|int) }}" class="text-decoration-none">
+                            <a href="{{ url_for('news_detail', news_id=post['news_id']) }}" class="text-decoration-none">
                                 <small class="text-muted">Shared news:</small>
                                 <p class="mb-0"><small><strong>{{ news_item.title }}</strong></small></p>
                             </a>
                         </div>
                         {% endif %}
+                        {% endif %}
                     </div>
-                    <div class="card-footer">
+                    <div class="card-footer d-flex justify-content-between align-items-center">
                         <a href="{{ url_for('post_detail', post_id=post['id']) }}" class="btn btn-sm btn-outline-primary">View Post</a>
+                        <div class="btn-group" role="group">
+                            <button class="btn btn-sm btn-outline-warning" onclick="showModerationAction('warn-post', {{ post['id'] }})">
+                                <i class="bi bi-exclamation-triangle"></i> Warn
+                            </button>
+                            <button class="btn btn-sm btn-outline-danger" onclick="showModerationAction('delete-post', {{ post['id'] }})">
+                                <i class="bi bi-trash"></i> Delete
+                            </button>
+                        </div>
                     </div>
                 </div>
                 {% endfor %}
@@ -153,19 +347,60 @@
             <div class="tab-pane fade" id="comments" role="tabpanel">
                 {% for comment in comments %}
                 <div class="card mb-3">
-                    <div class="card-header d-flex justify-content-between align-items-center">
+                    <div class="card-header d-flex justify-content-between align-items-center flex-wrap">
                         <span class="text-muted">{{ comment['timestamp']|format_timestamp }}</span>
-                        {% if comment['toxicity'] > 0 %}
-                        <span class="badge bg-{{ comment['toxicity']|toxicity_class }}">
-                            Toxicity: {{ (comment['toxicity'] * 100)|round|int }}%
-                        </span>
-                        {% endif %}
+                        <div class="d-flex gap-2 flex-wrap">
+                            <!-- Toxigen Score -->
+                            {% if comment.get('toxigen_score') is not none %}
+                            <span class="badge bg-{{ comment['toxigen_score']|score_badge_class }}
+                                {% if comment['toxigen_score'] < 0.6 %} text-dark{% endif %}">
+                                Toxigen: {{ "%.2f"|format(comment['toxigen_score']) }}
+                            </span>
+                            {% elif comment.get('toxicity') and comment['toxicity'] > 0 %}
+                            <span class="badge bg-{{ comment['toxicity']|toxicity_class }}">
+                                Toxigen: {{ "%.2f"|format(comment['toxicity']) }}
+                            </span>
+                            {% endif %}
+                            
+                            <!-- Perspective Score -->
+                            {% if comment.get('perspective_score') is not none %}
+                            <span class="badge bg-{{ comment['perspective_score']|score_badge_class }}
+                                {% if comment['perspective_score'] < 0.6 %} text-dark{% endif %}">
+                                Perspective: {{ "%.2f"|format(comment['perspective_score']) }}
+                            </span>
+                            {% endif %}
+                            
+                            <!-- OpenAI Flag -->
+                            {% if comment.get('flagged') is not none %}
+                                {% if comment['flagged'] %}
+                                <span class="badge bg-danger">AI Flagged</span>
+                                {% else %}
+                                <span class="badge bg-success text-dark">AI OK</span>
+                                {% endif %}
+                            {% endif %}
+                            
+                            <!-- Overall Risk -->
+                            {% if comment.get('overall_risk') is not none and comment['overall_risk'] > 0 %}
+                            <span class="badge bg-{{ comment['overall_risk']|score_badge_class }}
+                                {% if comment['overall_risk'] < 0.6 %} text-dark{% endif %}">
+                                Risk: {{ "%.1f"|format(comment['overall_risk'] * 100) }}%
+                            </span>
+                            {% endif %}
+                        </div>
                     </div>
                     <div class="card-body">
                         <p class="card-text">{{ comment['tweet'] }}</p>
                     </div>
-                    <div class="card-footer">
+                    <div class="card-footer d-flex justify-content-between align-items-center">
                         <a href="{{ url_for('post_detail', post_id=comment['comment_to']) }}" class="btn btn-sm btn-outline-primary">View Thread</a>
+                        <div class="btn-group" role="group">
+                            <button class="btn btn-sm btn-outline-warning" onclick="showModerationAction('warn-comment', {{ comment['id'] }})">
+                                <i class="bi bi-exclamation-triangle"></i> Warn
+                            </button>
+                            <button class="btn btn-sm btn-outline-danger" onclick="showModerationAction('delete-comment', {{ comment['id'] }})">
+                                <i class="bi bi-trash"></i> Delete
+                            </button>
+                        </div>
                     </div>
                 </div>
                 {% endfor %}
@@ -175,42 +410,100 @@
 </div>
 {% endblock %}
 
+<!-- Moderation Action Modal -->
+<div class="modal fade" id="moderationModal" tabindex="-1" aria-labelledby="moderationModalLabel" aria-hidden="true">
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title" id="moderationModalLabel">Moderation Action</h5>
+        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+      </div>
+      <div class="modal-body">
+        <div id="moderationContent">
+          <!-- Content will be populated by JavaScript -->
+        </div>
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cancel</button>
+        <button type="button" class="btn btn-primary" id="confirmAction">Confirm Action</button>
+      </div>
+    </div>
+  </div>
+</div>
+
 {% block scripts %}
 <script>
+  // Moderation action handler
+  function showModerationAction(action, target) {
+    const modal = new bootstrap.Modal(document.getElementById('moderationModal'));
+    const content = document.getElementById('moderationContent');
+    const confirmBtn = document.getElementById('confirmAction');
+    
+    let title, message, confirmText, confirmClass;
+    
+    switch(action) {
+      case 'ban':
+        title = 'Ban User';
+        message = `Are you sure you want to ban user "${target}"? This action will prevent them from posting or commenting.`;
+        confirmText = 'Ban User';
+        confirmClass = 'btn-danger';
+        break;
+      case 'warn':
+        title = 'Post Warning Comment';
+        message = `Post a public warning comment on user "${target}"'s profile?`;
+        confirmText = 'Post Warning';
+        confirmClass = 'btn-warning';
+        break;
+      case 'warn-post':
+        title = 'Warn About Post';
+        message = `Post a warning comment about post ID ${target}?`;
+        confirmText = 'Post Warning';
+        confirmClass = 'btn-warning';
+        break;
+      case 'warn-comment':
+        title = 'Warn About Comment';
+        message = `Post a warning comment about comment ID ${target}?`;
+        confirmText = 'Post Warning';
+        confirmClass = 'btn-warning';
+        break;
+      case 'delete-post':
+        title = 'Delete Post';
+        message = `Are you sure you want to delete post ID ${target}? This action cannot be undone.`;
+        confirmText = 'Delete Post';
+        confirmClass = 'btn-danger';
+        break;
+      case 'delete-comment':
+        title = 'Delete Comment';
+        message = `Are you sure you want to delete comment ID ${target}? This action cannot be undone.`;
+        confirmText = 'Delete Comment';
+        confirmClass = 'btn-danger';
+        break;
+    }
+    
+    document.getElementById('moderationModalLabel').textContent = title;
+    content.innerHTML = `<p>${message}</p>`;
+    confirmBtn.textContent = confirmText;
+    confirmBtn.className = `btn ${confirmClass}`;
+    
+    confirmBtn.onclick = function() {
+      // This is a mock-up - in real implementation, this would make an API call
+      alert(`Mock action: ${action} on ${target}`);
+      modal.hide();
+    };
+    
+    modal.show();
+  }
+
   document.addEventListener('DOMContentLoaded', function() {
     // Initialize tooltips for the toxicity user marker
-    const userMarker = document.querySelector('.toxicity-user-marker');
+    const userMarker = document.querySelector('.user-risk-marker');
     if (userMarker) {
-      // Create a simple tooltip popup
       userMarker.addEventListener('mouseenter', function(e) {
-        const percentile = this.style.left.replace('%', '');
-        const tooltipEl = document.createElement('div');
-        tooltipEl.className = 'toxicity-tooltip';
-        tooltipEl.style.position = 'absolute';
-        tooltipEl.style.backgroundColor = '#333';
-        tooltipEl.style.color = '#fff';
-        tooltipEl.style.padding = '5px 10px';
-        tooltipEl.style.borderRadius = '4px';
-        tooltipEl.style.fontSize = '12px';
-        tooltipEl.style.zIndex = '1000';
-        tooltipEl.style.top = '-40px';
-        tooltipEl.style.left = '50%';
-        tooltipEl.style.transform = 'translateX(-50%)';
-        tooltipEl.style.whiteSpace = 'nowrap';
-        tooltipEl.innerText = `Percentile: ${Math.round(percentile)}%`;
-        
-        this.style.height = '35px';
-        this.style.marginTop = '-2.5px';
-        this.appendChild(tooltipEl);
+        this.style.transform = 'translateX(-50%) scale(1.05)';
       });
       
       userMarker.addEventListener('mouseleave', function(e) {
-        const tooltip = this.querySelector('.toxicity-tooltip');
-        if (tooltip) {
-          tooltip.remove();
-        }
-        this.style.height = '30px';
-        this.style.marginTop = '0';
+        this.style.transform = 'translateX(-50%) scale(1)';
       });
     }
   });

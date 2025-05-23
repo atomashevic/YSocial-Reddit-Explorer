@@ -1,0 +1,405 @@
+{% extends "base.html" %}
+
+{% block title %}Moderation Panel{% endblock %}
+
+{% block content %}
+<div class="container-fluid">
+    <div class="row">
+        <div class="col-12">
+            <h1 class="mb-4">Moderation Panel</h1>
+            
+            <!-- Risk Level Explanation -->
+            <div class="alert alert-info mb-4">
+                <h6 class="alert-heading"><i class="bi bi-info-circle"></i> Risk Level Calculation</h6>
+                <p class="mb-0">
+                    <strong>Overall Risk</strong> is calculated by averaging available toxicity metrics:
+                    <strong>Toxigen Score</strong> (AI toxicity detection), 
+                    <strong>Perspective API Score</strong> (Google's toxicity API), and 
+                    <strong>OpenAI Moderation Flag</strong> (content policy violations).
+                    Higher scores indicate more problematic content requiring review.
+                </p>
+            </div>
+            
+            <!-- Statistics Cards -->
+            <div class="row mb-4">
+                <div class="col-md-3">
+                    <div class="card bg-info text-white">
+                        <div class="card-body">
+                            <h5 class="card-title">Total Items</h5>
+                            <h3>{{ stats.total_items }}</h3>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-3">
+                    <div class="card bg-warning text-white">
+                        <div class="card-body">
+                            <h5 class="card-title">Filtered Results</h5>
+                            <h3>{{ stats.filtered_items }}</h3>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-3">
+                    <div class="card bg-danger text-white">
+                        <div class="card-body">
+                            <h5 class="card-title">High Risk</h5>
+                            <h3>{{ stats.high_risk_items }}</h3>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-3">
+                    <div class="card bg-dark text-white">
+                        <div class="card-body">
+                            <h5 class="card-title">Flagged by AI</h5>
+                            <h3>{{ stats.flagged_items }}</h3>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            
+            <!-- Filters Panel -->
+            <div class="card mb-4">
+                <div class="card-header">
+                    <h5 class="mb-0">
+                        <button class="btn btn-link" type="button" data-bs-toggle="collapse" data-bs-target="#filtersCollapse">
+                            Filters & Options
+                        </button>
+                    </h5>
+                </div>
+                <div id="filtersCollapse" class="collapse show">
+                    <div class="card-body">
+                        <form method="GET" action="{{ url_for('moderation') }}">
+                            <div class="row">
+                                <div class="col-md-2">
+                                    <label for="toxigen_threshold">Toxigen Score ≥</label>
+                                    <input type="number" class="form-control" id="toxigen_threshold" name="toxigen_threshold" 
+                                           value="{{ filters.toxigen_threshold }}" step="0.1" min="0" max="1">
+                                </div>
+                                <div class="col-md-2">
+                                    <label for="perspective_threshold">Perspective Score ≥</label>
+                                    <input type="number" class="form-control" id="perspective_threshold" name="perspective_threshold" 
+                                           value="{{ filters.perspective_threshold }}" step="0.1" min="0" max="1">
+                                </div>
+                                <div class="col-md-2">
+                                    <label for="content_type">Content Type</label>
+                                    <select class="form-control" id="content_type" name="content_type">
+                                        <option value="all" {% if filters.content_type == 'all' %}selected{% endif %}>All</option>
+                                        <option value="posts" {% if filters.content_type == 'posts' %}selected{% endif %}>Posts Only</option>
+                                        <option value="comments" {% if filters.content_type == 'comments' %}selected{% endif %}>Comments Only</option>
+                                    </select>
+                                </div>
+                                <div class="col-md-2">
+                                    <label for="sort_by">Sort By</label>
+                                    <select class="form-control" id="sort_by" name="sort_by">
+                                        <option value="overall_risk" {% if filters.sort_by == 'overall_risk' %}selected{% endif %}>Overall Risk</option>
+                                        <option value="toxigen_score" {% if filters.sort_by == 'toxigen_score' %}selected{% endif %}>Toxigen Score</option>
+                                        <option value="perspective_score" {% if filters.sort_by == 'perspective_score' %}selected{% endif %}>Perspective Score</option>
+                                        <option value="timestamp" {% if filters.sort_by == 'timestamp' %}selected{% endif %}>Time</option>
+                                    </select>
+                                </div>
+                                <div class="col-md-2">
+                                    <label for="sort_order">Order</label>
+                                    <select class="form-control" id="sort_order" name="sort_order">
+                                        <option value="desc" {% if filters.sort_order == 'desc' %}selected{% endif %}>High to Low</option>
+                                        <option value="asc" {% if filters.sort_order == 'asc' %}selected{% endif %}>Low to High</option>
+                                    </select>
+                                </div>
+                                <div class="col-md-2 d-flex align-items-end">
+                                    <div class="form-check">
+                                        <input type="checkbox" class="form-check-input" id="flagged_only" name="flagged_only" 
+                                               value="true" {% if filters.flagged_only %}checked{% endif %}>
+                                        <label class="form-check-label" for="flagged_only">
+                                            Flagged Only
+                                        </label>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="row mt-3">
+                                <div class="col-md-8">
+                                    <label for="search">Search Content</label>
+                                    <input type="text" class="form-control" id="search" name="search" 
+                                           value="{{ filters.search }}" placeholder="Search post content...">
+                                </div>
+                                <div class="col-md-4 d-flex align-items-end">
+                                    <button type="submit" class="btn btn-primary me-2">Apply Filters</button>
+                                    <a href="{{ url_for('moderation') }}" class="btn btn-secondary">Clear</a>
+                                </div>
+                            </div>
+                        </form>
+                    </div>
+                </div>
+            </div>
+            
+            <!-- Results Table -->
+            <div class="card">
+                <div class="card-body">
+                    <div class="table-responsive">
+                        <table class="table table-striped table-hover">
+                            <thead class="thead-dark">
+                                <tr>
+                                    <th>Content</th>
+                                    <th>User</th>
+                                    <th>Type</th>
+                                    <th>Toxigen</th>
+                                    <th>Perspective</th>
+                                    <th>OpenAI Flag</th>
+                                    <th>Risk Level</th>
+                                    <th>Time</th>
+                                    <th>Actions</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                {% for item in items %}
+                                <tr>
+                                    <td>
+                                        <div class="content-preview" style="max-width: 300px;">
+                                            {% if item.comment_to == -1 %}
+                                                <strong>[POST]</strong>
+                                            {% else %}
+                                                <strong>[COMMENT]</strong>
+                                            {% endif %}
+                                            {{ item.tweet|format_content|truncate(150) }}
+                                        </div>
+                                    </td>
+                                    <td>
+                                        {% if item.user %}
+                                            <a href="{{ url_for('user_profile', username=item.username) }}" class="text-decoration-none">
+                                                <div class="d-flex align-items-center">
+                                                    <div class="political-indicator 
+                                                        {% if item.user.political_leaning == 'Democrat' %}democrat
+                                                        {% elif item.user.political_leaning == 'Republican' %}republican
+                                                        {% else %}independent{% endif %}">
+                                                    </div>
+                                                    <span class="ms-2">{{ item.username }}</span>
+                                                </div>
+                                            </a>
+                                        {% else %}
+                                            {{ item.username }}
+                                        {% endif %}
+                                    </td>
+                                    <td>
+                                        {% if item.comment_to == -1 %}
+                                            <span class="badge bg-primary text-dark">Post</span>
+                                        {% else %}
+                                            <span class="badge bg-secondary text-dark">Comment</span>
+                                        {% endif %}
+                                    </td>
+                                    <td>
+                                        {% if item.toxigen_score is not none %}
+                                            <span class="badge 
+                                                {% if item.toxigen_score >= 0.8 %}bg-danger
+                                                {% elif item.toxigen_score >= 0.6 %}bg-warning text-dark
+                                                {% elif item.toxigen_score >= 0.4 %}bg-info text-dark
+                                                {% else %}bg-success text-dark{% endif %}">
+                                                {{ "%.3f"|format(item.toxigen_score) }}
+                                            </span>
+                                        {% else %}
+                                            <span class="text-muted">N/A</span>
+                                        {% endif %}
+                                    </td>
+                                    <td>
+                                        {% if item.perspective_score is not none %}
+                                            <span class="badge 
+                                                {% if item.perspective_score >= 0.8 %}bg-danger
+                                                {% elif item.perspective_score >= 0.6 %}bg-warning text-dark
+                                                {% elif item.perspective_score >= 0.4 %}bg-info text-dark
+                                                {% else %}bg-success text-dark{% endif %}">
+                                                {{ "%.3f"|format(item.perspective_score) }}
+                                            </span>
+                                        {% else %}
+                                            <span class="text-muted">N/A</span>
+                                        {% endif %}
+                                    </td>
+                                    <td>
+                                        {% if item.flagged is not none %}
+                                            {% if item.flagged %}
+                                                <span class="badge bg-danger">FLAGGED</span>
+                                                {% if item.hate is defined and item.hate > 0 %}
+                                                    <small class="text-muted d-block">Hate: {{ "%.2f"|format(item.hate) }}</small>
+                                                {% endif %}
+                                                {% if item.harassment is defined and item.harassment > 0 %}
+                                                    <small class="text-muted d-block">Harassment: {{ "%.2f"|format(item.harassment) }}</small>
+                                                {% endif %}
+                                            {% else %}
+                                                <span class="badge bg-success text-dark">OK</span>
+                                            {% endif %}
+                                        {% else %}
+                                            <span class="text-muted">N/A</span>
+                                        {% endif %}
+                                    </td>
+                                    <td>
+                                        <div class="progress" style="height: 20px;">
+                                            <div class="progress-bar 
+                                                {% if item.overall_risk >= 0.8 %}bg-danger
+                                                {% elif item.overall_risk >= 0.6 %}bg-warning text-dark
+                                                {% elif item.overall_risk >= 0.4 %}bg-info text-dark
+                                                {% else %}bg-success{% endif %}" 
+                                                role="progressbar" 
+                                                style="width: {{ (item.overall_risk * 100)|round }}%" 
+                                                aria-valuenow="{{ (item.overall_risk * 100)|round }}" 
+                                                aria-valuemin="0" 
+                                                aria-valuemax="100">
+                                                {{ "%.1f"|format(item.overall_risk * 100) }}%
+                                            </div>
+                                        </div>
+                                    </td>
+                                    <td>
+                                        <small>{{ item.timestamp|format_timestamp }}</small>
+                                    </td>
+                                    <td>
+                                        <div class="btn-group-vertical" role="group">
+                                            {% if item.comment_to == -1 %}
+                                                <a href="{{ url_for('post_detail', post_id=item.id) }}" class="btn btn-sm btn-outline-primary mb-1">View Post</a>
+                                                <button class="btn btn-sm btn-outline-warning mb-1" onclick="showModerationAction('warn-post', {{ item.id }})">
+                                                    <i class="bi bi-exclamation-triangle"></i> Warn
+                                                </button>
+                                                <button class="btn btn-sm btn-outline-danger" onclick="showModerationAction('delete-post', {{ item.id }})">
+                                                    <i class="bi bi-trash"></i> Delete
+                                                </button>
+                                            {% else %}
+                                                <a href="{{ url_for('post_detail', post_id=item.thread_id) }}#comment-{{ item.id }}" class="btn btn-sm btn-outline-primary mb-1">View Thread</a>
+                                                <button class="btn btn-sm btn-outline-warning mb-1" onclick="showModerationAction('warn-comment', {{ item.id }})">
+                                                    <i class="bi bi-exclamation-triangle"></i> Warn
+                                                </button>
+                                                <button class="btn btn-sm btn-outline-danger" onclick="showModerationAction('delete-comment', {{ item.id }})">
+                                                    <i class="bi bi-trash"></i> Delete
+                                                </button>
+                                            {% endif %}
+                                            <button class="btn btn-sm btn-outline-info mt-1" onclick="showModerationAction('ban', '{{ item.username }}')">
+                                                <i class="bi bi-person-x"></i> Ban User
+                                            </button>
+                                        </div>
+                                    </td>
+                                </tr>
+                                {% else %}
+                                <tr>
+                                    <td colspan="9" class="text-center text-muted">No items match the current filters.</td>
+                                </tr>
+                                {% endfor %}
+                            </tbody>
+                        </table>
+                    </div>
+                    
+                    <!-- Pagination -->
+                    {% if total_pages > 1 %}
+                    <nav aria-label="Moderation pagination">
+                        <ul class="pagination justify-content-center">
+                            {% if page > 1 %}
+                                <li class="page-item">
+                                    <a class="page-link" href="{{ url_for('moderation', page=page-1, **filters) }}">Previous</a>
+                                </li>
+                            {% endif %}
+                            
+                            {% for p in range(1, total_pages + 1) %}
+                                {% if p == page %}
+                                    <li class="page-item active">
+                                        <span class="page-link">{{ p }}</span>
+                                    </li>
+                                {% elif p <= 3 or p > total_pages - 3 or (p >= page - 2 and p <= page + 2) %}
+                                    <li class="page-item">
+                                        <a class="page-link" href="{{ url_for('moderation', page=p, **filters) }}">{{ p }}</a>
+                                    </li>
+                                {% elif p == 4 or p == total_pages - 3 %}
+                                    <li class="page-item disabled">
+                                        <span class="page-link">...</span>
+                                    </li>
+                                {% endif %}
+                            {% endfor %}
+                            
+                            {% if page < total_pages %}
+                                <li class="page-item">
+                                    <a class="page-link" href="{{ url_for('moderation', page=page+1, **filters) }}">Next</a>
+                                </li>
+                            {% endif %}
+                        </ul>
+                    </nav>
+                    {% endif %}
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<!-- Moderation Action Modal -->
+<div class="modal fade" id="moderationModal" tabindex="-1" aria-labelledby="moderationModalLabel" aria-hidden="true">
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title" id="moderationModalLabel">Moderation Action</h5>
+        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+      </div>
+      <div class="modal-body">
+        <div id="moderationContent">
+          <!-- Content will be populated by JavaScript -->
+        </div>
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cancel</button>
+        <button type="button" class="btn btn-primary" id="confirmAction">Confirm Action</button>
+      </div>
+    </div>
+  </div>
+</div>
+
+<script>
+  // Moderation action handler
+  function showModerationAction(action, target) {
+    const modal = new bootstrap.Modal(document.getElementById('moderationModal'));
+    const content = document.getElementById('moderationContent');
+    const confirmBtn = document.getElementById('confirmAction');
+    
+    let title, message, confirmText, confirmClass;
+    
+    switch(action) {
+      case 'ban':
+        title = 'Ban User';
+        message = `Are you sure you want to ban user "${target}"? This action will prevent them from posting or commenting.`;
+        confirmText = 'Ban User';
+        confirmClass = 'btn-danger';
+        break;
+      case 'warn':
+        title = 'Post Warning Comment';
+        message = `Post a public warning comment on user "${target}"'s profile?`;
+        confirmText = 'Post Warning';
+        confirmClass = 'btn-warning';
+        break;
+      case 'warn-post':
+        title = 'Warn About Post';
+        message = `Post a warning comment about post ID ${target}?`;
+        confirmText = 'Post Warning';
+        confirmClass = 'btn-warning';
+        break;
+      case 'warn-comment':
+        title = 'Warn About Comment';
+        message = `Post a warning comment about comment ID ${target}?`;
+        confirmText = 'Post Warning';
+        confirmClass = 'btn-warning';
+        break;
+      case 'delete-post':
+        title = 'Delete Post';
+        message = `Are you sure you want to delete post ID ${target}? This action cannot be undone.`;
+        confirmText = 'Delete Post';
+        confirmClass = 'btn-danger';
+        break;
+      case 'delete-comment':
+        title = 'Delete Comment';
+        message = `Are you sure you want to delete comment ID ${target}? This action cannot be undone.`;
+        confirmText = 'Delete Comment';
+        confirmClass = 'btn-danger';
+        break;
+    }
+    
+    document.getElementById('moderationModalLabel').textContent = title;
+    content.innerHTML = `<p>${message}</p>`;
+    confirmBtn.textContent = confirmText;
+    confirmBtn.className = `btn ${confirmClass}`;
+    
+    confirmBtn.onclick = function() {
+      // This is a mock-up - in real implementation, this would make an API call
+      alert(`Mock action: ${action} on ${target}`);
+      modal.hide();
+    };
+    
+    modal.show();
+  }
+</script>
+{% endblock %}
