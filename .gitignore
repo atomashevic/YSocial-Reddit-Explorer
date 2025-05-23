@@ -1,3 +1,5 @@
 .env.example
 user_note.txt
 CLAUDE.md
+redact.py
+images/*
